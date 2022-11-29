@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.pages;
 
 import io.qameta.allure.Step;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage{
@@ -21,20 +22,37 @@ public class LoginPage extends BasePage{
     private static final By btnMostrarSenha =
             By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
 
-    private static final By mensagemErroEmail =
-            By.cssSelector("#\\31  > div.Toastify__toast-body > div:nth-child(2)");
+    private static final By mensagemErroEmailInvalido =
+            By.cssSelector("#root > div > div");
+
+    private static final By mensagemErroEmailVazio =
+            By.cssSelector("#erro-email");
 
     private static final By mensagemErroSenha =
             By.cssSelector("#erro-senha");
 
+    private static final By mensagemErroEmailOuSenhaIncorreto =
+            By.cssSelector("#\\32  > div.Toastify__toast-body");
+
+    private static final By mensagemBoasVindas =
+            By.cssSelector("#\\31  > div.Toastify__toast-body");
+
+    private static final By modalRedefinirSenha =
+            By.cssSelector("body > div.MuiModal-root.css-19ni2f5 > form");
+
     @Step("Preencher campo com email inválido")
     public void preencherCampoEmailInvalido() {
-        sendKeys(campoEmail,"teste.qa@gmail.com.br");
+        sendKeys(campoEmail,"teste.qa@naoexiste.com");
     }
 
     @Step("Preencher campo com email válido")
-    public void preencherCampoEmailValido() {
-        sendKeys(campoEmail,"teste.qa@dbccompany.com.br");
+    public void preencherCampoEmailValido(String email) {
+        sendKeys(campoEmail,email);
+    }
+
+    @Step("Preencher campo com email vazio")
+    public void preencherCampoEmailVazio() {
+        sendKeys(campoEmail,"");
     }
 
     @Step("Preencher campo com senha inválida")
@@ -43,17 +61,32 @@ public class LoginPage extends BasePage{
     }
 
     @Step("Preencher campo com senha válida")
-    public void preencherCampoSenhaValida() {
-        sendKeys(campoSenha,"123");
+    public void preencherCampoSenhaValida(String senha) {
+        sendKeys(campoSenha,senha);
+    }
+
+    @Step("Preencher campo com senha vazia")
+    public void preencherCampoSenhaVazia() {
+        sendKeys(campoSenha,"");
     }
     @Step("Clicar no botão Entrar")
     public void clicarBotaoEntrar() {
         click(btnEntrar);
     }
 
-    @Step("Validar Mensagem de Erro Email")
-    public String validarMensagemDeErroEmail(){
-         return getText(mensagemErroEmail);
+    @Step("Clicar no botão Mostrar")
+    public void clicarBotaoMostrar() {
+        click(btnMostrarSenha);
+    }
+
+    @Step("Validar Mensagem de Erro Email Invalido")
+    public String validarMensagemDeErroEmailInvalido(){
+         return getText(mensagemErroEmailInvalido);
+    }
+
+    @Step("Validar Mensagem de Erro Email Vazio")
+    public String validarMensagemDeErroEmailVazio(){
+        return getText(mensagemErroEmailVazio);
     }
 
     @Step("Validar Mensagem de Erro Senha")
@@ -66,5 +99,28 @@ public class LoginPage extends BasePage{
         return getCurrentUrl();
     }
 
+    @Step("Clicar Visualizar Senha")
+    public String visualizarSenha(){
+       return getText(campoSenha);
+    }
 
+    @Step("Clicar Redefinir Senha")
+    public void clicarRedefinirSenha() {
+        click(redefinirSenha);
+    }
+
+    @Step("Validar modal Redefinir Senha")
+    public void validarModalRedefinirSenha(){
+        Assert.assertNotNull(modalRedefinirSenha);
+    }
+
+    @Step("Validar Mensagem de Boas Vindas")
+    public String validarMensagemDeBoasVindas(){
+        return getText(mensagemBoasVindas);
+    }
+
+    @Step("Validar Mensagem de Erro Email ou Senha Incorretos")
+    public String validarMensagemDeErroEmailOuSenhaIncorretos(){
+        return getText(mensagemErroEmailOuSenhaIncorreto);
+    }
 }
