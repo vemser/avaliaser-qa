@@ -1,6 +1,9 @@
 package br.com.dbccompany.vemser.avaliaser.util;
 
+import br.com.dbccompany.vemser.avaliaser.dto.AlterarSenhaUsuarioLogadoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioCreateDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import net.datafaker.Faker;
 import org.junit.Assert;
@@ -45,6 +48,14 @@ public class Utils {
 
     public static String convertUsuarioToJson(UsuarioCreateDTO usuario) {
         return new Gson().toJson(usuario);
+    }
+
+    public static String convertAtualizarUsuarioToJson(AtualizarUsuarioLogadoDTO nomeUsuario) {
+        return new Gson().toJson(nomeUsuario);
+    }
+
+    public static String convertAlterarSenhaUsuarioLogadoToJson(AlterarSenhaUsuarioLogadoDTO alterarSenhaUsuarioLogado) {
+        return new Gson().toJson(alterarSenhaUsuarioLogado);
     }
 
     public static UsuarioCreateDTO convertJsonToUsuario(String toJson) {

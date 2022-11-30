@@ -1,6 +1,5 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
-import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
@@ -31,28 +30,28 @@ public class RecuperaSenhaUsuarioTest {
     @Tag("all")
     @Description("Deve não recuperar senha de usuario")
     public void deveNaoRecuperarSenhaDeUsuarioComEmailInvalido() {
-        usuarioService.recuperarSenha("teste@gmail.com")
+        String message = usuarioService.recuperarSenha("teste@gmail.com")
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_FORBIDDEN)
-                    .extract().response()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract().path("message")
         ;
 
-        //validar mensagem
+        assertEquals("USUARIO_NAO_ENCONTRADO", message);
     }
 
     @Test
     @Tag("all")
     @Description("Deve não recuperar senha de usuario")
     public void deveNaoRecuperarSenhaDeUsuarioComEmailVazio() {
-        usuarioService.recuperarSenha(StringUtils.EMPTY)
+        String message = usuarioService.recuperarSenha(StringUtils.EMPTY)
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_FORBIDDEN)
-                    .extract().response()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract().path("message")
         ;
 
-        //validar mensagem
+        assertEquals("USUARIO_NAO_ENCONTRADO", message);
     }
 
 }

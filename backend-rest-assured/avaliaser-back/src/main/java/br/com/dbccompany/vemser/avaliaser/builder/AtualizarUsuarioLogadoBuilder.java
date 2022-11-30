@@ -1,19 +1,9 @@
 package br.com.dbccompany.vemser.avaliaser.builder;
 
-import br.com.dbccompany.vemser.avaliaser.dto.AlterarSenhaUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.UsuarioCreateDTO;
-import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import org.apache.commons.lang3.StringUtils;
 
-public class UsuarioBuilder {
-
-    public UsuarioCreateDTO criarUsuario() {
-        return UsuarioCreateDTO.builder()
-                .email("jaciane.santana@dbccompany.com.br")
-                .nome("Jaciane Santana")
-                .build();
-    }
+public class AtualizarUsuarioLogadoBuilder {
 
     public AtualizarUsuarioLogadoDTO atualizarUsuario() {
         return AtualizarUsuarioLogadoDTO.builder()
@@ -33,13 +23,6 @@ public class UsuarioBuilder {
         nomeVazio.setNome(StringUtils.EMPTY);
 
         return nomeVazio;
-    }
-
-    public AlterarSenhaUsuarioLogadoDTO alterarSenhaUsuarioLogado() {
-        return AlterarSenhaUsuarioLogadoDTO.builder()
-                .senhaAntiga(Manipulation.getProp().getProperty("prop.senha"))
-                .senhaNova("12345678")
-                .build();
     }
 
 }
