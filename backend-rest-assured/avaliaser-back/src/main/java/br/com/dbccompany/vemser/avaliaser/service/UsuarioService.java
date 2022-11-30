@@ -1,0 +1,68 @@
+package br.com.dbccompany.vemser.avaliaser.service;
+
+import br.com.dbccompany.vemser.avaliaser.specs.LoginSpecs;
+import br.com.dbccompany.vemser.avaliaser.util.Utils;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
+
+public class UsuarioService {
+
+    /*public Response loginUsuario() {
+        return
+                given()
+                        .spec(LoginSpecs.requestSpec())
+                .when()
+                        .get(Utils.getBaseUrl() + "/auth/login")
+                ;
+    }*/
+
+    public Response buscarUsuarioLogado() {
+        return
+                given()
+                        .spec(LoginSpecs.requestSpec())
+                .when()
+                        .get(Utils.getBaseUrl() + "/auth/usuario-logado")
+                ;
+    }
+
+    public Response atualizarUsuarioLogado(String nome) {
+        return
+                given()
+                        .spec(LoginSpecs.requestSpec())
+                        .queryParam("nome", nome)
+                .when()
+                        .put(Utils.getBaseUrl() + "/auth/atualizar-usuario-logado")
+                ;
+    }
+
+    public Response recuperarSenha(String email) {
+        return
+                given()
+                        .queryParam("email", email)
+                .when()
+                        .post(Utils.getBaseUrl() + "/auth/recuperar-senha")
+                ;
+    }
+
+    public Response alterarSenhaRecuperacao(String senha) {
+        return
+                given()
+                        .queryParam("senha", senha)
+                .when()
+                        .put(Utils.getBaseUrl() + "/auth/alterar-senha-usuario-recuperacao")
+                ;
+    }
+
+    public Response alterarSenhaLogado(String senhaAntiga, String senhaNova) {
+        return
+                given()
+                        .spec(LoginSpecs.requestSpec())
+                        .queryParam("senhaAntiga", senhaAntiga)
+                        .queryParam("senhaNova", senhaNova)
+                .when()
+                        .put(Utils.getBaseUrl() + "/auth/alterar-senha-usuario-logado")
+                ;
+    }
+
+}
