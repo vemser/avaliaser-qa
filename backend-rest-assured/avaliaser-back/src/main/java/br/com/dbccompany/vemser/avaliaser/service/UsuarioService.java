@@ -57,12 +57,11 @@ public class UsuarioService {
                 ;
     }
 
-    public Response alterarSenhaLogado(String senhaAntiga, String senhaNova) {
+    public Response alterarSenhaLogado(String alteraSenhaUsuarioLogado) {
         return
                 given()
                         .spec(LoginSpecs.requestSpec())
-                        .queryParam("senhaAntiga", senhaAntiga)
-                        .queryParam("senhaNova", senhaNova)
+                        .body(alteraSenhaUsuarioLogado)
                 .when()
                         .put(Utils.getBaseUrl() + "/auth/alterar-senha-usuario-logado")
                 ;

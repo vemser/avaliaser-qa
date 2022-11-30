@@ -1,11 +1,11 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
+import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
+import br.com.dbccompany.vemser.avaliaser.dto.AlterarSenhaUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
+import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -17,26 +17,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AlteraSenhaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();
+    UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
 
     @Test
-    @Tag("todos")
+    @Tag("all")
     @Description("Deve alterar senha de usuario logado")
     public void deveAlterarSenhaDeUsuarioLogadoComSucesso() {
-        usuarioService.alterarSenhaLogado(Manipulation.getProp().getProperty("prop.senha"), "12345678")
+        AlterarSenhaUsuarioLogadoDTO alteraSenhaUsuarioLogado = usuarioBuilder.alterarSenhaUsuarioLogado();
+
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaUsuarioLogado))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_OK)
                     .extract().response()
         ;
 
-        usuarioService.alterarSenhaLogado("12345678", Manipulation.getProp().getProperty("prop.senha"));
+        alteraSenhaUsuarioLogado.setSenhaAntiga(usuarioBuilder.alterarSenhaUsuarioLogado().getSenhaNova());
+        alteraSenhaUsuarioLogado.setSenhaNova(Manipulation.getProp().getProperty("prop.senha"));
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaUsuarioLogado));
     }
 
     @Test
     @Tag("all")
     @Description("Deve não alterar senha de usuario logado")
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaAntigaInvalido() {
-        List<String> errors = usuarioService.alterarSenhaLogado("abc123", "12345678")
+        AlterarSenhaUsuarioLogadoDTO alteraSenhaAntigaInvalida = usuarioBuilder.alterarSenhaAntigaInvalida();
+
+        List<String> errors = usuarioService
+                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaInvalida))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
@@ -50,22 +58,28 @@ public class AlteraSenhaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não alterar senha de usuario logado")
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaAntigaVazio() {
-        String message = usuarioService.alterarSenhaLogado(StringUtils.EMPTY, "12345678")
+        AlterarSenhaUsuarioLogadoDTO alteraSenhaAntigaVazia= usuarioBuilder.alterarSenhaAntigaVazia();
+
+        List<String> errors = usuarioService
+                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaVazia))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("message")
+                    .extract().path("errors")
         ;
 
-        assertEquals("Senha atual informada está incorreta! Não é possível alterar senha.", message);
+        assertEquals("senhaAntiga: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
+        assertEquals("senhaAntiga: Senha antiga não pode ficar em branco.", errors.get(1));
     }
 
     @Test
     @Tag("all")
     @Description("Deve não alterar senha de usuario logado")
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaNovaInvalido() {
+        AlterarSenhaUsuarioLogadoDTO alteraSenhaNovaInvalida= usuarioBuilder.alterarSenhaNovaInvalida();
+
         List<String> errors = usuarioService
-                .alterarSenhaLogado(Manipulation.getProp().getProperty("prop.senha"), "abc123")
+                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaInvalida))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
@@ -79,8 +93,10 @@ public class AlteraSenhaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não alterar senha de usuario logado")
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaNovaVazio() {
+        AlterarSenhaUsuarioLogadoDTO alteraSenhaNovaVazia = usuarioBuilder.alterarSenhaNovaVazia();
+
         List<String> errors = usuarioService
-                .alterarSenhaLogado(Manipulation.getProp().getProperty("prop.senha"), StringUtils.EMPTY)
+                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaVazia))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)

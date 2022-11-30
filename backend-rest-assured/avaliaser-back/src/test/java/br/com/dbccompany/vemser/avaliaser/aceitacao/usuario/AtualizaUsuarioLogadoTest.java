@@ -1,6 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
-import br.com.dbccompany.vemser.avaliaser.builder.AtualizarUsuarioLogadoBuilder;
+import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
 import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AtualizaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();
-    AtualizarUsuarioLogadoBuilder usuarioBuilder = new AtualizarUsuarioLogadoBuilder();
+    UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
 
     @Test
     @Tag("all")

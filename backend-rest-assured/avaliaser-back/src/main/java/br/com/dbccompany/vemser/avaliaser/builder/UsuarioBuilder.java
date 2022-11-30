@@ -42,4 +42,32 @@ public class UsuarioBuilder {
                 .build();
     }
 
+    public AlterarSenhaUsuarioLogadoDTO alterarSenhaAntigaInvalida() {
+        AlterarSenhaUsuarioLogadoDTO senhaAntigaInvalida = alterarSenhaUsuarioLogado();
+        senhaAntigaInvalida.setSenhaAntiga("abc123!");
+
+        return senhaAntigaInvalida;
+    }
+
+    public AlterarSenhaUsuarioLogadoDTO alterarSenhaAntigaVazia() {
+        AlterarSenhaUsuarioLogadoDTO senhaAntigaVazia = alterarSenhaUsuarioLogado();
+        senhaAntigaVazia.setSenhaAntiga(StringUtils.EMPTY);
+
+        return senhaAntigaVazia;
+    }
+
+    public AlterarSenhaUsuarioLogadoDTO alterarSenhaNovaInvalida() {
+        AlterarSenhaUsuarioLogadoDTO senhaNovaInvalida = alterarSenhaUsuarioLogado();
+        senhaNovaInvalida.setSenhaNova("abc123!");
+
+        return senhaNovaInvalida;
+    }
+
+    public AlterarSenhaUsuarioLogadoDTO alterarSenhaNovaVazia() {
+        AlterarSenhaUsuarioLogadoDTO senhaNovaVazia = alterarSenhaUsuarioLogado();
+        senhaNovaVazia.setSenhaNova(StringUtils.EMPTY);
+
+        return senhaNovaVazia;
+    }
+
 }
