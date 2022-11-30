@@ -8,13 +8,13 @@ import static io.restassured.RestAssured.given;
 
 public class Auth {
 
-    public String autenticacao() {
+    public String autenticacaoAdmin() {
         LoginBuilder loginBuilder = new LoginBuilder();
 
         return
                 given()
                         .contentType(ContentType.JSON)
-                        .body(new Gson().toJson(loginBuilder.login()))
+                        .body(new Gson().toJson(loginBuilder.loginAdmin()))
                 .when()
                         .post(Utils.getBaseUrl() + "/auth/login")
                 .then()

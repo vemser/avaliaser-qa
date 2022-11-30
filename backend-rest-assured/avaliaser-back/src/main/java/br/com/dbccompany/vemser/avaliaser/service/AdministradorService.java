@@ -8,12 +8,12 @@ import static io.restassured.RestAssured.given;
 
 public class AdministradorService {
 
-    public Response listar(Integer paginaQueEuQuero, Integer tamanhoDeRegistrosPorPagina) {
+    public Response listar(Integer page, Integer size) {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
-                        .queryParam("paginaQueEuQuero", paginaQueEuQuero)
-                        .queryParam("tamanhoDeRegistrosPorPagina", tamanhoDeRegistrosPorPagina)
+                        .spec(LoginSpecs.requestAdminSpec())
+                        .queryParam("page", page)
+                        .queryParam("size", size)
                 .when()
                         .get(Utils.getBaseUrl() + "/administrador/listar-usuarios")
                 ;
@@ -22,7 +22,7 @@ public class AdministradorService {
     public Response buscarPorId(Integer idUsuario) {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                         .pathParam("idUsuario", idUsuario)
                     .when()
                         .get(Utils.getBaseUrl() + "/administrador/usuario/{idUsuario}")
@@ -32,7 +32,7 @@ public class AdministradorService {
     public Response cadastrar(String cargo, String usuario) {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                         .queryParam("cargo", cargo)
                         .body(usuario)
                 .when()
@@ -43,7 +43,7 @@ public class AdministradorService {
     public Response deletar(Integer idUsuario) {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                         .pathParam("idUsuario", idUsuario)
                 .when()
                         .delete(Utils.getBaseUrl() + "/auth/delete/{idUsuario}")

@@ -17,7 +17,7 @@ public class ListarUsuariosTest {
     AdministradorService administradorService = new AdministradorService();
 
     @Test
-    @Tag("all")
+    @Tag("todos")
     @Description("Deve listar usuários com paginação")
     public void deveListarUsuariosComPaginacao() {
         PageUsuarioDTO pageUsuarioDTO = administradorService.listar(0, 10)
@@ -32,7 +32,7 @@ public class ListarUsuariosTest {
     }
 
     @Test
-    @Tag("all")
+    @Tag("todos")
     @Description("Deve retornar lista de usuários vazia")
     public void deveRetornarListaDeUsuariosVazia() {
         PageUsuarioDTO pageUsuarioDTO = administradorService.listar(0, 0)

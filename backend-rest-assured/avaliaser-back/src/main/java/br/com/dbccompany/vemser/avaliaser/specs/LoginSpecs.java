@@ -7,13 +7,13 @@ import io.restassured.specification.RequestSpecification;
 
 public class LoginSpecs {
 
-    private static String token = new Auth().autenticacao();
+    private static String tokenAdmin = new Auth().autenticacaoAdmin();
 
     private LoginSpecs() {}
 
-    public static RequestSpecification requestSpec() {
+    public static RequestSpecification requestAdminSpec() {
         return new RequestSpecBuilder().
-                addHeader("Authorization", token).
+                addHeader("Authorization", tokenAdmin).
                 setContentType(ContentType.JSON).
                 build();
     }
