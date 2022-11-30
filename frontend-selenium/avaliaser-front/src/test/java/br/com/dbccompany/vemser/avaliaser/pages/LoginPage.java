@@ -23,7 +23,7 @@ public class LoginPage extends BasePage{
             By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
 
     private static final By mensagemErroEmailInvalido =
-            By.cssSelector("#root > div > div");
+            By.cssSelector(".Toastify__toast-body > :nth-child(2)");
 
     private static final By mensagemErroEmailVazio =
             By.cssSelector("#erro-email");
@@ -81,7 +81,7 @@ public class LoginPage extends BasePage{
 
     @Step("Validar Mensagem de Erro Email Invalido")
     public String validarMensagemDeErroEmailInvalido(){
-         return getText(mensagemErroEmailInvalido);
+         return getAttributeInnerText(mensagemErroEmailInvalido);
     }
 
     @Step("Validar Mensagem de Erro Email Vazio")
@@ -91,7 +91,7 @@ public class LoginPage extends BasePage{
 
     @Step("Validar Mensagem de Erro Senha")
     public String validarMensagemDeErroSenha(){
-        return getText(mensagemErroSenha);
+        return getAttributeInnerText(mensagemErroSenha);
     }
 
     @Step("Validar url atual")
@@ -116,11 +116,11 @@ public class LoginPage extends BasePage{
 
     @Step("Validar Mensagem de Boas Vindas")
     public String validarMensagemDeBoasVindas(){
-        return getText(mensagemBoasVindas);
+        return getAttributeInnerText(mensagemBoasVindas);
     }
 
     @Step("Validar Mensagem de Erro Email ou Senha Incorretos")
     public String validarMensagemDeErroEmailOuSenhaIncorretos(){
-        return getText(mensagemErroEmailOuSenhaIncorreto);
+        return getAttributeInnerText(mensagemErroEmailOuSenhaIncorreto);
     }
 }

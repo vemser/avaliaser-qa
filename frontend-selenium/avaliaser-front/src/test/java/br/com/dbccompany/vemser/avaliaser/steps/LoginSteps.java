@@ -27,11 +27,12 @@ public class LoginSteps {
     }
 
     @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
-    public void telaPrincipalAdmin(){
-        loginPage.validarUrlAtual();
+    public void telaPrincipalAdmin() throws InterruptedException {
+        Thread.sleep(5000);
         Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
         String mensagemBoasVindas = loginPage.validarMensagemDeBoasVindas();
         Assert.assertEquals("Seja Bem vindo(a)", mensagemBoasVindas);
+
     }
 
     @Entao("devo visualizar mensagem de erro email ou senha incorretos")
@@ -57,8 +58,7 @@ public class LoginSteps {
     @Entao("devo visualizar mensagem de erro Email")
     public void validarMensagemDeErroEmailInvalido(){
         String mensagemErro = loginPage.validarMensagemDeErroEmailInvalido();
-        Assert.assertEquals("Por favor digite um email válido.\n" +
-                "Ex: fulano@dbc@dbccompany.com.br", mensagemErro);
+        Assert.assertEquals("Por favor digite um email válido. Ex: fulano@dbccompany.com.br", mensagemErro);
     }
 
 
