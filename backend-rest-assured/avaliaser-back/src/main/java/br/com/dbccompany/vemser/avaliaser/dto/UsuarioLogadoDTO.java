@@ -1,13 +1,11 @@
 package br.com.dbccompany.vemser.avaliaser.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
 @JsonIgnoreProperties
-public class UsuarioDTO {
+public class UsuarioLogadoDTO {
 
     private Integer idUsuario;
     private String nome;
