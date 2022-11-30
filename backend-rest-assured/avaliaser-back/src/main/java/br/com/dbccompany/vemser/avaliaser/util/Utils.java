@@ -3,7 +3,6 @@ package br.com.dbccompany.vemser.avaliaser.util;
 import br.com.dbccompany.vemser.avaliaser.dto.AlterarSenhaUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioCreateDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import net.datafaker.Faker;
 import org.junit.Assert;
@@ -43,7 +42,7 @@ public class Utils {
     }
 
     public static String getEnv() {
-        return Manipulation.getProp().getProperty("prop.env");
+        return Manipulation.getPropAdmin().getProperty("prop.env");
     }
 
     public static String convertUsuarioToJson(UsuarioCreateDTO usuario) {

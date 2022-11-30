@@ -13,7 +13,7 @@ public class UsuarioService {
     public Response loginUsuario() {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                 .when()
                         .get(Utils.getBaseUrl() + "/auth/login")
                 ;
@@ -22,7 +22,7 @@ public class UsuarioService {
     public Response buscarUsuarioLogado() {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                 .when()
                         .get(Utils.getBaseUrl() + "/auth/usuario-logado")
                 ;
@@ -32,7 +32,7 @@ public class UsuarioService {
         RestAssured.defaultParser = Parser.JSON;
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                         .body(nome)
                 .when()
                         .put(Utils.getBaseUrl() + "/auth/atualizar-usuario-logado")
@@ -60,7 +60,7 @@ public class UsuarioService {
     public Response alterarSenhaLogado(String alteraSenhaUsuarioLogado) {
         return
                 given()
-                        .spec(LoginSpecs.requestSpec())
+                        .spec(LoginSpecs.requestAdminSpec())
                         .body(alteraSenhaUsuarioLogado)
                 .when()
                         .put(Utils.getBaseUrl() + "/auth/alterar-senha-usuario-logado")

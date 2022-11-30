@@ -8,12 +8,12 @@ public class Manipulation {
 
     private Manipulation() {}
 
-    public static Properties getProp() {
+    public static Properties getPropAdmin() {
 
         Properties props = new Properties();
 
         try {
-            FileInputStream file = new FileInputStream("src/properties/dados.properties");
+            FileInputStream file = new FileInputStream("src/properties/dados-admin.properties");
             props.load(file);
         } catch (IOException e) {
             e.printStackTrace();
