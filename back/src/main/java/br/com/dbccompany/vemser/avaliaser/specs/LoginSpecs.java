@@ -8,7 +8,8 @@ import io.restassured.specification.RequestSpecification;
 public class LoginSpecs {
 
     private static String tokenAdmin = new Auth().autenticacaoAdmin();
-    private static String tokenGestor= new Auth().autenticacaoAdmin();
+    private static String tokenGestor= new Auth().autenticacaoGestor();
+    private static String tokenInstrutor = new Auth().autenticacaoInstrutor();
 
     private LoginSpecs() {}
 
@@ -19,9 +20,16 @@ public class LoginSpecs {
                 .build();
     }
 
-    public static RequestSpecification requestSpecGestor() {
+    public static RequestSpecification requestGestorSpec() {
         return (new RequestSpecBuilder())
                 .addHeader("Authorization", tokenGestor)
+                .setContentType(ContentType.JSON)
+                .build();
+    }
+
+    public static RequestSpecification requestInstrutorSpec() {
+        return (new RequestSpecBuilder())
+                .addHeader("Authorization", tokenInstrutor)
                 .setContentType(ContentType.JSON)
                 .build();
     }

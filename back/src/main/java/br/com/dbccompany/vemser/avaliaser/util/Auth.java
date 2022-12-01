@@ -22,4 +22,28 @@ public class Auth {
                 ;
     }
 
+    public String autenticacaoGestor() {
+        return
+                given()
+                        .contentType(ContentType.JSON)
+                        .body(new Gson().toJson(loginBuilder.loginGestor()))
+                .when()
+                        .post(Utils.getBaseUrl() + "/auth/login")
+                .then()
+                        .extract().asString()
+                ;
+    }
+
+    public String autenticacaoInstrutor() {
+        return
+                given()
+                        .contentType(ContentType.JSON)
+                        .body(new Gson().toJson(loginBuilder.loginInstrutor()))
+                .when()
+                        .post(Utils.getBaseUrl() + "/auth/login")
+                .then()
+                        .extract().asString()
+                ;
+    }
+
 }
