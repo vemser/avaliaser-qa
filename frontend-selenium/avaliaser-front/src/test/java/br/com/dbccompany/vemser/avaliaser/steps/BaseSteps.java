@@ -6,7 +6,6 @@ import cucumber.api.java.Before;
 
 public class BaseSteps extends Browser {
 
-
     @Before
     public void abrirNavegador(){
         browserUp("https://avaliaser-front-flame.vercel.app/");

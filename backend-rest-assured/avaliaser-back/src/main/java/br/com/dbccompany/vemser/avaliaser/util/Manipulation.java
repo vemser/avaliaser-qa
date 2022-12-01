@@ -31,5 +31,4 @@ public class Manipulation {
 
         return props;
     }
-
 }

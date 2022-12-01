@@ -6,11 +6,13 @@ import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Usuario")
 public class RecuperaSenhaUsuarioTest {
 
     UsuarioService usuarioService = new UsuarioService();

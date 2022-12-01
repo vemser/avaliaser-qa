@@ -16,6 +16,9 @@ public class Utils {
         return baseUrl;
     }
 
+    public static String convertLoginToJson(LoginDTO login) {
+        return new Gson().toJson(login);
+    }
 
     public static String convertUsuarioToJson(UsuarioCreateDTO usuario) {
         return new Gson().toJson(usuario);
@@ -23,6 +26,14 @@ public class Utils {
 
     public static String convertAtualizarUsuarioToJson(AtualizarUsuarioDTO nomeUsuario) {
         return new Gson().toJson(nomeUsuario);
+    }
+
+    public static String convertAtualizarUsuarioToJson(AtualizarUsuarioLogadoDTO nomeUsuario) {
+        return new Gson().toJson(nomeUsuario);
+    }
+
+    public static String convertAtualizarUsuarioPorIdToJson(AtualizarUsuarioDTO usuarioAtualizado) {
+        return new Gson().toJson(usuarioAtualizado);
     }
 
     public static String convertAlterarSenhaUsuarioLogadoToJson(AlterarSenhaUsuarioLogadoDTO alterarSenhaUsuarioLogado) {

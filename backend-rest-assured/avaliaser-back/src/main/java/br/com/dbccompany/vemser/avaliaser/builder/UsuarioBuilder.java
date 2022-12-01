@@ -57,21 +57,21 @@ public class UsuarioBuilder {
         return usuarioComNomeVazio;
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioLogado() {
-        return AtualizarUsuarioDTO.builder()
+    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogado() {
+        return AtualizarUsuarioLogadoDTO.builder()
                 .nome("Paulo Sergio")
                 .build();
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioLogadoInvalido() {
-        AtualizarUsuarioDTO nomeInvalido = atualizarUsuarioLogado();
+    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogadoInvalido() {
+        AtualizarUsuarioLogadoDTO nomeInvalido = atualizarUsuarioLogado();
         nomeInvalido.setNome("abc123!");
 
         return nomeInvalido;
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioLogadoVazio() {
-        AtualizarUsuarioDTO nomeVazio = atualizarUsuarioLogado();
+    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogadoVazio() {
+        AtualizarUsuarioLogadoDTO nomeVazio = atualizarUsuarioLogado();
         nomeVazio.setNome(StringUtils.EMPTY);
 
         return nomeVazio;

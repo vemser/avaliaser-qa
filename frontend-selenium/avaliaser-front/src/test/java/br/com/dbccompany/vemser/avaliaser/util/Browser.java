@@ -9,18 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
+
     public static WebDriver driver;
     public static WebDriverWait wait;
 
     public void browserUp(String url) {
 
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-
-//
+        
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-web-security","--ignore-certificate-errors", "--allow-running-insecure-content");
-
-//
 
         driver = new ChromeDriver(options);
 
@@ -30,12 +28,10 @@ public class Browser {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(6000, TimeUnit.MILLISECONDS);
 
-
-
-
     }
 
     public void browserDown() {
         driver.quit();
     }
+
 }

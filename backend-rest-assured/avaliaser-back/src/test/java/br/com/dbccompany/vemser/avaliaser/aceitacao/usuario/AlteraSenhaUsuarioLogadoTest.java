@@ -8,6 +8,7 @@ import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Usuario")
 public class AlteraSenhaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();

@@ -1,7 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
 import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
-import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
@@ -9,6 +9,7 @@ import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Usuario")
 public class AtualizaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();
@@ -25,7 +27,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve retornar usuário logado atualizado")
     public void deveRetornarUsuarioLogadoAtualizadoComSucesso() {
-        AtualizarUsuarioDTO nome = usuarioBuilder.atualizarUsuarioLogado();
+        AtualizarUsuarioLogadoDTO nome = usuarioBuilder.atualizarUsuarioLogado();
 
         UsuarioLogadoDTO usuarioLogadoDTO = usuarioService
                 .atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nome))
@@ -46,7 +48,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não retornar usuário logado atualizado")
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeInvalido() {
-        AtualizarUsuarioDTO nomeInvalido = usuarioBuilder.atualizarUsuarioLogadoInvalido();
+        AtualizarUsuarioLogadoDTO nomeInvalido = usuarioBuilder.atualizarUsuarioLogadoInvalido();
 
         List<String> errors = usuarioService
                 .atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeInvalido))
@@ -63,7 +65,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não retornar usuário logado atualizado")
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeVazio() {
-        AtualizarUsuarioDTO nomeVazio = usuarioBuilder.atualizarUsuarioLogadoVazio();
+        AtualizarUsuarioLogadoDTO nomeVazio = usuarioBuilder.atualizarUsuarioLogadoVazio();
 
         List<String> errors = usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeVazio))
                 .then()
