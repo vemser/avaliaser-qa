@@ -34,4 +34,18 @@ public class LoginSpecs {
                 .build();
     }
 
+    public static RequestSpecification requestFotoGestorSpec() {
+        return (new RequestSpecBuilder())
+                .addHeader("Authorization", tokenGestor)
+                .setContentType(ContentType.MULTIPART)
+                .build();
+    }
+
+    public static RequestSpecification requestFotoAdminSpec() {
+        return (new RequestSpecBuilder())
+                .addHeader("Authorization", tokenAdmin)
+                .setContentType(ContentType.MULTIPART)
+                .build();
+    }
+
 }

@@ -2,7 +2,10 @@ package br.com.dbccompany.vemser.avaliaser.service;
 
 import br.com.dbccompany.vemser.avaliaser.specs.LoginSpecs;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
+
+import java.io.File;
 
 import static io.restassured.RestAssured.given;
 
@@ -69,6 +72,15 @@ public class AdministradorService {
                 .when()
                         .delete(Utils.getBaseUrl() + "/teste/delete/{idUsuario}")
                 ;
+    }
+    public Response uploadImagem(Integer idUsuario) {
+        return RestAssured
+                .given()
+                .spec(LoginSpecs.requestFotoAdminSpec())
+                .pathParam("idUsuario", idUsuario)
+                .multiPart(new File("./imagens/imgPanda.jpg"))
+                .when()
+                .put(Utils.getBaseUrl() + "/administrador/upload-imagem/{idUsuario}");
     }
 
 }
