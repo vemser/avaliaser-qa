@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties
 public class AlunoCreateDTO {
-    private String email;
     private String nome;
+    private String email;
 }
