@@ -8,9 +8,9 @@ import static io.restassured.RestAssured.given;
 
 public class Auth {
 
-    public String autenticacaoAdmin() {
-        LoginBuilder loginBuilder = new LoginBuilder();
+    LoginBuilder loginBuilder = new LoginBuilder();
 
+    public String autenticacaoAdmin() {
         return
                 given()
                         .contentType(ContentType.JSON)

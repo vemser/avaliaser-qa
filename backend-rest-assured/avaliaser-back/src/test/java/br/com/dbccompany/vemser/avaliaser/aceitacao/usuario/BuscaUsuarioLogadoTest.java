@@ -1,5 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
+import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
@@ -28,7 +29,7 @@ public class BuscaUsuarioLogadoTest {
                 ;
 
         assertEquals("paulo", usuarioLogadoDTO.getNome());
-        assertEquals(Manipulation.getProp().getProperty("prop.email"), usuarioLogadoDTO.getEmail());
+        assertEquals(Manipulation.getProp(CargoDTO.ADMIN).getProperty("prop.email"), usuarioLogadoDTO.getEmail());
     }
 
 }
