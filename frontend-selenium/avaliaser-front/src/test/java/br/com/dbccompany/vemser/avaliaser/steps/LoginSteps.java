@@ -8,31 +8,51 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.junit.Assert;
 
-
 public class LoginSteps {
     LoginPage loginPage = new LoginPage();
 
     @Dado("que estou na página inicial de login")
-    public void telaLogin(){
-    Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", loginPage.validarUrlAtual());
+    public void telaLogin() {
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", loginPage.validarUrlAtual());
     }
 
     @E("que preencho o campo email Admim válido")
     public void preencherCampoEmailAdminValido() {
         loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
     }
+
     @E("que preencho o campo senha Admim válida")
     public void preencherCampoSenhaAdminValida() {
-        loginPage.preencherCampoSenhaValida("admin");
+        loginPage.preencherCampoSenhaValida("administrador");
+    }
+
+    @E("que preencho o campo email Gestor válido")
+    public void preencherCampoEmailGestorValido() {
+        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
+    }
+
+    @E("que preencho o campo senha Gestor válida")
+    public void preencherCampoSenhaGestorValida() {
+        loginPage.preencherCampoSenhaValida("moisesnoah");
+    }
+
+    @Quando("clico em ‘Entrar’")
+    public void clicarBotaoEntrar(){
+        loginPage.clicarBotaoEntrar();
     }
 
     @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
     public void telaPrincipalAdmin() throws InterruptedException {
         Thread.sleep(5000);
         Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
-        String mensagemBoasVindas = loginPage.validarMensagemDeBoasVindas();
-        Assert.assertEquals("Seja Bem vindo(a)", mensagemBoasVindas);
+        Assert.assertEquals("Seja Bem vindo(a)", loginPage.validarMensagemDeBoasVindas());
+    }
 
+    @Entao("devo ser redirecionado para a página principal de gestor de pessoas e visualizar mensagem de boas-vindas")
+    public void telaPrincipalGestor() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/gestor", loginPage.validarUrlAtual());
+        Assert.assertEquals("Seja Bem vindo(a)", loginPage.validarMensagemDeBoasVindas());
     }
 
     @Entao("devo visualizar mensagem de erro email ou senha incorretos")
@@ -48,11 +68,6 @@ public class LoginSteps {
     @E("que preencho o campo senha válido")
     public void preencherCampoSenhaValida() {
         loginPage.preencherCampoSenhaValida("123");
-    }
-
-    @Quando("clico em ‘Entrar’")
-    public void clicarBotaoEntrar(){
-        loginPage.clicarBotaoEntrar();
     }
 
     @Entao("devo visualizar mensagem de erro Email")

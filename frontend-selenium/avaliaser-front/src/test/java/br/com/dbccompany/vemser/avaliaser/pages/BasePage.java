@@ -26,6 +26,11 @@ public class BasePage extends Elements {
         return element(by).getText();
     }
 
+    public static String getAttributeInnerText(By by) {
+        waitElement(by);
+        return element(by).getAttribute("innerText");
+    }
+
     public static String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

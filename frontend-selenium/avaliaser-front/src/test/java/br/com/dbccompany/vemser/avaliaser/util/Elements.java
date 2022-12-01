@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static br.com.dbccompany.vemser.avaliaser.util.Browser.driver;
-
 public class Elements extends BaseSteps {
 
     public static WebElement element(By element) {

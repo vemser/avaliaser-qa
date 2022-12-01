@@ -6,21 +6,15 @@ import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage{
 
-    private static final By campoEmail =
-            By.cssSelector("#email");
+    private static final By campoEmail = By.cssSelector("#email");
 
-    private static final By campoSenha =
-            By.cssSelector("#senha");
+    private static final By campoSenha = By.cssSelector("#senha");
 
+    private static final By btnEntrar = By.cssSelector("#botao-logar");
 
-    private static final By btnEntrar =
-            By.cssSelector("#botao-logar");
+    private static final By linkRedefinirSenha = By.cssSelector("#box-login > p");
 
-    private static final By redefinirSenha =
-            By.cssSelector("#box-login > p");
-
-    private static final By btnMostrarSenha =
-            By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
+    private static final By btnMostrarSenha = By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
 
     private static final By mensagemErroEmailInvalido =
             By.cssSelector(".Toastify__toast-body > :nth-child(2)");
@@ -40,14 +34,14 @@ public class LoginPage extends BasePage{
     private static final By modalRedefinirSenha =
             By.cssSelector("body > div.MuiModal-root.css-19ni2f5 > form");
 
+    @Step("Preencher campo com email válido")
+    public void preencherCampoEmailValido(String email) {
+        sendKeys(campoEmail, email);
+    }
+
     @Step("Preencher campo com email inválido")
     public void preencherCampoEmailInvalido() {
         sendKeys(campoEmail,"teste.qa@naoexiste.com");
-    }
-
-    @Step("Preencher campo com email válido")
-    public void preencherCampoEmailValido(String email) {
-        sendKeys(campoEmail,email);
     }
 
     @Step("Preencher campo com email vazio")
@@ -55,20 +49,21 @@ public class LoginPage extends BasePage{
         sendKeys(campoEmail,"");
     }
 
+    @Step("Preencher campo com senha válida")
+    public void preencherCampoSenhaValida(String senha) {
+        sendKeys(campoSenha, senha);
+    }
+
     @Step("Preencher campo com senha inválida")
     public void preencherCampoSenhaInvalida() {
         sendKeys(campoSenha,"1");
-    }
-
-    @Step("Preencher campo com senha válida")
-    public void preencherCampoSenhaValida(String senha) {
-        sendKeys(campoSenha,senha);
     }
 
     @Step("Preencher campo com senha vazia")
     public void preencherCampoSenhaVazia() {
         sendKeys(campoSenha,"");
     }
+
     @Step("Clicar no botão Entrar")
     public void clicarBotaoEntrar() {
         click(btnEntrar);
@@ -106,7 +101,7 @@ public class LoginPage extends BasePage{
 
     @Step("Clicar Redefinir Senha")
     public void clicarRedefinirSenha() {
-        click(redefinirSenha);
+        click(linkRedefinirSenha);
     }
 
     @Step("Validar modal Redefinir Senha")
