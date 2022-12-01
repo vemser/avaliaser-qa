@@ -73,14 +73,15 @@ public class AdministradorService {
                         .delete(Utils.getBaseUrl() + "/teste/delete/{idUsuario}")
                 ;
     }
+
     public Response uploadImagem(Integer idUsuario) {
         return RestAssured
                 .given()
-                .spec(LoginSpecs.requestFotoAdminSpec())
-                .pathParam("idUsuario", idUsuario)
-                .multiPart(new File("./imagens/imgPanda.jpg"))
+                        .spec(LoginSpecs.requestFotoAdminSpec())
+                        .pathParam("idUsuario", idUsuario)
+                        .multiPart(new File("./imagens/imgPanda.jpg"))
                 .when()
-                .put(Utils.getBaseUrl() + "/administrador/upload-imagem/{idUsuario}");
+                        .put(Utils.getBaseUrl() + "/administrador/upload-imagem/{idUsuario}");
     }
 
 }
