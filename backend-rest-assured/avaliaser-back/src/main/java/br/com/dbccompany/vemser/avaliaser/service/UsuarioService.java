@@ -2,20 +2,20 @@ package br.com.dbccompany.vemser.avaliaser.service;
 
 import br.com.dbccompany.vemser.avaliaser.specs.LoginSpecs;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
-import io.restassured.RestAssured;
-import io.restassured.parsing.Parser;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
 public class UsuarioService {
 
-    public Response loginUsuario() {
+    public Response loginUsuario(String login) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .contentType(ContentType.JSON)
+                        .body(login)
                 .when()
-                        .get(Utils.getBaseUrl() + "/auth/login")
+                        .post(Utils.getBaseUrl() + "/auth/login")
                 ;
     }
 
@@ -29,7 +29,6 @@ public class UsuarioService {
     }
 
     public Response atualizarUsuarioLogado(String nome) {
-        RestAssured.defaultParser = Parser.JSON;
         return
                 given()
                         .spec(LoginSpecs.requestAdminSpec())

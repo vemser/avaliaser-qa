@@ -2,11 +2,13 @@ package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
 import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
 import br.com.dbccompany.vemser.avaliaser.dto.AlterarSenhaUsuarioLogadoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Usuario")
 public class AlteraSenhaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();
@@ -33,7 +36,7 @@ public class AlteraSenhaUsuarioLogadoTest {
         ;
 
         alteraSenhaUsuarioLogado.setSenhaAntiga(usuarioBuilder.alterarSenhaUsuarioLogado().getSenhaNova());
-        alteraSenhaUsuarioLogado.setSenhaNova(Manipulation.getProp().getProperty("prop.senha"));
+        alteraSenhaUsuarioLogado.setSenhaNova(Manipulation.getProp(CargoDTO.ADMIN).getProperty("prop.senha"));
         usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaUsuarioLogado));
     }
 

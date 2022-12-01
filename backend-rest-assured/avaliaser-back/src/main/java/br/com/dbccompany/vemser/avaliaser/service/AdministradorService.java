@@ -40,13 +40,34 @@ public class AdministradorService {
                 ;
     }
 
+    public Response atualizarUsuarioPorId(Integer idUsuario, String atualizaUsuario) {
+        return
+                given()
+                        .spec(LoginSpecs.requestAdminSpec())
+                        .pathParam("idUsuario", idUsuario)
+                        .body(atualizaUsuario)
+                .when()
+                        .put(Utils.getBaseUrl() + "/administrador/atualizar-usuario/{idUsuario}")
+                ;
+    }
+
     public Response deletar(Integer idUsuario) {
         return
                 given()
                         .spec(LoginSpecs.requestAdminSpec())
                         .pathParam("idUsuario", idUsuario)
                 .when()
-                        .delete(Utils.getBaseUrl() + "/auth/delete/{idUsuario}")
+                        .delete(Utils.getBaseUrl() + "/administrador/delete/{idUsuario}")
+                ;
+    }
+
+    public Response deletarTeste(Integer idUsuario) {
+        return
+                given()
+                        .spec(LoginSpecs.requestAdminSpec())
+                        .pathParam("idUsuario", idUsuario)
+                .when()
+                        .delete(Utils.getBaseUrl() + "/teste/delete/{idUsuario}")
                 ;
     }
 

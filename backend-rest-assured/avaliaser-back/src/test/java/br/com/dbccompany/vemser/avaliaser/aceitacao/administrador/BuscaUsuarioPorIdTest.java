@@ -1,5 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.administrador;
 
+import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AdministradorService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
@@ -12,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Administrador")
-public class BuscarUsuarioPorIdTest {
+public class BuscaUsuarioPorIdTest {
 
     AdministradorService administradorService = new AdministradorService();
 
@@ -28,7 +29,7 @@ public class BuscarUsuarioPorIdTest {
                 ;
 
         assertEquals("paulo", usuarioDTO.getNome());
-        assertEquals(Manipulation.getProp().getProperty("prop.email"), usuarioDTO.getEmail());
+        assertEquals(Manipulation.getProp(CargoDTO.ADMIN).getProperty("prop.email"), usuarioDTO.getEmail());
     }
 
     @Test
