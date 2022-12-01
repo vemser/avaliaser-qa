@@ -1,9 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.administrador;
 
-import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AdministradorService;
-import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Tag;
@@ -14,17 +11,16 @@ public class UploadImagemTest {
     AdministradorService administradorService = new AdministradorService();
 
     @Test
-    @Tag("all")
+    @Tag("todos")
     @Description("Deve fazer upload de imagem com sucesso")
-    public void deveFazerUploadFotoComSucesso(){
+    public void deveFazerUploadFotoComSucesso() {
 
-        UsuarioDTO usuarioCriado = administradorService
+        administradorService
                 .uploadImagem(1)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(UsuarioDTO.class);
-
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                ;
     }
 
 }
