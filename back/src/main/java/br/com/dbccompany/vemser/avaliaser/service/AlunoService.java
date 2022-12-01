@@ -13,7 +13,7 @@ public class AlunoService {
     public Response cadastrar(String stack, String aluno) {
         return (Response) RestAssured
                 .given()
-                .spec(LoginSpecs.requestSpecGestor())
+                .spec(LoginSpecs.requestGestorSpec())
                 .queryParam("stack", new Object[]{stack})
                 .body(stack)
                 .when()
@@ -23,7 +23,7 @@ public class AlunoService {
     public Response buscarPorId(Integer idAluno) {
         return (Response)RestAssured
                 .given()
-                .spec(LoginSpecs.requestSpecGestor())
+                .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
                 .get(Utils.getBaseUrl() + "aluno/{idAluno}", new Object[0]);
@@ -33,7 +33,7 @@ public class AlunoService {
         RestAssured.defaultParser = Parser.JSON;
         return (Response)RestAssured
                 .given()
-                .spec(LoginSpecs.requestSpecGestor())
+                .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .queryParam("stack", new Object[]{stack})
                 .body(alunoAtualizado)
@@ -44,7 +44,7 @@ public class AlunoService {
     public Response deletar(Integer idAluno) {
         return (Response)RestAssured
                 .given()
-                .spec(LoginSpecs.requestSpecGestor())
+                .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
                 .delete(Utils.getBaseUrl() + "/aluno/delete/{idAluno}", new Object[0]);
@@ -53,10 +53,11 @@ public class AlunoService {
     public Response listar(Integer paginaQueEuQuero, Integer tamanhoDeRegistrosPorPagina) {
         return (Response)RestAssured
                 .given()
-                .spec(LoginSpecs.requestSpecGestor())
+                .spec(LoginSpecs.requestGestorSpec())
                 .queryParam("paginaQueEuQuero", paginaQueEuQuero)
                 .queryParam("tamanhoDeRegistrosPorPagina", tamanhoDeRegistrosPorPagina)
                 .when()
                 .get(Utils.getBaseUrl() + "/aluno/listar-usuarios", new Object[0]);
     }
+
 }

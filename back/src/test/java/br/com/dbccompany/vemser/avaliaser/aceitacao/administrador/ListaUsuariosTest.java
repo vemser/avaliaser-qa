@@ -17,7 +17,7 @@ public class ListaUsuariosTest {
     AdministradorService administradorService = new AdministradorService();
 
     @Test
-    @Tag("todos")
+    @Tag("all")
     @Description("Deve listar usuários com paginação")
     public void deveListarUsuariosComPaginacao() {
         PageUsuarioDTO pageUsuarioDTO = administradorService.listar(0, 10)
