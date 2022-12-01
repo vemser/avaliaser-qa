@@ -16,10 +16,10 @@ public class AlunoService {
         return (Response) RestAssured
                 .given()
                 .spec(LoginSpecs.requestGestorSpec())
-                .queryParam("stack", new Object[]{stack})
-                .body(stack)
+                .queryParam("stack", stack)
+                .body(aluno)
                 .when()
-                .post(Utils.getBaseUrl() + "/aluno/cadastrar-aluno", new Object[0]);
+                .post(Utils.getBaseUrl() + "/aluno/cadastrar-aluno");
     }
 
     public Response buscarPorId(Integer idAluno) {
@@ -28,7 +28,7 @@ public class AlunoService {
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
-                .get(Utils.getBaseUrl() + "aluno/{idAluno}", new Object[0]);
+                .get(Utils.getBaseUrl() + "aluno/{idAluno}");
     }
 
     public Response atualizarAluno(Integer idAluno, String stack, String alunoAtualizado) {
@@ -37,10 +37,10 @@ public class AlunoService {
                 .given()
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
-                .queryParam("stack", new Object[]{stack})
+                .queryParam("stack", stack)
                 .body(alunoAtualizado)
                 .when()
-                .put(Utils.getBaseUrl() + "/aluno/atualizar-aluno/{idAluno}", new Object[0]);
+                .put(Utils.getBaseUrl() + "/aluno/atualizar-aluno/{idAluno}");
     }
 
     public Response deletar(Integer idAluno) {
@@ -49,7 +49,7 @@ public class AlunoService {
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
-                .delete(Utils.getBaseUrl() + "/aluno/delete/{idAluno}", new Object[0]);
+                .delete(Utils.getBaseUrl() + "/aluno/delete/{idAluno}");
     }
 
     public Response listar(Integer paginaQueEuQuero, Integer tamanhoDeRegistrosPorPagina) {
@@ -59,7 +59,7 @@ public class AlunoService {
                 .queryParam("paginaQueEuQuero", paginaQueEuQuero)
                 .queryParam("tamanhoDeRegistrosPorPagina", tamanhoDeRegistrosPorPagina)
                 .when()
-                .get(Utils.getBaseUrl() + "/aluno/listar-usuarios", new Object[0]);
+                .get(Utils.getBaseUrl() + "/aluno/listar-usuarios");
     }
 
     public Response uploadImagem(Integer idAluno) {

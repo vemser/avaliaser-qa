@@ -22,14 +22,14 @@ public class BuscarAlunoPorIdTest {
     @Tag("all")
     @Description("Deve buscar aluno por id")
     public void deveBuscarAlunoPorId() {
-        AlunoDTO alunoDTO = alunoService.buscarPorId(0)
+        AlunoDTO alunoDTO = alunoService.buscarPorId(30)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .extract().as(AlunoDTO.class)
                 ;
 
-        Assertions.assertEquals("Gabriela de Freitas", alunoDTO.getNome());
+        Assertions.assertEquals("Gaby Teste", alunoDTO.getNome());
     }
 
     @Test

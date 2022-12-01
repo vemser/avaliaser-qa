@@ -7,8 +7,22 @@ public class AlunoBuilder {
 
     public AlunoCreateDTO criarAluno() {
         return AlunoCreateDTO.builder()
-                .email("gabriela.freitas@dbccompany.com.br")
-                .nome("Gabriela de Freitas")
+                .nome("Gaby Teste")
+                .email("gaby.teste@dbccompany.com.br")
+                .build();
+    }
+
+    public AlunoCreateDTO criarAlunoVazio() {
+        return AlunoCreateDTO.builder()
+                .nome("")
+                .email("gabriela.teste@dbccompany.com.br")
+                .build();
+    }
+
+    public AlunoCreateDTO criarAlunoInvalido() {
+        return AlunoCreateDTO.builder()
+                .nome("1543")
+                .email("gabriela.teste@dbccompany.com.br")
                 .build();
     }
 

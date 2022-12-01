@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Gestor")
+@DisplayName("Aluno - Cadastrar")
 public class CadastrarAlunoTest {
     AlunoBuilder alunoBuilder = new AlunoBuilder();
     AlunoService alunoService = new AlunoService();
@@ -29,21 +29,53 @@ public class CadastrarAlunoTest {
         AlunoCreateDTO aluno = alunoBuilder.criarAluno();
 
         AlunoDTO alunoDTO = alunoService
-                .cadastrar(CargoDTO.GESTOR.toString(), Utils.convertAlunoToJson(aluno))
+                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)
-                .body("email", equalTo(aluno.getEmail()))
-                .body("nome", equalTo(aluno.getNome()))
                 .extract().as(AlunoDTO.class)
                 ;
 
         assertEquals(aluno.getNome(), alunoDTO.getNome());
-        assertEquals(aluno.getEmail(), alunoDTO.getEmail());
+        assertEquals("QA", alunoDTO.getStack());
 
 //        alunoService.deletar(alunoDTO.getIdAluno())
 //                .then()
 //                .statusCode(HttpStatus.SC_OK)
 //        ;
     }
+
+
+    @Test
+    @Tag("all")
+    @Description("Deve validar erro ao tentar cadastrar aluno com campos vazios")
+    public void deveNaoCadastrarAlunoComCampoVazio() {
+
+        AlunoCreateDTO aluno = alunoBuilder.criarAlunoVazio();
+
+         alunoService
+                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                ;
+
+    }
+
+    @Test
+    @Tag("all")
+    @Description("Deve validar erro ao tentar cadastrar aluno com campo invalido")
+    public void deveNaoCadastrarAlunoComCampoInvalido() {
+
+        AlunoCreateDTO aluno = alunoBuilder.criarAlunoInvalido();
+
+        alunoService
+                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+        ;
+
+    }
+
 }
