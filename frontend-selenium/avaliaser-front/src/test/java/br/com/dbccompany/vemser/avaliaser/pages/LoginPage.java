@@ -23,7 +23,7 @@ public class LoginPage extends BasePage{
             By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
 
     private static final By mensagemErroEmailInvalido =
-            By.cssSelector(".Toastify__toast-body > :nth-child(2)");
+            By.cssSelector("#erro-email");
 
     private static final By mensagemErroEmailVazio =
             By.cssSelector("#erro-email");
@@ -101,7 +101,7 @@ public class LoginPage extends BasePage{
 
     @Step("Clicar Visualizar Senha")
     public String visualizarSenha(){
-       return getText(campoSenha);
+       return getAttributeInnerText(campoSenha);
     }
 
     @Step("Clicar Redefinir Senha")

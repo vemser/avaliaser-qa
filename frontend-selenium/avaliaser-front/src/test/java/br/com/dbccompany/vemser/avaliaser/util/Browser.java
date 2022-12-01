@@ -16,9 +16,9 @@ public class Browser {
     public void browserUp(String url) {
 
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        
+
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-web-security","--ignore-certificate-errors", "--allow-running-insecure-content");
+            options.addArguments("--disable-web-security","--ignore-certificate-errors", "--allow-running-insecure-content");
 
         driver = new ChromeDriver(options);
 

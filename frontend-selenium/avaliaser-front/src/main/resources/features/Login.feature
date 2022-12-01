@@ -27,7 +27,7 @@ Funcionalidade: Entrar
     Então devo visualizar mensagem de erro email ou senha
 
   @wip
-  Cenario:  Validar tentativa de login com usuário inválido
+  Cenario:  Validar tentativa de login com email inválido
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido
     E que preencho o campo senha válido

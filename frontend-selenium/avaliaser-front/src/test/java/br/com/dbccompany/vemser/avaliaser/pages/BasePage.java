@@ -2,41 +2,33 @@ package br.com.dbccompany.vemser.avaliaser.pages;
 
 import br.com.dbccompany.vemser.avaliaser.util.Elements;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+
+import static br.com.dbccompany.vemser.avaliaser.util.Elements.waitElement;
+import static br.com.dbccompany.vemser.avaliaser.util.Elements.waitVisibility;
 
 public class BasePage extends Elements {
-
-    public static void click(By by) {
+    public static void click(By by){
         waitElement(by);
-        element(by).click();
+        waitVisibility(by).click();
     }
 
-    public static Boolean isSelected(By by) {
+    public static void sendKeys(By by, String texto){
         waitElement(by);
-        return element(by).isSelected();
+        waitVisibility(by).sendKeys(texto);
     }
 
-    public static void sendKeys(By by, String texto) {
+    public static String getText(By by){
         waitElement(by);
-        element(by).sendKeys(texto);
+        return waitVisibility(by).getText();
     }
 
-    public static String getText(By by) {
+    public static String getAttributeInnerText(By by){
         waitElement(by);
-        return element(by).getAttribute();
+        return waitVisibility(by).getAttribute("innerText");
     }
 
     public static String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
-    public boolean isElementPresent(By by){
-        try{
-            driver.findElement(by);
-            return true;
-        }
-        catch(NoSuchElementException e){
-            return false;
-        }
-    }
 }

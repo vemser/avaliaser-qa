@@ -23,7 +23,7 @@ public class LoginSteps {
     }
     @E("que preencho o campo senha Admim válida")
     public void preencherCampoSenhaAdminValida() {
-        loginPage.preencherCampoSenhaValida("admin");
+        loginPage.preencherCampoSenhaValida("administrador");
     }
 
     @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
@@ -31,7 +31,7 @@ public class LoginSteps {
         Thread.sleep(5000);
         Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
         String mensagemBoasVindas = loginPage.validarMensagemDeBoasVindas();
-        Assert.assertEquals("Seja Bem vindo(a)", mensagemBoasVindas);
+        Assert.assertEquals("Seja bem-vindo(a)", mensagemBoasVindas);
 
     }
 
@@ -47,7 +47,7 @@ public class LoginSteps {
     }
     @E("que preencho o campo senha válido")
     public void preencherCampoSenhaValida() {
-        loginPage.preencherCampoSenhaValida("123");
+        loginPage.preencherCampoSenhaValida("12345678");
     }
 
     @Quando("clico em ‘Entrar’")
@@ -58,7 +58,7 @@ public class LoginSteps {
     @Entao("devo visualizar mensagem de erro Email")
     public void validarMensagemDeErroEmailInvalido(){
         String mensagemErro = loginPage.validarMensagemDeErroEmailInvalido();
-        Assert.assertEquals("Por favor digite um email válido. Ex: fulano@dbccompany.com.br", mensagemErro);
+        Assert.assertEquals("Só aceitamos email @dbccompany.com.br", mensagemErro);
     }
 
 
