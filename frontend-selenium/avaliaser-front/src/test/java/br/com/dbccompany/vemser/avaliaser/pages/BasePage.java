@@ -23,7 +23,7 @@ public class BasePage extends Elements {
 
     public static String getText(By by) {
         waitElement(by);
-        return element(by).getText();
+        return element(by).getAttribute();
     }
 
     public static String getCurrentUrl() {
