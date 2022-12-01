@@ -12,9 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.Matchers.containsString;
 
 @DisplayName("Usuario")
 public class AlteraSenhaUsuarioLogadoTest {
@@ -46,15 +44,12 @@ public class AlteraSenhaUsuarioLogadoTest {
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaAntigaInvalido() {
         AlterarSenhaUsuarioLogadoDTO alteraSenhaAntigaInvalida = usuarioBuilder.alterarSenhaAntigaInvalida();
 
-        List<String> errors = usuarioService
-                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaInvalida))
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaInvalida))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("senhaAntiga: Senha precisa ter entre 8 e 16 caracteres."))
         ;
-
-        assertEquals("senhaAntiga: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
     }
 
     @Test
@@ -63,16 +58,13 @@ public class AlteraSenhaUsuarioLogadoTest {
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaAntigaVazio() {
         AlterarSenhaUsuarioLogadoDTO alteraSenhaAntigaVazia= usuarioBuilder.alterarSenhaAntigaVazia();
 
-        List<String> errors = usuarioService
-                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaVazia))
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaAntigaVazia))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("senhaAntiga: Senha precisa ter entre 8 e 16 caracteres."))
+                    .body(containsString("senhaAntiga: Senha antiga não pode ficar em branco."))
         ;
-
-        assertEquals("senhaAntiga: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
-        assertEquals("senhaAntiga: Senha antiga não pode ficar em branco.", errors.get(1));
     }
 
     @Test
@@ -81,15 +73,12 @@ public class AlteraSenhaUsuarioLogadoTest {
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaNovaInvalido() {
         AlterarSenhaUsuarioLogadoDTO alteraSenhaNovaInvalida= usuarioBuilder.alterarSenhaNovaInvalida();
 
-        List<String> errors = usuarioService
-                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaInvalida))
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaInvalida))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("senhaNova: Senha precisa ter entre 8 e 16 caracteres."))
         ;
-
-        assertEquals("senhaNova: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
     }
 
     @Test
@@ -98,16 +87,13 @@ public class AlteraSenhaUsuarioLogadoTest {
     public void deveNaoAlterarSenhaDeUsuarioLogadoComSenhaNovaVazio() {
         AlterarSenhaUsuarioLogadoDTO alteraSenhaNovaVazia = usuarioBuilder.alterarSenhaNovaVazia();
 
-        List<String> errors = usuarioService
-                .alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaVazia))
+        usuarioService.alterarSenhaLogado(Utils.convertAlterarSenhaUsuarioLogadoToJson(alteraSenhaNovaVazia))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("senhaNova: Senha nova não pode ficar em branco."))
+                    .body(containsString("senhaNova: Senha precisa ter entre 8 e 16 caracteres."))
         ;
-
-        assertEquals("senhaNova: Senha nova não pode ficar em branco.", errors.get(0));
-        assertEquals("senhaNova: Senha precisa ter entre 8 e 16 caracteres.", errors.get(1));
     }
 
 }

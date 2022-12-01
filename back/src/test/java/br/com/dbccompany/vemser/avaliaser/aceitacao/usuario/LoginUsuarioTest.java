@@ -10,9 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.Matchers.containsString;
 
 @DisplayName("Usuario")
 public class LoginUsuarioTest {
@@ -39,15 +37,13 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComDadosInvalidos() {
         LoginDTO loginInvalido = loginBuilder.loginInvalido();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginInvalido))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
+                    .body(containsString("senha: Senha precisa ter entre 8 e 16 caracteres."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
-        assertEquals("senha: Senha precisa ter entre 8 e 16 caracteres.", errors.get(1));
     }
 
     @Test
@@ -56,14 +52,12 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComEmailInvalido() {
         LoginDTO loginEmailInvalido = loginBuilder.loginEmailInvalido();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginEmailInvalido))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginEmailInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
     }
 
     @Test
@@ -72,14 +66,12 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComSenhaInvalido() {
         LoginDTO loginSenhaInvalido = loginBuilder.loginSenhaInvalido();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginSenhaInvalido))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginSenhaInvalido))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .extract().path("errors")
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("senha: Senha precisa ter entre 8 e 16 caracteres."))
                 ;
-
-        assertEquals("senha: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
     }
 
     @Test
@@ -88,16 +80,14 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComDadosVazios() {
         LoginDTO loginVazio = loginBuilder.loginVazio();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginVazio))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("senha: Senha precisa ter entre 8 e 16 caracteres."))
+                    .body(containsString("email: Email inválido."))
+                    .body(containsString("senha: Senha não pode ficar em branco."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
-        assertEquals("senha: Senha precisa ter entre 8 e 16 caracteres.", errors.get(1));
-        assertEquals("senha: Senha não pode ficar em branco.", errors.get(2));
     }
 
     @Test
@@ -106,14 +96,12 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComEmailVazio() {
         LoginDTO loginEmailVazio = loginBuilder.loginEmailVazio();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginEmailVazio))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginEmailVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
     }
 
     @Test
@@ -122,15 +110,13 @@ public class LoginUsuarioTest {
     public void deveNaoLogarComSenhaVazio() {
         LoginDTO loginSenhaVazio = loginBuilder.loginSenhaVazio();
 
-        List<String> errors = usuarioService.loginUsuario(Utils.convertLoginToJson(loginSenhaVazio))
+        usuarioService.loginUsuario(Utils.convertLoginToJson(loginSenhaVazio))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .extract().path("errors")
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("senha: Senha precisa ter entre 8 e 16 caracteres."))
+                    .body(containsString("senha: Senha não pode ficar em branco."))
                 ;
-
-        assertEquals("senha: Senha precisa ter entre 8 e 16 caracteres.", errors.get(0));
-        assertEquals("senha: Senha não pode ficar em branco.", errors.get(1));
     }
 
 }
