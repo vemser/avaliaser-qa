@@ -19,13 +19,25 @@ public class FeedbackService {
                 ;
     }
 
-    public Response buscarPorId(Integer idUsuario) {
+    public Response listarPorAluno(Integer idAluno, Integer page, Integer size) {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idUsuario", idUsuario)
-                    .when()
-                        .get(Utils.getBaseUrl() + "/administrador/usuario/{idUsuario}")
+                        .pathParam("idAluno", idAluno)
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                .when()
+                        .get(Utils.getBaseUrl() + "/feedback/listar-feedback-por-id/{idAluno}")
+                ;
+    }
+
+    public Response buscarPorId(Integer idFeedback) {
+        return
+                given()
+                        .spec(LoginSpecs.requestInstrutorSpec())
+                        .pathParam("idFeedback", idFeedback)
+                .when()
+                        .get(Utils.getBaseUrl() + "/feedback/buscar-feedback/{idFeedback}")
                 ;
     }
 
