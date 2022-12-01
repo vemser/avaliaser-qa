@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Administrador")
@@ -103,16 +104,13 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComDadosInvalidos() {
         UsuarioCreateDTO usuarioInvalido = usuarioBuilder.criarUsuarioInvalido();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioInvalido))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Não permitido números e caracteres especiais."))
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
-        assertEquals("nome: Não permitido números e caracteres especiais.", errors.get(1));
     }
 
     @Test
@@ -121,15 +119,12 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComEmailInvalido() {
         UsuarioCreateDTO usuarioComEmailInvalido = usuarioBuilder.criarUsuarioComEmailInvalido();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComEmailInvalido))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComEmailInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
     }
 
     @Test
@@ -138,15 +133,12 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComNomeInvalido() {
         UsuarioCreateDTO usuarioComNomeInvalido = usuarioBuilder.criarUsuarioComNomeInvalido();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComNomeInvalido))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComNomeInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Não permitido números e caracteres especiais."))
                 ;
-
-        assertEquals("nome: Não permitido números e caracteres especiais.", errors.get(0));
     }
 
     @Test
@@ -155,16 +147,13 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComDadosVazios() {
         UsuarioCreateDTO usuarioVazio = usuarioBuilder.criarUsuarioVazio();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioVazio))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Nome não pode ficar em branco."))
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("nome: Nome não pode ficar em branco.", errors.get(0));
-        assertEquals("email: Email inválido.", errors.get(1));
     }
 
     @Test
@@ -173,15 +162,12 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComEmailVazio() {
         UsuarioCreateDTO usuarioComEmailVazio = usuarioBuilder.criarUsuarioComEmailVazio();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComEmailVazio))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComEmailVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("email: Email inválido.", errors.get(0));
     }
 
     @Test
@@ -190,15 +176,12 @@ public class CadastraUsuarioTest {
     public void deveNaoCadastrarUsuarioComNomeVazio() {
         UsuarioCreateDTO usuarioComNomeVazio = usuarioBuilder.criarUsuarioComNomeVazio();
 
-        List<String> errors = administradorService
-                .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComNomeVazio))
+        administradorService.cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuarioComNomeVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Nome não pode ficar em branco."))
                 ;
-
-        assertEquals("nome: Nome não pode ficar em branco.", errors.get(0));
     }
 
 }

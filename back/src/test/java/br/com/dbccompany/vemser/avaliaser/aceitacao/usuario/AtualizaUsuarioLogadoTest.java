@@ -13,8 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Usuario")
@@ -50,15 +49,12 @@ public class AtualizaUsuarioLogadoTest {
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeInvalido() {
         AtualizarUsuarioLogadoDTO nomeInvalido = usuarioBuilder.atualizarUsuarioLogadoInvalido();
 
-        List<String> errors = usuarioService
-                .atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeInvalido))
+        usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Não permitido números e caracteres especiais."))
                 ;
-
-        assertEquals("nome: Não permitido números e caracteres especiais.", errors.get(0));
     }
 
     @Test
@@ -67,14 +63,12 @@ public class AtualizaUsuarioLogadoTest {
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeVazio() {
         AtualizarUsuarioLogadoDTO nomeVazio = usuarioBuilder.atualizarUsuarioLogadoVazio();
 
-        List<String> errors = usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeVazio))
+        usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeVazio))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Nome não pode ficar em branco."))
                 ;
-
-        assertEquals("nome: Nome não pode ficar em branco.", errors.get(0));
     }
 
 }

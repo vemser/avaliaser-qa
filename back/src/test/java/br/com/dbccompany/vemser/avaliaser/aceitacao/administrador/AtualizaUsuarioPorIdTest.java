@@ -13,8 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Administrador")
@@ -77,16 +76,14 @@ public class AtualizaUsuarioPorIdTest {
 
         AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdInvalido();
 
-        List<String> errors = administradorService
+        administradorService
                 .atualizarUsuarioPorId(usuarioCriado.getIdUsuario(), Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("nome: Não permitido números e caracteres especiais."))
+                    .body(containsString("email: Email inválido."))
                 ;
-
-        assertEquals("nome: Não permitido números e caracteres especiais.", errors.get(0));
-        assertEquals("email: Email inválido.", errors.get(1));
 
         administradorService.deletarTeste(usuarioCriado.getIdUsuario())
                 .then().log().all().statusCode(HttpStatus.SC_OK);
@@ -103,16 +100,14 @@ public class AtualizaUsuarioPorIdTest {
 
         AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdVazio();
 
-        List<String> errors = administradorService
+        administradorService
                 .atualizarUsuarioPorId(usuarioCriado.getIdUsuario(), Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .extract().path("errors")
+                    .body(containsString("email: Email inválido."))
+                    .body(containsString("nome: Nome não pode ficar em branco."))
                 ;
-
-        assertEquals("nome: Nome não pode ficar em branco.", errors.get(0));
-        assertEquals("email: Email inválido.", errors.get(1));
 
         administradorService.deletarTeste(usuarioCriado.getIdUsuario())
                 .then().log().all().statusCode(HttpStatus.SC_OK);

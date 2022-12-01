@@ -31,55 +31,34 @@ public class FeedbackService {
                 ;
     }
 
-    public Response buscarPorId(Integer idFeedback) {
+    public Response buscarPorId(Integer idFeedBack) {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idFeedback", idFeedback)
+                        .pathParam("idFeedback", idFeedBack)
                 .when()
-                        .get(Utils.getBaseUrl() + "/feedback/buscar-feedback/{idFeedback}")
+                        .get(Utils.getBaseUrl() + "/feedback/buscar-feedback/{idFeedBack}")
                 ;
     }
 
-    public Response cadastrar(String cargo, String usuario) {
+    public Response cadastrar(String feedback) {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .queryParam("cargo", cargo)
-                        .body(usuario)
+                        .body(feedback)
                 .when()
-                        .post(Utils.getBaseUrl() + "/administrador/cadastrar-usuario")
+                        .post(Utils.getBaseUrl() + "/feedback/cadastrar-feedback")
                 ;
     }
 
-    public Response atualizarUsuarioPorId(Integer idUsuario, String atualizaUsuario) {
+    public Response atualizar(Integer idFeedBack, String atualizaFeedback) {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idUsuario", idUsuario)
-                        .body(atualizaUsuario)
+                        .pathParam("idFeedback", idFeedBack)
+                        .body(atualizaFeedback)
                 .when()
-                        .put(Utils.getBaseUrl() + "/administrador/atualizar-usuario/{idUsuario}")
-                ;
-    }
-
-    public Response deletar(Integer idUsuario) {
-        return
-                given()
-                        .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idUsuario", idUsuario)
-                .when()
-                        .delete(Utils.getBaseUrl() + "/administrador/delete/{idUsuario}")
-                ;
-    }
-
-    public Response deletarTeste(Integer idUsuario) {
-        return
-                given()
-                        .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idUsuario", idUsuario)
-                .when()
-                        .delete(Utils.getBaseUrl() + "/teste/delete/{idUsuario}")
+                        .put(Utils.getBaseUrl() + "/feedback/editar-feedback/{idFeedBack}")
                 ;
     }
 
