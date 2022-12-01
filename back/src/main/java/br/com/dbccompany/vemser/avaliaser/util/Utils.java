@@ -56,4 +56,12 @@ public class Utils {
         return (new Gson()).toJson(idAluno);
     }
 
+    public static String convertFeedbackToJson(FeedbackCreateDTO feedback) {
+        return new Gson().toJson(feedback);
+    }
+
+    public static String convertAvaliacaoToJson(AvaliacaoCreateDTO avaliacao) {
+        return new Gson().toJson(avaliacao);
+    }
+
 }
