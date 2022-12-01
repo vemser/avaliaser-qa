@@ -79,6 +79,3 @@ Funcionalidade: Entrar
     Dado que estou na página inicial de login
     Quando clico no link ‘Redefinir senha’
     Então devo validar modal para a mudança de senha
-
-
-

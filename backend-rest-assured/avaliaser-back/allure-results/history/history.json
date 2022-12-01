@@ -1,0 +1,198 @@
+{
+  "6a758f03fc69126092cd8e8128119e00" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6565a41974fa83d7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669767616463,
+        "stop" : 1669767617032,
+        "duration" : 569
+      }
+    } ]
+  },
+  "5df66948cfbd44dfed95266aa067b33f" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c30e8086b706824a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669768023183,
+        "stop" : 1669768028453,
+        "duration" : 5270
+      }
+    } ]
+  },
+  "8f126e86482e31e9258630263aa3a743" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8db2aa6c7fdf4c51",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <403> but was <500>.\n",
+      "time" : {
+        "start" : 1669767750862,
+        "stop" : 1669767751096,
+        "duration" : 234
+      }
+    } ]
+  },
+  "ee444ec33e87334c537038f7b0a200bd" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d05fba77e9eb6594",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <403> but was <400>.\n",
+      "time" : {
+        "start" : 1669769542550,
+        "stop" : 1669769547429,
+        "duration" : 4879
+      }
+    } ]
+  },
+  "67e9befbc8662ee56532a31da48b0965" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "72f1cab5b39aa1d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669768664077,
+        "stop" : 1669768670073,
+        "duration" : 5996
+      }
+    } ]
+  },
+  "c3143d84e7fab2ead27e6c7a6437201c" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6a1e475b153b72c1",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <200> but was <500>.\n",
+      "time" : {
+        "start" : 1669767746427,
+        "stop" : 1669767750314,
+        "duration" : 3887
+      }
+    } ]
+  },
+  "46768e01219e7ccd2744ff97b30e610e" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d342091954316d3b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1669767497503,
+        "stop" : 1669767502859,
+        "duration" : 5356
+      }
+    } ]
+  },
+  "9fda0d0b7992709894bb048b033942c6" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "902f217721fcdd1a",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <403> but was <500>.\n",
+      "time" : {
+        "start" : 1669767750625,
+        "stop" : 1669767750847,
+        "duration" : 222
+      }
+    } ]
+  },
+  "e980eedeea205e65659af140c5c6966" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "25494d7d8a4bd116",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <400> but was <500>.\n",
+      "time" : {
+        "start" : 1669767617042,
+        "stop" : 1669767617331,
+        "duration" : 289
+      }
+    } ]
+  },
+  "bf92fc08638c7662381cdac312bf21f7" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8c5257dbef0f55cc",
+      "status" : "failed",
+      "statusDetails" : "1 expectation failed.\nExpected status code <400> but was <200>.\n",
+      "time" : {
+        "start" : 1669767611638,
+        "stop" : 1669767616266,
+        "duration" : 4628
+      }
+    } ]
+  }
+}
