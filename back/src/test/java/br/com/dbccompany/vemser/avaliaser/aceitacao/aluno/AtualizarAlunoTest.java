@@ -5,12 +5,14 @@ import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-@DisplayName("Aluno - Atualizar")
+@DisplayName("Aluno")
+@Epic("Atualiza Aluno")
 public class AtualizarAlunoTest {
     AlunoService alunoService = new AlunoService();
     AlunoBuilder alunoBuilder = new AlunoBuilder();

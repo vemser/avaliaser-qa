@@ -7,6 +7,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AdministradorService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -16,6 +17,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Administrador")
+@Epic("Deleta Usuário")
 public class DeletaUsuarioTest {
 
     AdministradorService administradorService = new AdministradorService();

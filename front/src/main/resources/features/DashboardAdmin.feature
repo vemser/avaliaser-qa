@@ -5,7 +5,7 @@ Funcionalidade: Dashboard Admin
 
   Contexto: O usuario deve acessar página principal de Administrador
 
-  @wip
+  @smoke
   Cenario: Validar login para Administrador preenchendo campos válidos com sucesso
     Dado que estou na página inicial de login
     E que preencho o campo email Admim válido

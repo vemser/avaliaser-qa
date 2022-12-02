@@ -7,6 +7,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.AvaliacaoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AvaliacaoService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -16,6 +17,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Avaliacao")
+@Epic("Atualiza Avaliação")
 public class AtualizaAvaliacaoTest {
 
     AvaliacaoService avaliacaoService = new AvaliacaoService();

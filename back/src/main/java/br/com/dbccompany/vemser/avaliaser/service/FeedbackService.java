@@ -35,7 +35,7 @@ public class FeedbackService {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idFeedback", idFeedBack)
+                        .pathParam("idFeedBack", idFeedBack)
                 .when()
                         .get(Utils.getBaseUrl() + "/feedback/buscar-feedback/{idFeedBack}")
                 ;

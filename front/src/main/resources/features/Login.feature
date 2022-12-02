@@ -21,15 +21,15 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo ser redirecionado para a página principal de gestor de pessoas e visualizar mensagem de boas-vindas
 
-#  @wip
-#  Cenario: Validar login para Instrutor preenchendo campos válidos com sucesso
-#    Dado que estou na página inicial de login
-#    E que preencho o campo email Instrutor válido
-#    E que preencho o campo senha Instrutor válida
-#    Quando clico em ‘Entrar’
-#    Então devo ser redirecionado para a página principal de instrutor e visualizar mensagem de boas-vindas
-
   @smoke
+  Cenario: Validar login para Instrutor preenchendo campos válidos com sucesso
+    Dado que estou na página inicial de login
+    E que preencho o campo email Instrutor válido
+    E que preencho o campo senha Instrutor válida
+    Quando clico em ‘Entrar’
+    Então devo ser redirecionado para a página principal de instrutor e visualizar mensagem de boas-vindas
+
+  @error
   Cenario: Validar tentativa de login preenchendo campos inválidos
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido
@@ -37,7 +37,7 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro email ou senha
 
-  @smoke
+  @error
   Cenario:  Validar tentativa de login com email inválido
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido
@@ -59,8 +59,7 @@ Funcionalidade: Login
     E que não preencho o campo email
     E que não preencho o campo senha
     Quando clico em ‘Entrar’
-    Então devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Email
-    E devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Senha
+    Então devo visualizar mensagens de erro para campo vazio Email e Senha
 
   @smoke
   Cenario: Validar tentativa de login sem preencher usuário
@@ -68,7 +67,7 @@ Funcionalidade: Login
     E que não preencho o campo email
     E que preencho o campo senha válido
     Quando clico em ‘Entrar’
-    Então devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Email
+    Então devo visualizar mensagem de erro para campo vazio Email
 
   @smoke
   Cenario:  Validar tentativa de login sem preencher senha
@@ -76,17 +75,17 @@ Funcionalidade: Login
     E que preencho o campo com email válido
     E que não preencho o campo senha
     Quando clico em ‘Entrar’
-    Então devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Senha
+    Então devo visualizar mensagem de erro para campo vazio Senha
 
-  @smoke
-   Cenario: Validar botão de exibir senha
+  @wip
+   Cenario: Validar botão de 'Mostrar Senha'
      Dado que estou na página inicial de login
      E que preencho o campo senha válido
-     Quando clico no botão ‘Mostrar’
+     Quando clico em ‘Mostrar Senha’
      Então devo visualizar a senha digitada na tela
 
-  @smoke
+  @wip
   Cenario:  Validar link ‘Esqueci minha senha’
     Dado que estou na página inicial de login
     Quando clico no link ‘Redefinir senha’
-    Então devo validar modal para a mudança de senha
+    Então devo visualizar tela para a mudança de senha
