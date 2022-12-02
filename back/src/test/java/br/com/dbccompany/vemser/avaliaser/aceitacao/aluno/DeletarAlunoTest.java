@@ -27,7 +27,6 @@ public class DeletarAlunoTest {
     @Description("Deve deletar Aluno com sucesso")
     public void deveDeletarAlunoComSucesso() {
 
-        AlunoService alunoService = new AlunoService();
         AlunoCreateDTO aluno = alunoBuilder.criarAluno();
 
         AlunoDTO alunoDTO = alunoService
