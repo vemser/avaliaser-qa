@@ -6,12 +6,14 @@ import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("Acompanhamento")
 public class AtualizarAcompanhamentoTest {
 
     AcompanhamentoService acompanhamentoService = new AcompanhamentoService();

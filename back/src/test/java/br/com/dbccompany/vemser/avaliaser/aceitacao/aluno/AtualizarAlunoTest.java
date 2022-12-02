@@ -1,15 +1,21 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.aluno;
 
 import br.com.dbccompany.vemser.avaliaser.builder.AlunoBuilder;
+import br.com.dbccompany.vemser.avaliaser.dto.AlunoCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.StackDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
+import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @DisplayName("Aluno - Atualizar")
 public class AtualizarAlunoTest {
     AlunoService alunoService = new AlunoService();
@@ -23,15 +29,33 @@ public class AtualizarAlunoTest {
     @Description("Deve retornar aluno atualizado")
         public void deveAtualizarAlunoComSucesso() {
             AlunoDTO alunoAtualizado = alunoBuilder.atualizarAluno();
-            AlunoDTO alunoDTO = alunoService
-                            .atualizarAluno(35, "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
+
+        AlunoCreateDTO aluno = alunoBuilder.criarAluno();
+
+        AlunoDTO alunoDTO = alunoService
+                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(AlunoDTO.class)
+                ;
+
+             alunoService
+                            .atualizarAluno(alunoDTO.getIdAluno(), "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
                             .then()
                             .log().all()
                             .statusCode(200)
                             .extract().as(AlunoDTO.class)
                     ;
-                    Assert.assertEquals("Teste Aluno", alunoDTO.getNome());
+                    Assert.assertEquals("AlunoQADbc Teste", alunoDTO.getNome());
                     Assert.assertEquals("QA", alunoDTO.getStack());
+
+        alunoService
+                .deletarTeste(alunoDTO.getIdAluno())
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+        ;
     }
 
     @Test

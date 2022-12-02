@@ -53,6 +53,16 @@ public class AlunoService {
                 .delete(Utils.getBaseUrl() + "/aluno/delete/{idAluno}");
     }
 
+    public Response deletarTeste(Integer idAluno) {
+        return
+                given()
+                        .spec(LoginSpecs.requestAdminSpec())
+                        .pathParam("idAluno", idAluno)
+                        .when()
+                        .delete(Utils.getBaseUrl() + "/teste/delete/aluno/{idAluno}")
+                ;
+    }
+
     public Response listar(Integer page, Integer size) {
         return
 

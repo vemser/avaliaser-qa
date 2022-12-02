@@ -7,10 +7,12 @@ import io.qameta.allure.Description;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 
 import static org.hamcrest.Matchers.containsString;
 
+@DisplayName("Acompanhamento")
 public class BuscarAcompanhamentoPorIDTest {
 
     AcompanhamentoService acompanhamentoService = new AcompanhamentoService();
