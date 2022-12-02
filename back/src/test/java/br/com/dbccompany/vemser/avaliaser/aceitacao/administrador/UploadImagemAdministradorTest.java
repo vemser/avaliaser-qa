@@ -15,7 +15,7 @@ public class UploadImagemAdministradorTest {
     UsuarioService usuarioService = new UsuarioService();
 
     @Test
-    @Tag("todos")
+    @Tag("all")
     @Description("Deve fazer upload de imagem com sucesso")
     public void deveFazerUploadFotoComSucesso() {
         usuarioService.uploadImagem(1)
