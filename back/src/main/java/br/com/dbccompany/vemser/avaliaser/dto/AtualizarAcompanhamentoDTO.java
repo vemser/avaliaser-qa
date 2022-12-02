@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties
-public class AcompanhamentoDTO {
-    private Integer idAcompanhamento;
+public class AtualizarAcompanhamentoDTO {
     private String titulo;
     private String descricao;
-    private String dataInicio;
 }

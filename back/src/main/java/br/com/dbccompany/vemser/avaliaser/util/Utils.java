@@ -72,4 +72,12 @@ public class Utils {
         return new Gson().toJson(atualizaAvaliacao);
     }
 
+    public static String convertAcompanhamentoToJson(AcompanhamentoCreateDTO acompanhamento) {
+        return new Gson().toJson(acompanhamento);
+    }
+
+    public static String convertAtualizarAcompanhamentoToJson(AtualizarAcompanhamentoDTO atualizarAcompanhamento) {
+        return new Gson().toJson(atualizarAcompanhamento);
+    }
+
 }
