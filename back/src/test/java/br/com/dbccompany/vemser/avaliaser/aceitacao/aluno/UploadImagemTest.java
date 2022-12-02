@@ -17,7 +17,7 @@ public class UploadImagemTest {
     @Description("Deve fazer upload de imagem com sucesso")
     public void deveCadastrarAlunoComSucesso(){
         alunoService
-                .uploadImagem(21)
+                .uploadImagem(35)
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_OK)

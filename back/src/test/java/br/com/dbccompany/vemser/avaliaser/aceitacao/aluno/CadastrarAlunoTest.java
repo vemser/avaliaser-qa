@@ -38,11 +38,6 @@ public class CadastrarAlunoTest {
 
         assertEquals(aluno.getNome(), alunoDTO.getNome());
         assertEquals("QA", alunoDTO.getStack());
-
-//        alunoService.deletar(alunoDTO.getIdAluno())
-//                .then()
-//                .statusCode(HttpStatus.SC_OK)
-//        ;
     }
 
 

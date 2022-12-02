@@ -8,13 +8,14 @@ import io.restassured.response.Response;
 
 import java.io.File;
 
+import static io.restassured.RestAssured.given;
+
 public class AlunoService {
-    public AlunoService() {
-    }
+
 
     public Response cadastrar(String stack, String aluno) {
-        return (Response) RestAssured
-                .given()
+        return
+                given()
                 .spec(LoginSpecs.requestGestorSpec())
                 .queryParam("stack", stack)
                 .body(aluno)
@@ -33,8 +34,8 @@ public class AlunoService {
 
     public Response atualizarAluno(Integer idAluno, String stack, String alunoAtualizado) {
         RestAssured.defaultParser = Parser.JSON;
-        return (Response) RestAssured
-                .given()
+        return
+                given()
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .queryParam("stack", stack)
@@ -44,27 +45,29 @@ public class AlunoService {
     }
 
     public Response deletar(Integer idAluno) {
-        return (Response) RestAssured
-                .given()
+        return
+                given()
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
                 .delete(Utils.getBaseUrl() + "/aluno/delete/{idAluno}");
     }
 
-    public Response listar(Integer paginaQueEuQuero, Integer tamanhoDeRegistrosPorPagina) {
-        return (Response) RestAssured
-                .given()
-                .spec(LoginSpecs.requestGestorSpec())
-                .queryParam("paginaQueEuQuero", paginaQueEuQuero)
-                .queryParam("tamanhoDeRegistrosPorPagina", tamanhoDeRegistrosPorPagina)
-                .when()
-                .get(Utils.getBaseUrl() + "/aluno/listar-usuarios");
+    public Response listar(Integer page, Integer size) {
+        return
+
+                given()
+                        .spec(LoginSpecs.requestGestorSpec())
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .when()
+                        .get(Utils.getBaseUrl() + "/aluno/listar-alunos")
+                ;
     }
 
     public Response uploadImagem(Integer idAluno) {
-        return (Response) RestAssured
-                .given()
+        return
+                given()
                 .spec(LoginSpecs.requestFotoGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .multiPart(new File("./imagens/imgPanda.jpg"))

@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-@DisplayName("Aluno")
+@DisplayName("Aluno - Atualizar")
 public class AtualizarAlunoTest {
     AlunoService alunoService = new AlunoService();
     AlunoBuilder alunoBuilder = new AlunoBuilder();
@@ -22,15 +22,15 @@ public class AtualizarAlunoTest {
     @Tag("all")
     @Description("Deve retornar aluno atualizado")
         public void deveAtualizarAlunoComSucesso() {
-            AlunoDTO alunoAtualizado = this.alunoBuilder.atualizarAluno();
+            AlunoDTO alunoAtualizado = alunoBuilder.atualizarAluno();
             AlunoDTO alunoDTO = alunoService
-                            .atualizarAluno(1, "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
+                            .atualizarAluno(35, "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
                             .then()
                             .log().all()
                             .statusCode(200)
                             .extract().as(AlunoDTO.class)
                     ;
-                    Assert.assertEquals("Jaciane Santana", alunoDTO.getNome());
+                    Assert.assertEquals("Teste Aluno", alunoDTO.getNome());
                     Assert.assertEquals("QA", alunoDTO.getStack());
     }
 
@@ -39,12 +39,12 @@ public class AtualizarAlunoTest {
     @Description("Deve retornar erro ao atualizar aluno com nome invalido")
         public void deveRetornarErroAoAtualizarAlunoNomeInvalido() {
             AlunoDTO alunoAtualizado = alunoBuilder.atualizarAlunoInvalido();
-            AlunoDTO alunoDTO = alunoService
+                     alunoService
                             .atualizarAluno(1, "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
                             .then()
                             .log().all()
                             .statusCode(400)
-                            .extract().as(AlunoDTO.class);
+                             ;
 
     }
 
@@ -52,13 +52,13 @@ public class AtualizarAlunoTest {
     @Tag("all")
     @Description("Deve retornar erro ao atualizar aluno com nome vazio")
     public void deveRetornarErroAoAtualizarAlunoNomeVazio() {
-        AlunoDTO alunoAtualizado = this.alunoBuilder.atualizarAlunoInvalido();
-        AlunoDTO alunoDTO =  alunoService
+        AlunoDTO alunoAtualizado = alunoBuilder.atualizarAlunoVazio();
+
+        alunoService
                         .atualizarAluno(1, "QA", Utils.convertAtualizarAlunoToJson(alunoAtualizado))
                 .then()
                 .log().all()
-                .statusCode(400)
-                .extract().as(AlunoDTO.class);
+                .statusCode(400);
 
     }
 
