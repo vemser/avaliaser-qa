@@ -7,8 +7,8 @@ public class AlunoBuilder {
 
     public AlunoCreateDTO criarAluno() {
         return AlunoCreateDTO.builder()
-                .nome("Aluno Testee")
-                .email("aluno.testee@dbccompany.com.br")
+                .nome("AlunooDbc Testeee")
+                .email("alunoodbc.testeee@dbccompany.com.br")
                 .build();
     }
 
@@ -28,8 +28,8 @@ public class AlunoBuilder {
 
     public AlunoDTO atualizarAluno() {
         return AlunoDTO.builder()
-                .nome("Teste Aluno")
-                .email("testee.aluno@dbccompany.com.br")
+                .nome("Testee Aluno")
+                .email("testee.alunoodbc@dbccompany.com.br")
                 .build();
     }
 

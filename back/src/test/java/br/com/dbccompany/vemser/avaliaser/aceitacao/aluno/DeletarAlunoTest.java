@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Deletar Aluno")
+@DisplayName("Aluno")
 public class DeletarAlunoTest {
 
 
@@ -20,7 +20,7 @@ public class DeletarAlunoTest {
     public void deveDeletarAlunoComSucesso() {
         AlunoService alunoService = new AlunoService();
 
-        alunoService.deletar(30)
+        alunoService.deletar(39)
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)

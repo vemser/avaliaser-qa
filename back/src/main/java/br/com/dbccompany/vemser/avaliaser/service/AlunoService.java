@@ -29,7 +29,7 @@ public class AlunoService {
                 .spec(LoginSpecs.requestGestorSpec())
                 .pathParam("idAluno", idAluno)
                 .when()
-                .get(Utils.getBaseUrl() + "aluno/{idAluno}");
+                .get(Utils.getBaseUrl() + "/aluno/{idAluno}");
     }
 
     public Response atualizarAluno(Integer idAluno, String stack, String alunoAtualizado) {
