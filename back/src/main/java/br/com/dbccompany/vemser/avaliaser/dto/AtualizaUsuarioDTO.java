@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties
-public class AtualizarUsuarioDTO {
+public class AtualizaUsuarioDTO {
 
     private String nome;
     private String email;

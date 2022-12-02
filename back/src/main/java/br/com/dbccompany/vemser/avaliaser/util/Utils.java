@@ -24,15 +24,15 @@ public class Utils {
         return new Gson().toJson(usuario);
     }
 
-    public static String convertAtualizarUsuarioToJson(AtualizarUsuarioDTO nomeUsuario) {
+    public static String convertAtualizarUsuarioToJson(AtualizaUsuarioDTO nomeUsuario) {
         return new Gson().toJson(nomeUsuario);
     }
 
-    public static String convertAtualizarUsuarioToJson(AtualizarUsuarioLogadoDTO nomeUsuario) {
+    public static String convertAtualizarUsuarioToJson(AtualizaUsuarioLogadoDTO nomeUsuario) {
         return new Gson().toJson(nomeUsuario);
     }
 
-    public static String convertAtualizarUsuarioPorIdToJson(AtualizarUsuarioDTO usuarioAtualizado) {
+    public static String convertAtualizarUsuarioPorIdToJson(AtualizaUsuarioDTO usuarioAtualizado) {
         return new Gson().toJson(usuarioAtualizado);
     }
 
@@ -62,6 +62,10 @@ public class Utils {
 
     public static String convertAvaliacaoToJson(AvaliacaoCreateDTO avaliacao) {
         return new Gson().toJson(avaliacao);
+    }
+
+    public static String convertAtualizaAvaliacaoToJson(AtualizaAvaliacaoDTO atualizaAvaliacao) {
+        return new Gson().toJson(atualizaAvaliacao);
     }
 
 }

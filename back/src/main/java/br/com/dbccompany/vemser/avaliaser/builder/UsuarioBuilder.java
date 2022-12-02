@@ -57,42 +57,42 @@ public class UsuarioBuilder {
         return usuarioComNomeVazio;
     }
 
-    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogado() {
-        return AtualizarUsuarioLogadoDTO.builder()
+    public AtualizaUsuarioLogadoDTO atualizarUsuarioLogado() {
+        return AtualizaUsuarioLogadoDTO.builder()
                 .nome("Paulo Sergio")
                 .build();
     }
 
-    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogadoInvalido() {
-        AtualizarUsuarioLogadoDTO nomeInvalido = atualizarUsuarioLogado();
+    public AtualizaUsuarioLogadoDTO atualizarUsuarioLogadoInvalido() {
+        AtualizaUsuarioLogadoDTO nomeInvalido = atualizarUsuarioLogado();
         nomeInvalido.setNome("abc123!");
 
         return nomeInvalido;
     }
 
-    public AtualizarUsuarioLogadoDTO atualizarUsuarioLogadoVazio() {
-        AtualizarUsuarioLogadoDTO nomeVazio = atualizarUsuarioLogado();
+    public AtualizaUsuarioLogadoDTO atualizarUsuarioLogadoVazio() {
+        AtualizaUsuarioLogadoDTO nomeVazio = atualizarUsuarioLogado();
         nomeVazio.setNome(StringUtils.EMPTY);
 
         return nomeVazio;
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioPorId() {
-        return AtualizarUsuarioDTO.builder()
+    public AtualizaUsuarioDTO atualizarUsuarioPorId() {
+        return AtualizaUsuarioDTO.builder()
                 .email("jaciane@dbccompany.com.br")
                 .nome("Jaciane")
                 .build();
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioPorIdInvalido() {
-        return AtualizarUsuarioDTO.builder()
+    public AtualizaUsuarioDTO atualizarUsuarioPorIdInvalido() {
+        return AtualizaUsuarioDTO.builder()
                 .email("jaciane@gmail.com")
                 .nome("abc123!")
                 .build();
     }
 
-    public AtualizarUsuarioDTO atualizarUsuarioPorIdVazio() {
-        return AtualizarUsuarioDTO.builder()
+    public AtualizaUsuarioDTO atualizarUsuarioPorIdVazio() {
+        return AtualizaUsuarioDTO.builder()
                 .email(StringUtils.EMPTY)
                 .nome(StringUtils.EMPTY)
                 .build();

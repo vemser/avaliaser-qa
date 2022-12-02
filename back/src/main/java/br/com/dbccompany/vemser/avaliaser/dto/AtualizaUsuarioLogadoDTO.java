@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 @Data
 @JsonIgnoreProperties
-public class AtualizarUsuarioLogadoDTO {
+public class AtualizaUsuarioLogadoDTO {
 
     private String nome;
 
