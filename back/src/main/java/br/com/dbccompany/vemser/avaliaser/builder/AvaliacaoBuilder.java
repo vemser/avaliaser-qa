@@ -21,7 +21,7 @@ public class AvaliacaoBuilder {
         return AvaliacaoCreateDTO.builder()
                 .idAcompanhamento(19931019)
                 .idAluno(19931019)
-                .descricao("teste avaliação")
+                .descricao("qualquer avaliação")
                 .tipo("qualquer tipo")
                 .dataCriacao("qualquer data")
                 .build();

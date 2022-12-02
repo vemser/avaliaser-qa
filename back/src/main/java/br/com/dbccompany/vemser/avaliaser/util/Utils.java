@@ -60,6 +60,10 @@ public class Utils {
         return new Gson().toJson(feedback);
     }
 
+    public static String convertAtualizaFeedbackToJson(AtualizaFeedbackDTO atualizaFeedback) {
+        return new Gson().toJson(atualizaFeedback);
+    }
+
     public static String convertAvaliacaoToJson(AvaliacaoCreateDTO avaliacao) {
         return new Gson().toJson(avaliacao);
     }
