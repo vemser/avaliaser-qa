@@ -5,7 +5,7 @@ import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 
-@DisplayName("Gestor")
+@DisplayName("Aluno")
 public class DeletarAlunoTest {
 
     AlunoService alunoService = new AlunoService();

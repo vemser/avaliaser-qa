@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Aluno - Cadastrar")
+@DisplayName("Aluno")
 public class CadastrarAlunoTest {
     AlunoBuilder alunoBuilder = new AlunoBuilder();
     AlunoService alunoService = new AlunoService();

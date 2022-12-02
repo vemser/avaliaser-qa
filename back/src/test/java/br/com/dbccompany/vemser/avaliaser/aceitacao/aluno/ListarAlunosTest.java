@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Gestor")
+@DisplayName("Aluno")
 public class ListarAlunosTest {
     AlunoService alunoService = new AlunoService();
     PageAlunoDTO pageAlunoDTO = new PageAlunoDTO();
