@@ -22,11 +22,11 @@ public class ListarAlunosTest {
     @Tag("all")
     @Description("Deve listar alunos com paginação")
     public void deveListarAlunosComPaginacao() {
-        PageUsuarioDTO pageUsuarioDTO = alunoService.listar(0, 10)
+        PageAlunoDTO pageAlunoDTO  = alunoService.listar(0, 10)
                 .then()
                 .log().all()
                 .statusCode(200)
-                .extract().as(PageUsuarioDTO.class)
+                .extract().as(PageAlunoDTO.class)
         ;
 
         Assertions.assertEquals(0, pageAlunoDTO.getPagina());
@@ -46,6 +46,6 @@ public class ListarAlunosTest {
 
         Assertions.assertEquals(0, pageAlunoDTO.getPagina());
         Assertions.assertEquals(0, pageAlunoDTO.getTamanho());
-        Assertions.assertNull(pageAlunoDTO.getElementos());
+
     }
 }
