@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -35,8 +36,6 @@ public class ListaAvaliacoesPorAlunoTest {
     @Tag("all")
     @Description("Deve não listar avaliações por aluno com paginação")
     public void deveNaoListarAvaliacoesPorAlunoComIdInexistente() {
-        // RETORNA 200 COM LISTA VAZIA
-
         String message = avaliacaoService.listarPorAluno(19931019, 0, 10)
                 .then()
                     .log().all()
@@ -44,23 +43,22 @@ public class ListaAvaliacoesPorAlunoTest {
                     .extract().path("message")
                 ;
 
-        assertEquals("idAluno não encontrado.", message);
+        assertEquals("Aluno não encontrado.", message);
     }
 
     @Test
     @Tag("all")
     @Description("Deve não listar avaliações por aluno com paginação")
     public void deveNaoListarAvaliacoesPorAlunoComDadosInvalidos() {
-        // RETORNA 200 COM LISTA VAZIA
+        // FALTA MENSAGEM DE ERRO PARA ID INVÁLIDO
 
-        String message = avaliacaoService.listarPorAluno(19931019, -1, -1)
+        avaliacaoService.listarPorAluno(19931019, -1, -1)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .extract().path("message")
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("Page ou Size não pode ser menor que zero."))
+                    .body(containsString("Aluno não encontrado."))
                 ;
-
-        assertEquals("idAluno não encontrado.", message);
     }
 
     @Test

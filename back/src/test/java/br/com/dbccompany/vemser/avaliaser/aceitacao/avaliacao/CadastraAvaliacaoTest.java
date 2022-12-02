@@ -100,6 +100,7 @@ public class CadastraAvaliacaoTest {
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("descricao: Descrição não pode ser nulo."))
         ;
     }
 
@@ -126,6 +127,7 @@ public class CadastraAvaliacaoTest {
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("dataCriacao: Data de Criação não pode ser nula."))
         ;
     }
 
