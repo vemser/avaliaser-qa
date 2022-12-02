@@ -11,7 +11,7 @@ public class AvaliacaoService {
     public Response listar(Integer page, Integer size) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .spec(LoginSpecs.requestGestorSpec())
                         .queryParam("page", page)
                         .queryParam("size", size)
                 .when()
@@ -22,11 +22,11 @@ public class AvaliacaoService {
     public Response listarPorAluno(Integer idAluno, Integer page, Integer size) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .spec(LoginSpecs.requestGestorSpec())
                         .pathParam("idAluno", idAluno)
                         .queryParam("page", page)
                         .queryParam("size", size)
-                    .when()
+                .when()
                         .get(Utils.getBaseUrl() + "/avaliacao-acompanhamento/{idAluno}")
                 ;
     }
@@ -34,7 +34,7 @@ public class AvaliacaoService {
     public Response cadastrar(String avaliacao) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .spec(LoginSpecs.requestGestorSpec())
                         .body(avaliacao)
                 .when()
                         .post(Utils.getBaseUrl() + "/avaliacao-acompanhamento/cadastrar-avaliacao")
@@ -44,7 +44,7 @@ public class AvaliacaoService {
     public Response atualizar(Integer idAvaliacao, String atualizaAvaliacao) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .spec(LoginSpecs.requestGestorSpec())
                         .pathParam("idAvaliacao", idAvaliacao)
                         .body(atualizaAvaliacao)
                 .when()

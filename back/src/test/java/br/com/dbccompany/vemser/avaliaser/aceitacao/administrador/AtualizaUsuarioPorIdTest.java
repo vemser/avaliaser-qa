@@ -1,7 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.administrador;
 
 import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
-import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.AtualizaUsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
@@ -31,7 +31,7 @@ public class AtualizaUsuarioPorIdTest {
                 .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuario))
                 .then().log().all().statusCode(HttpStatus.SC_OK).extract().as(UsuarioDTO.class);
 
-        AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorId();
+        AtualizaUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorId();
 
         UsuarioDTO usuarioAtualizado = administradorService
                 .atualizarUsuarioPorId(usuarioCriado.getIdUsuario(), Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))
@@ -52,7 +52,7 @@ public class AtualizaUsuarioPorIdTest {
     @Tag("all")
     @Description("Deve não retornar usuário atualizado")
     public void deveNaoAtualizarUsuarioComIdUsuarioInexistente() {
-        AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorId();
+        AtualizaUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorId();
 
         String message = administradorService
                 .atualizarUsuarioPorId(19931019, Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))
@@ -74,7 +74,7 @@ public class AtualizaUsuarioPorIdTest {
                 .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuario))
                 .then().log().all().statusCode(HttpStatus.SC_OK).extract().as(UsuarioDTO.class);
 
-        AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdInvalido();
+        AtualizaUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdInvalido();
 
         administradorService
                 .atualizarUsuarioPorId(usuarioCriado.getIdUsuario(), Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))
@@ -98,7 +98,7 @@ public class AtualizaUsuarioPorIdTest {
                 .cadastrar(CargoDTO.ADMIN.toString(), Utils.convertUsuarioToJson(usuario))
                 .then().log().all().statusCode(HttpStatus.SC_OK).extract().as(UsuarioDTO.class);
 
-        AtualizarUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdVazio();
+        AtualizaUsuarioDTO atualizaUsuario = usuarioBuilder.atualizarUsuarioPorIdVazio();
 
         administradorService
                 .atualizarUsuarioPorId(usuarioCriado.getIdUsuario(), Utils.convertAtualizarUsuarioPorIdToJson(atualizaUsuario))

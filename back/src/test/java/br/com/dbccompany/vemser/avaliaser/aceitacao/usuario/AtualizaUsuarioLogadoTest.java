@@ -1,7 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.usuario;
 
 import br.com.dbccompany.vemser.avaliaser.builder.UsuarioBuilder;
-import br.com.dbccompany.vemser.avaliaser.dto.AtualizarUsuarioLogadoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.AtualizaUsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
@@ -26,7 +26,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve retornar usuário logado atualizado")
     public void deveRetornarUsuarioLogadoAtualizadoComSucesso() {
-        AtualizarUsuarioLogadoDTO nome = usuarioBuilder.atualizarUsuarioLogado();
+        AtualizaUsuarioLogadoDTO nome = usuarioBuilder.atualizarUsuarioLogado();
 
         UsuarioLogadoDTO usuarioLogadoDTO = usuarioService
                 .atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nome))
@@ -47,7 +47,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não retornar usuário logado atualizado")
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeInvalido() {
-        AtualizarUsuarioLogadoDTO nomeInvalido = usuarioBuilder.atualizarUsuarioLogadoInvalido();
+        AtualizaUsuarioLogadoDTO nomeInvalido = usuarioBuilder.atualizarUsuarioLogadoInvalido();
 
         usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeInvalido))
                 .then()
@@ -61,7 +61,7 @@ public class AtualizaUsuarioLogadoTest {
     @Tag("all")
     @Description("Deve não retornar usuário logado atualizado")
     public void deveNaoRetornarUsuarioLogadoAtualizadoComNomeVazio() {
-        AtualizarUsuarioLogadoDTO nomeVazio = usuarioBuilder.atualizarUsuarioLogadoVazio();
+        AtualizaUsuarioLogadoDTO nomeVazio = usuarioBuilder.atualizarUsuarioLogadoVazio();
 
         usuarioService.atualizarUsuarioLogado(Utils.convertAtualizarUsuarioToJson(nomeVazio))
                 .then()
