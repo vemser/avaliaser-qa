@@ -21,33 +21,59 @@ public class LoginSteps {
     public void preencherCampoEmailAdminValido() {
         loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
     }
-    @E("que preencho o campo senha Admim válida")
-    public void preencherCampoSenhaAdminValida() {
-        loginPage.preencherCampoSenhaValida("administrador");
+
+    @E("que preencho o campo email Gestor válido")
+    public void preencherCampoEmailGestorValido() {
+        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
     }
 
-    @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
-    public void telaPrincipalAdmin() throws InterruptedException {
-        Thread.sleep(5000);
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
-        String mensagemBoasVindas = loginPage.validarMensagemDeBoasVindas();
-        Assert.assertEquals("Seja bem-vindo(a)", mensagemBoasVindas);
-
+    @E("que preencho o campo email Instrutor válido")
+    public void preencherCampoEmailInstrutorValido() {
+        loginPage.preencherCampoEmailValido("mayra.amaral@dbccompany.com.br");
     }
-
-    @Entao("devo visualizar mensagem de erro email ou senha incorretos")
-    public void validarMensagemDeErroEmailOuSenhaIncorretos(){
-        String mensagemErro = loginPage.validarMensagemDeErroEmailOuSenhaIncorretos();
-        Assert.assertEquals("Email ou senha incorretos. Login não concluído.", mensagemErro);
+    @E("que preencho o campo com email válido")
+    public void preencherCampoEmailValido() {
+        loginPage.preencherCampoEmailValido("teste.qa@dbccompany.com.br");
     }
 
     @E("que preencho o campo com email inválido")
     public void preencherCampoEmailInvalido() {
         loginPage.preencherCampoEmailInvalido();
     }
+
+    @E("que não preencho o campo email")
+    public void preencherCampoEmailVazio() {
+        loginPage.preencherCampoEmailVazio();
+    }
+
+    @E("que preencho o campo senha Admim válida")
+    public void preencherCampoSenhaAdminValida() {
+        loginPage.preencherCampoSenhaValida("administrador");
+    }
+
+    @E("que preencho o campo senha Gestor válida")
+    public void preencherCampoSenhaGestorValida() {
+        loginPage.preencherCampoSenhaValida("moisesnoah");
+    }
+
+    @E("que preencho o campo senha Instrutor válida")
+    public void preencherCampoSenhaInstrutorValida() {
+        loginPage.preencherCampoSenhaValida("a!0SC*C9");
+    }
+
     @E("que preencho o campo senha válido")
     public void preencherCampoSenhaValida() {
         loginPage.preencherCampoSenhaValida("12345678");
+    }
+
+    @E("que preencho o campo com senha inválida")
+    public void preencherCampoSenhaInvalida() {
+        loginPage.preencherCampoSenhaInvalida();
+    }
+
+    @E("que não preencho o campo senha")
+    public void preencherCampoSenhaVazia() {
+        loginPage.preencherCampoSenhaVazia();
     }
 
     @Quando("clico em ‘Entrar’")
@@ -55,53 +81,68 @@ public class LoginSteps {
         loginPage.clicarBotaoEntrar();
     }
 
+    @Quando("clico em ‘Mostrar Senha’")
+    public void clicarBotaoMostrar(){
+        loginPage.clicarBotaoMostrar();
+    }
+
+    @Quando("clico no link ‘Redefinir senha’")
+    public void clicarRedefinirSenha(){
+        loginPage.clicarRedefinirSenha();
+    }
+
+    @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
+    public void telaPrincipalAdmin() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
+        Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
+    }
+
+    @Entao("devo ser redirecionado para a página principal de gestor de pessoas e visualizar mensagem de boas-vindas")
+    public void telaPrincipalGestor() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/gestor", loginPage.validarUrlAtual());
+        Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
+    }
+
+    @Entao("devo ser redirecionado para a página principal de instrutor e visualizar mensagem de boas-vindas")
+    public void telaPrincipalInstrutor() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/instrutor", loginPage.validarUrlAtual());
+        Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
+    }
+
+    @Entao("devo visualizar mensagem de erro email ou senha")
+    public void validarMensagemDeErroEmailOuSenhaIncorretos() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertEquals("Email ou senha incorretos. Login não concluído.",
+                loginPage.validarMensagemDeErroEmailOuSenhaIncorretos());
+    }
+
     @Entao("devo visualizar mensagem de erro Email")
     public void validarMensagemDeErroEmailInvalido(){
-        String mensagemErro = loginPage.validarMensagemDeErroEmailInvalido();
-        Assert.assertEquals("Só aceitamos email @dbccompany.com.br", mensagemErro);
-    }
-
-
-
-    @E("que preencho o campo com email válido")
-    public void preencherCampoEmailValido() {
-        loginPage.preencherCampoEmailValido("teste.qa@dbccompany.com.br");
-    }
-    @E("que preencho o campo com senha inválida")
-    public void preencherCampoSenhaInvalida() {
-        loginPage.preencherCampoSenhaInvalida();
+        Assert.assertEquals("Só aceitamos email @dbccompany.com.br", loginPage.validarMensagemDeErroEmailInvalido());
     }
 
     @Entao("devo visualizar mensagem de erro Senha")
     public void validarMensagemDeErroSenha(){
-        String mensagemErro = loginPage.validarMensagemDeErroSenha();
-        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres",mensagemErro);
+        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
     }
 
-    @E("que não preencho o campo email")
-    public void preencherCampoEmailVazio() {
-        loginPage.preencherCampoEmailVazio();
-    }
-    @E("que não preencho o campo senha")
-    public void preencherCampoSenhaVazia() {
-        loginPage.preencherCampoSenhaVazia();
-    }
-
-    @Entao("devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Email")
+    @Entao("devo visualizar mensagens de erro para campo vazio Email e Senha")
     public void validarMensagemDeErroEmailVazio(){
-        String mensagemErroEmail = loginPage.validarMensagemDeErroEmailVazio();
-        Assert.assertEquals("Por favor, digite seu e-mail",mensagemErroEmail);
+        Assert.assertEquals("Por favor, digite seu e-mail", loginPage.validarMensagemDeErroEmailVazio());
+        Assert.assertEquals("Por favor, digite sua senha", loginPage.validarMensagemDeErroSenha());
     }
 
-    @Entao("devo validar mensagem de erro ao realizar tentativa de login sem preencher campo Senha")
-    public void validarMensagemDeErroCampoSenhaVazia(){
-        String mensagemErroSenha = loginPage.validarMensagemDeErroSenha();
-        Assert.assertEquals("Por favor, digite sua senha",mensagemErroSenha);
+    @Entao("devo visualizar mensagem de erro para campo vazio Email")
+    public void validarMensagemDeErroCampoEmailVazio(){
+        Assert.assertEquals("Por favor, digite seu e-mail", loginPage.validarMensagemDeErroEmailVazio());
     }
 
-    @Quando("clico no botão ‘Mostrar’")
-    public void clicarBotaoMostrar(){
-        loginPage.clicarBotaoMostrar();
+    @Entao("devo visualizar mensagem de erro para campo vazio Senha")
+    public void validarMensagemDeErroCampoSenhaVazio(){
+        Assert.assertEquals("Por favor, digite sua senha", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar a senha digitada na tela")
@@ -109,19 +150,9 @@ public class LoginSteps {
         Assert.assertEquals("123", loginPage.visualizarSenha());
     }
 
-
-    @Quando("clico no link ‘Redefinir senha’")
-    public void clicarRedefinirSenha(){
-        loginPage.clicarRedefinirSenha();
-    }
-
-    @Entao("devo validar modal para a mudança de senha")
+    @Entao("devo visualizar tela para a mudança de senha")
     public void validarModalRedefinirSenha(){
         loginPage.validarModalRedefinirSenha();
     }
-
-
-
-
 
 }

@@ -3,6 +3,7 @@ package br.com.dbccompany.vemser.avaliaser.aceitacao.feedback;
 import br.com.dbccompany.vemser.avaliaser.dto.PageFeedbackDTO;
 import br.com.dbccompany.vemser.avaliaser.service.FeedbackService;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Feedback")
+@Epic("Lista Feedbacks por Aluno")
 public class ListaFeedbacksPorAlunoTest {
 
     FeedbackService feedbackService = new FeedbackService();

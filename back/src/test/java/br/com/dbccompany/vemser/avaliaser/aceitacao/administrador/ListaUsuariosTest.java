@@ -3,6 +3,7 @@ package br.com.dbccompany.vemser.avaliaser.aceitacao.administrador;
 import br.com.dbccompany.vemser.avaliaser.dto.PageUsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AdministradorService;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Administrador")
+@Epic("Lista Usuários")
 public class ListaUsuariosTest {
 
     AdministradorService administradorService = new AdministradorService();
@@ -51,12 +53,14 @@ public class ListaUsuariosTest {
     @Tag("all")
     @Description("Deve não retornar lista de usuários")
     public void deveNaoRetornarListaDeUsuarios() {
-        administradorService.listar(-1, -1)
+        String message = administradorService.listar(-1, -1)
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR)
-                    .extract().response()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract().path("message")
                 ;
+
+        assertEquals("Page ou Size não pode ser menor que zero.", message);
     }
 
 }

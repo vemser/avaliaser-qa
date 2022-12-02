@@ -5,6 +5,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.UsuarioLogadoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Usuario")
+@Epic("Busca Usuário Logado")
 public class BuscaUsuarioLogadoTest {
 
     UsuarioService usuarioService = new UsuarioService();

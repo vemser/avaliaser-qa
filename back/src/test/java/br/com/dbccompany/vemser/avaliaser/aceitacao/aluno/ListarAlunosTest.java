@@ -4,6 +4,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.PageAlunoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.PageUsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Aluno")
+@Epic("Lista Alunos")
 public class ListarAlunosTest {
     AlunoService alunoService = new AlunoService();
     PageAlunoDTO pageAlunoDTO = new PageAlunoDTO();

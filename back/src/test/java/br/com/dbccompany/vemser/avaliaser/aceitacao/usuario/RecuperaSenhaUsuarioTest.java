@@ -4,6 +4,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.UsuarioService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Usuario")
+@Epic("Recupera Senha Usuário")
 public class RecuperaSenhaUsuarioTest {
 
     UsuarioService usuarioService = new UsuarioService();

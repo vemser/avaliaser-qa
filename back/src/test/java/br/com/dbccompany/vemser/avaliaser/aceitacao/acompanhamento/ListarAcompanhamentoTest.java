@@ -4,14 +4,18 @@ import br.com.dbccompany.vemser.avaliaser.dto.PageAcompanhamentoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.PageFeedbackDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DisplayName("Acompanhamento")
+@Epic("Lista Acompanhamentos")
 public class ListarAcompanhamentoTest {
 
     AcompanhamentoService acompanhamentoService = new AcompanhamentoService();

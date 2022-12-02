@@ -6,6 +6,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.FeedbackService;
 import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Feedback")
+@Epic("Busca Feedback Por Id")
 public class BuscaFeedbackPorIdTest {
 
     FeedbackService feedbackService = new FeedbackService();

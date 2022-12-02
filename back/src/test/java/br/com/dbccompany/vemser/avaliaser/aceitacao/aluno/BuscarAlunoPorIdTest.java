@@ -4,6 +4,7 @@ import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("Aluno")
+@Epic("Busca Aluno Por Id")
 public class BuscarAlunoPorIdTest {
     AlunoService alunoService = new AlunoService();
 

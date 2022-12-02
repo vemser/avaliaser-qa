@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,11 +14,11 @@ import java.util.List;
 public class AvaliacaoDTO {
 
     private Integer idAvaliacao;
-    private List<AcompanhamentoDTO> acompanhamento;
-    private List<AlunoDTO> aluno;
-    private List<UsuarioDTO> responsavel;
     private String descricao;
     private String tipo;
     private String dataCriacao;
+    private AcompanhamentoDTO acompanhamento;
+    private AlunoDTO aluno;
+    private UsuarioRetornoAvaliacaoFeedbackDTO responsavel;
 
 }
