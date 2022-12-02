@@ -55,7 +55,7 @@ public class FeedbackService {
         return
                 given()
                         .spec(LoginSpecs.requestInstrutorSpec())
-                        .pathParam("idFeedback", idFeedBack)
+                        .pathParam("idFeedBack", idFeedBack)
                         .body(atualizaFeedback)
                 .when()
                         .put(Utils.getBaseUrl() + "/feedback/editar-feedback/{idFeedBack}")

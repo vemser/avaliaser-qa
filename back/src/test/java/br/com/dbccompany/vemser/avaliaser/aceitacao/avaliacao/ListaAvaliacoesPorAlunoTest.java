@@ -79,13 +79,13 @@ public class ListaAvaliacoesPorAlunoTest {
 
     @Test
     @Tag("all")
-    @Description("Deve não retornar lista de avaliacoes")
+    @Description("Deve não listar avaliações por aluno com paginação")
     public void deveNaoRetornarListaDeAvaliacoesComDadosDePaginacaoInvalidos() {
         avaliacaoService.listarPorAluno(19, -1, -1)
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR)
-                    .extract().response()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("Page ou Size não pode ser menor que zero."))
                 ;
     }
 

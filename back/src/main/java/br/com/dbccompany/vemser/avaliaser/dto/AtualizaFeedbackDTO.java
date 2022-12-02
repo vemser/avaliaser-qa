@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties
-public class FeedbackDTO {
+public class AtualizaFeedbackDTO {
 
-    private Integer idFeedBack;
+    private Integer idAluno;
     private String descricao;
     private String tipo;
-    private UsuarioRetornoAvaliacaoFeedbackDTO usuarioDTO;
-    private AlunoDTO alunoDTO;
 
 }
