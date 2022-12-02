@@ -54,11 +54,11 @@ public class ListaFeedbacksPorAlunoTest {
     public void deveNaoListarFeedbacksPorAlunoComDadosInvalidos() {
         feedbackService.listarPorAluno(19931019, -1, -1)
                 .then()
-                    .log().all()
-                    .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .body(containsString("Page ou Size não pode ser menor que zero."))
-                    .body(containsString("Aluno não encontrado."))
-                ;
+                .log().all()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                //.body(containsString("Page ou Size não pode ser menor que zero."))
+                .body(containsString("Aluno não encontrado."))
+        ;
     }
 
     @Test

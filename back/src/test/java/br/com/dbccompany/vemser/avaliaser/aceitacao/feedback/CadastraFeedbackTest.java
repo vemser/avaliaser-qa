@@ -60,8 +60,8 @@ public class CadastraFeedbackTest {
 
         feedbackService.cadastrar(Utils.convertFeedbackToJson(feedbackCreateInvalido))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
         ;
     }
 
@@ -83,15 +83,13 @@ public class CadastraFeedbackTest {
     @Tag("all")
     @Description("Deve não cadastrar feedback")
     public void deveNaoCadastrarFeedbackComDescricaoVazio() {
-        //  MENSAGEM ERRADA
-
         FeedbackCreateDTO feedbackCreateInvalido = feedbackBuilder.criarFeedbackComDescricaoVazio();
 
         feedbackService.cadastrar(Utils.convertFeedbackToJson(feedbackCreateInvalido))
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_BAD_REQUEST)
-                    .body(containsString("descricao: Descrição não pode ser nulo."))
+                    .body(containsString("descricao: Descrição não pode ficar em branco."))
         ;
     }
 

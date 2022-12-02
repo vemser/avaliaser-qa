@@ -94,8 +94,6 @@ public class AtualizaFeedbackTest {
     @Tag("all")
     @Description("Deve não atualizar feedback")
     public void deveNaoAtualizarFeedbackComDescricaoVazio() {
-        // RETORNA 500
-
         FeedbackCreateDTO feedbackCreate = feedbackBuilder.criarFeedback();
         FeedbackDTO feedback = feedbackService.cadastrar(Utils.convertFeedbackToJson(feedbackCreate))
                 .then()
