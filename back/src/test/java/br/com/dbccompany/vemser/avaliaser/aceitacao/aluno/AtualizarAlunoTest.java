@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-@DisplayName("Gestor")
+@DisplayName("Aluno")
 public class AtualizarAlunoTest {
     AlunoService alunoService = new AlunoService();
     AlunoBuilder alunoBuilder = new AlunoBuilder();
