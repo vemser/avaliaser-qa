@@ -17,8 +17,8 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Acompanhamento")
 @Epic("Cadastra Acompanhamento")
+@DisplayName("Acompanhamento")
 public class CadastrarAcompanhamentoTest {
 
     AcompanhamentoService acompanhamentoService = new AcompanhamentoService();

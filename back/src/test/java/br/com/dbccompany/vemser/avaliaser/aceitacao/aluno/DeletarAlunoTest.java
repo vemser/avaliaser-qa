@@ -1,7 +1,12 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.aluno;
 
+import br.com.dbccompany.vemser.avaliaser.builder.AlunoBuilder;
+import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.AlunoCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
+import br.com.dbccompany.vemser.avaliaser.dto.StackDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AlunoService;
+import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
@@ -15,14 +20,25 @@ public class DeletarAlunoTest {
 
 
     AlunoService alunoService = new AlunoService();
+    AlunoBuilder alunoBuilder = new AlunoBuilder();
 
     @Test
     @Tag("all")
     @Description("Deve deletar Aluno com sucesso")
     public void deveDeletarAlunoComSucesso() {
-        AlunoService alunoService = new AlunoService();
 
-        alunoService.deletar(39)
+        AlunoService alunoService = new AlunoService();
+        AlunoCreateDTO aluno = alunoBuilder.criarAluno();
+
+        AlunoDTO alunoDTO = alunoService
+                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+                .extract().as(AlunoDTO.class)
+                ;
+
+        alunoService.deletar(alunoDTO.getIdAluno())
                 .then()
                 .log().all()
                 .statusCode(HttpStatus.SC_OK)

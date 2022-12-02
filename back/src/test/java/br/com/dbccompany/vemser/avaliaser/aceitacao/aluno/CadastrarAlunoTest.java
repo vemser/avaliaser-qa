@@ -40,6 +40,13 @@ public class CadastrarAlunoTest {
 
         assertEquals(aluno.getNome(), alunoDTO.getNome());
         assertEquals("QA", alunoDTO.getStack());
+
+        alunoService
+                .deletarTeste(alunoDTO.getIdAluno())
+                .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+        ;
     }
 
 
@@ -56,6 +63,7 @@ public class CadastrarAlunoTest {
                 .log().all()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 ;
+
 
     }
 
