@@ -33,20 +33,20 @@ Funcionalidade: Dashboard Admin
   @smoke
   Cenario: Validar botão ‘Trocar Senha’ com sucesso
     Dado que faço login no sistema como administrador
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil admin
     Quando clico em ‘Trocar Senha’
     Então devo ser redirecionado para a página de ‘Alterar Senha’
 
   @smoke
   Cenario: Validar botão ‘Editar’ com sucesso
     Dado que faço login no sistema como administrador
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil admin
     Quando clico em ‘Editar Usuário’
     Então devo ser redirecionado para a página de ‘Editar Usuário’
 
   @smoke
   Cenario: Validar botão ‘Sair’ com sucesso
     Dado que faço login no sistema como administrador
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil admin
     Quando clico em ‘Sair’
     Então devo ser redirecionado para a página de ‘Login’
