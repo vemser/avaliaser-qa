@@ -61,31 +61,31 @@ public class EditarSenhaUsuarioLogadoSteps {
     @Entao("devo visualizar mensagem de erro para senha antiga vazio")
     public void validarMensagemErroSenhaAntigaVazio() {
         Assert.assertEquals("Por favor, digite sua antiga senha",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaInvalidoOuVazio());
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para senha nova inválida")
     public void validarMensagemErroSenhaNovaInvalido() {
-        Assert.assertEquals("Houve um erro",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaInvalido());
+        Assert.assertEquals("A nova senha deve conter no mínimo 8 caracteres",
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaNovaInvalidoOuVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para senha nova vazio")
     public void validarMensagemErroSenhaNovaVazio() {
         Assert.assertEquals("Por favor, digite sua nova senha",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaInvalidoOuVazio());
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaNovaInvalidoOuVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para confirma senha nova inválida")
     public void validarMensagemErroConfirmeSenhaNovaInvalido() {
         Assert.assertEquals("As senhas devem corresponder!",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaInvalidoOuVazio());
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroConfirmaSenhaNovaInvalidoOuVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para confirma senha nova vazio")
     public void validarMensagemErroConfirmeSenhaNovaVazio() {
         Assert.assertEquals("Por favor, confirme sua nova senha.",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaInvalidoOuVazio());
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroConfirmaSenhaNovaInvalidoOuVazio());
     }
 
 }

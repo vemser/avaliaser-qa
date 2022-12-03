@@ -8,7 +8,6 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.junit.Assert;
 
-
 public class LoginSteps {
     LoginPage loginPage = new LoginPage();
 
@@ -72,11 +71,6 @@ public class LoginSteps {
         loginPage.clicarBotaoEntrar();
     }
 
-    @Quando("clico em ‘Mostrar Senha’")
-    public void clicarBotaoMostrar() {
-        loginPage.clicarBotaoMostrar();
-    }
-
     @Quando("clico no link ‘Redefinir senha’")
     public void clicarRedefinirSenha() {
         loginPage.clicarRedefinirSenha();
@@ -105,8 +99,6 @@ public class LoginSteps {
 
     @Entao("devo visualizar mensagem de erro email ou senha")
     public void validarMensagemDeErroEmailOuSenhaIncorretos() {
-        //Thread.sleep(5000);
-        //Assert.assertEquals("Email ou senha incorretos. Login não concluído.", loginPage.validarMensagemDeErroEmailOuSenhaIncorretos());
         Assert.assertEquals("Só aceitamos email @dbccompany.com.br", loginPage.validarMensagemDeErroEmailInvalido());
         Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
     }
@@ -118,7 +110,7 @@ public class LoginSteps {
 
     @Entao("devo visualizar mensagem de erro Senha")
     public void validarMensagemDeErroSenha() {
-        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
+        Assert.assertEquals("A senha deve ter no mínimo 8 caracteres", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar mensagens de erro para campo vazio Email e Senha")
@@ -137,12 +129,6 @@ public class LoginSteps {
         Assert.assertEquals("Por favor, digite sua senha", loginPage.validarMensagemDeErroSenha());
     }
 
-    @Entao("devo visualizar a senha digitada na tela")
-    public void visualizarSenhaDigitada() {
-        //Assert.assertTrue(loginPage.visualizarSenha().contains("administrador"));
-        Assert.assertEquals("administrador", loginPage.visualizarSenha());
-    }
-
     @Entao("devo visualizar tela para a mudança de senha")
     public void validarModalRedefinirSenha() {
         loginPage.validarModalRedefinirSenha();
@@ -152,6 +138,13 @@ public class LoginSteps {
     public void logarDashboardAdmin() {
         loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
         loginPage.preencherCampoSenhaValida("administrador");
+        loginPage.clicarBotaoEntrar();
+    }
+
+    @Dado("que faço login no sistema como gestor")
+    public void logarDashboardGestor() {
+        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
+        loginPage.preencherCampoSenhaValida("moisesnoah");
         loginPage.clicarBotaoEntrar();
     }
 

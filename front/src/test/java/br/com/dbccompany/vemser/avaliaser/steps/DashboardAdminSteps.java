@@ -1,7 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.steps;
 
 import br.com.dbccompany.vemser.avaliaser.pages.DashboardAminPage;
-import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -11,16 +10,6 @@ import org.junit.Assert;
 public class DashboardAdminSteps {
 
     DashboardAminPage dashboardAminPage = new DashboardAminPage();
-
-    @E("que clico em 'Menu'")
-    public void clicarBotaoMenu() {
-        dashboardAminPage.clicarBtnMenu();
-    }
-
-    @E("clico no ícone da foto de perfil")
-    public void clicarBotaoFotoDePerfil() {
-        dashboardAminPage.clicarBtnFotoPerfil();
-    }
 
     @E("clico em ‘Deletar Colaborador’")
     public void clicarBotaoDeletarColaborador() {
@@ -40,21 +29,6 @@ public class DashboardAdminSteps {
     @Quando("clico em ‘Confirmar’")
     public void clicarBotaoConfirmarDeletar() {
         dashboardAminPage.clicarBtnConfirmarDeletar();
-    }
-
-    @Quando("clico em ‘Trocar Senha’")
-    public void clicarBotaoTrocarSenha() {
-        dashboardAminPage.clicarBtnTrocarSenha();
-    }
-
-    @Quando("clico em ‘Editar Usuário’")
-    public void clicarBotaoEditar() {
-        dashboardAminPage.clicarBtnEditar();
-    }
-
-    @Quando("clico em ‘Sair’")
-    public void clicarBotaoSair() {
-        dashboardAminPage.clicarBtnSair();
     }
 
     @Entao("devo visualizar mensagem de boas-vindas e lista de colaboradores na tela")
@@ -105,20 +79,6 @@ public class DashboardAdminSteps {
     public void acessarPaginaEditarColaborador() throws InterruptedException {
         Thread.sleep(5000);
         dashboardAminPage.clicarBtnEditarColaborador();
-    }
-
-    @E("que acesso a página de Editar Usuário")
-    public void acessarPaginaEditarUsuario() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardAminPage.clicarBtnFotoPerfil();
-        dashboardAminPage.clicarBtnEditar();
-    }
-
-    @E("que acesso a página de Alterar Senha de usuário logado")
-    public void acessarPaginaAlterarSenhaUsuarioLogado() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardAminPage.clicarBtnFotoPerfil();
-        dashboardAminPage.clicarBtnTrocarSenha();
     }
 
 }
