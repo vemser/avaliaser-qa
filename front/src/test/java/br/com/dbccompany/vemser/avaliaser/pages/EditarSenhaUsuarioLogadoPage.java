@@ -10,7 +10,9 @@ public class EditarSenhaUsuarioLogadoPage extends BasePage{
     private static final By campoConfirmaSenhaNova = By.cssSelector("#confirmarNovaSenha");
     private static final By btnEnviar = By.cssSelector("#botao-azul");
     private static final By msgConfirmacaoOuErro = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
-    private static final By msgErroSenha = By.cssSelector("#erro-cargo01");
+    private static final By msgErroSenhaAntiga = By.cssSelector("#erro-senhaAntiga");
+    private static final By msgErroSenhaNova = By.cssSelector("#erro-novaSenha");
+    private static final By msgErroConfirmaSenhaNova = By.cssSelector("#erro-confirmaSenha");
 
     @Step("Preenche campo senha antiga")
     public void preencherCampoSenhaAntiga(String senhaAntiga) {
@@ -42,9 +44,19 @@ public class EditarSenhaUsuarioLogadoPage extends BasePage{
         return getAttributeInnerText(msgConfirmacaoOuErro);
     }
 
-    @Step("Validar mensagem de erro para senha inválido ou vazio")
-    public String validarMensagemDeErroSenhaInvalidoOuVazio() {
-        return getText(msgErroSenha);
+    @Step("Validar mensagem de erro para senha antiga vazio")
+    public String validarMensagemDeErroSenhaAntigaVazio() {
+        return getText(msgErroSenhaAntiga);
+    }
+
+    @Step("Validar mensagem de erro para senha nova inválido ou vazio")
+    public String validarMensagemDeErroSenhaNovaInvalidoOuVazio() {
+        return getText(msgErroSenhaNova);
+    }
+
+    @Step("Validar mensagem de erro para confirma senha nova inválido ou vazio")
+    public String validarMensagemDeErroConfirmaSenhaNovaInvalidoOuVazio() {
+        return getText(msgErroConfirmaSenhaNova);
     }
 
     @Step("Validar url atual")

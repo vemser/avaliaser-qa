@@ -45,7 +45,7 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro Email
 
-  @error
+  @smoke
   Cenario: Validar tentativa de login com senha inválida
     Dado que estou na página inicial de login
     E que preencho o campo com email válido
@@ -72,13 +72,6 @@ Funcionalidade: Login
     E que preencho o campo com email válido
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Senha
-
-  @error
-   Cenario: Validar botão de 'Mostrar Senha'
-     Dado que estou na página inicial de login
-     E que preencho o campo senha válido
-     Quando clico em ‘Mostrar Senha’
-     Então devo visualizar a senha digitada na tela
 
   @smoke
   Cenario:  Validar link ‘Esqueci minha senha’

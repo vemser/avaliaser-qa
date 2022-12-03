@@ -18,9 +18,6 @@ public class LoginPage extends BasePage{
     private static final By redefinirSenha =
             By.cssSelector("#box-login > p");
 
-    private static final By btnMostrarSenha =
-            By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
-
     private static final By mensagemErroEmailInvalido =
             By.cssSelector("#erro-email");
 
@@ -64,11 +61,6 @@ public class LoginPage extends BasePage{
         click(btnEntrar);
     }
 
-    @Step("Clicar no botão Mostrar")
-    public void clicarBotaoMostrar() {
-        click(btnMostrarSenha);
-    }
-
     @Step("Validar Mensagem de Erro Email Invalido")
     public String validarMensagemDeErroEmailInvalido(){
          return getAttributeInnerText(mensagemErroEmailInvalido);
@@ -87,12 +79,6 @@ public class LoginPage extends BasePage{
     @Step("Validar url atual")
     public String validarUrlAtual() {
         return getCurrentUrl();
-    }
-
-    @Step("Visualizar senha digitada")
-    public String visualizarSenha(){
-       //return getText(campoSenha);
-       return getAttributeInnerText(campoSenha);
     }
 
     @Step("Clicar Redefinir Senha")
