@@ -2,12 +2,11 @@ package br.com.dbccompany.vemser.avaliaser.aceitacao.acompanhamento;
 
 import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
-import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 

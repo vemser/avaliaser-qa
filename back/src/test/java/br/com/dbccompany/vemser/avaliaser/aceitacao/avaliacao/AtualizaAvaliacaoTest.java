@@ -53,19 +53,17 @@ public class AtualizaAvaliacaoTest {
     @Tag("all")
     @Description("Deve não atualizar avaliação")
     public void deveNaoAtualizarAvaliacaoComIdAvaliacaoInexistente() {
-        // RETORNA 500 E SEM MENSAGEM DE ERRO
-
         AtualizaAvaliacaoDTO atualizaAvaliacao = avaliacaoBuilder.atualizarAvaliacao();
 
         String message = avaliacaoService
                 .atualizar(19931019, Utils.convertAtualizaAvaliacaoToJson(atualizaAvaliacao))
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_NOT_FOUND)
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
                     .extract().path("message")
                 ;
 
-        assertEquals("Avaliação não encontrado.", message);
+        assertEquals("Avaliação não encontrada.", message);
     }
 
     @Test

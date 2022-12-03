@@ -62,7 +62,7 @@ Funcionalidade: Login
     Então devo visualizar mensagens de erro para campo vazio Email e Senha
 
   @smoke
-  Cenario: Validar tentativa de login sem preencher usuário
+  Cenario: Validar tentativa de login sem preencher email
     Dado que estou na página inicial de login
     E que não preencho o campo email
     E que preencho o campo senha válido

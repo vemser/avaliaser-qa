@@ -18,9 +18,6 @@ public class LoginPage extends BasePage{
     private static final By redefinirSenha =
             By.cssSelector("#box-login > p");
 
-    private static final By btnMostrarSenha =
-            By.cssSelector("#box-login > div > div:nth-child(4) > div > div > button");
-
     private static final By mensagemErroEmailInvalido =
             By.cssSelector("#erro-email");
 
@@ -31,7 +28,7 @@ public class LoginPage extends BasePage{
             By.cssSelector("#erro-senha");
 
     private static final By mensagemErroEmailOuSenhaIncorreto =
-            By.cssSelector("\\#32  > div.Toastify__toast-body");
+            By.cssSelector(".Toastify__toast-body > :nth-child(2)");
 
     private static final By mensagemBoasVindas =
             By.cssSelector("#\\31  > div.Toastify__toast-body");
@@ -49,11 +46,6 @@ public class LoginPage extends BasePage{
         sendKeys(campoEmail,"teste.qa@naoexiste.com");
     }
 
-    @Step("Preencher campo com email vazio")
-    public void preencherCampoEmailVazio() {
-        sendKeys(campoEmail,"");
-    }
-
     @Step("Preencher campo com senha válida")
     public void preencherCampoSenhaValida(String senha) {
         sendKeys(campoSenha,senha);
@@ -61,22 +53,12 @@ public class LoginPage extends BasePage{
 
     @Step("Preencher campo com senha inválida")
     public void preencherCampoSenhaInvalida() {
-        sendKeys(campoSenha,"1");
-    }
-
-    @Step("Preencher campo com senha vazia")
-    public void preencherCampoSenhaVazia() {
-        sendKeys(campoSenha,"");
+        sendKeys(campoSenha,"123");
     }
 
     @Step("Clicar no botão Entrar")
     public void clicarBotaoEntrar() {
         click(btnEntrar);
-    }
-
-    @Step("Clicar no botão Mostrar")
-    public void clicarBotaoMostrar() {
-        click(btnMostrarSenha);
     }
 
     @Step("Validar Mensagem de Erro Email Invalido")
@@ -97,11 +79,6 @@ public class LoginPage extends BasePage{
     @Step("Validar url atual")
     public String validarUrlAtual() {
         return getCurrentUrl();
-    }
-
-    @Step("Clicar Visualizar Senha")
-    public String visualizarSenha(){
-       return getAttributeInnerText(campoSenha);
     }
 
     @Step("Clicar Redefinir Senha")

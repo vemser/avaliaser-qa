@@ -8,13 +8,12 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.junit.Assert;
 
-
 public class LoginSteps {
     LoginPage loginPage = new LoginPage();
 
     @Dado("que estou na página inicial de login")
-    public void telaLogin(){
-    Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", loginPage.validarUrlAtual());
+    public void telaLogin() {
+        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", loginPage.validarUrlAtual());
     }
 
     @E("que preencho o campo email Admim válido")
@@ -31,19 +30,15 @@ public class LoginSteps {
     public void preencherCampoEmailInstrutorValido() {
         loginPage.preencherCampoEmailValido("mayra.amaral@dbccompany.com.br");
     }
+
     @E("que preencho o campo com email válido")
     public void preencherCampoEmailValido() {
-        loginPage.preencherCampoEmailValido("teste.qa@dbccompany.com.br");
+        loginPage.preencherCampoEmailValido("paulo.serio@dbccompany.com.br");
     }
 
     @E("que preencho o campo com email inválido")
     public void preencherCampoEmailInvalido() {
         loginPage.preencherCampoEmailInvalido();
-    }
-
-    @E("que não preencho o campo email")
-    public void preencherCampoEmailVazio() {
-        loginPage.preencherCampoEmailVazio();
     }
 
     @E("que preencho o campo senha Admim válida")
@@ -71,23 +66,13 @@ public class LoginSteps {
         loginPage.preencherCampoSenhaInvalida();
     }
 
-    @E("que não preencho o campo senha")
-    public void preencherCampoSenhaVazia() {
-        loginPage.preencherCampoSenhaVazia();
-    }
-
     @Quando("clico em ‘Entrar’")
-    public void clicarBotaoEntrar(){
+    public void clicarBotaoEntrar() {
         loginPage.clicarBotaoEntrar();
     }
 
-    @Quando("clico em ‘Mostrar Senha’")
-    public void clicarBotaoMostrar(){
-        loginPage.clicarBotaoMostrar();
-    }
-
     @Quando("clico no link ‘Redefinir senha’")
-    public void clicarRedefinirSenha(){
+    public void clicarRedefinirSenha() {
         loginPage.clicarRedefinirSenha();
     }
 
@@ -113,46 +98,54 @@ public class LoginSteps {
     }
 
     @Entao("devo visualizar mensagem de erro email ou senha")
-    public void validarMensagemDeErroEmailOuSenhaIncorretos() throws InterruptedException {
-        Thread.sleep(5000);
-        Assert.assertEquals("Email ou senha incorretos. Login não concluído.",
-                loginPage.validarMensagemDeErroEmailOuSenhaIncorretos());
+    public void validarMensagemDeErroEmailOuSenhaIncorretos() {
+        Assert.assertEquals("Só aceitamos email @dbccompany.com.br", loginPage.validarMensagemDeErroEmailInvalido());
+        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar mensagem de erro Email")
-    public void validarMensagemDeErroEmailInvalido(){
+    public void validarMensagemDeErroEmailInvalido() {
         Assert.assertEquals("Só aceitamos email @dbccompany.com.br", loginPage.validarMensagemDeErroEmailInvalido());
     }
 
     @Entao("devo visualizar mensagem de erro Senha")
-    public void validarMensagemDeErroSenha(){
-        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
+    public void validarMensagemDeErroSenha() {
+        Assert.assertEquals("A senha deve ter no mínimo 8 caracteres", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar mensagens de erro para campo vazio Email e Senha")
-    public void validarMensagemDeErroEmailVazio(){
+    public void validarMensagemDeErroEmailVazio() {
         Assert.assertEquals("Por favor, digite seu e-mail", loginPage.validarMensagemDeErroEmailVazio());
         Assert.assertEquals("Por favor, digite sua senha", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar mensagem de erro para campo vazio Email")
-    public void validarMensagemDeErroCampoEmailVazio(){
+    public void validarMensagemDeErroCampoEmailVazio() {
         Assert.assertEquals("Por favor, digite seu e-mail", loginPage.validarMensagemDeErroEmailVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para campo vazio Senha")
-    public void validarMensagemDeErroCampoSenhaVazio(){
+    public void validarMensagemDeErroCampoSenhaVazio() {
         Assert.assertEquals("Por favor, digite sua senha", loginPage.validarMensagemDeErroSenha());
     }
 
-    @Entao("devo visualizar a senha digitada na tela")
-    public void visualizarSenhaDigitada(){
-        Assert.assertEquals("123", loginPage.visualizarSenha());
+    @Entao("devo visualizar tela para a mudança de senha")
+    public void validarModalRedefinirSenha() {
+        loginPage.validarModalRedefinirSenha();
     }
 
-    @Entao("devo visualizar tela para a mudança de senha")
-    public void validarModalRedefinirSenha(){
-        loginPage.validarModalRedefinirSenha();
+    @Dado("que faço login no sistema como administrador")
+    public void logarDashboardAdmin() {
+        loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
+        loginPage.preencherCampoSenhaValida("administrador");
+        loginPage.clicarBotaoEntrar();
+    }
+
+    @Dado("que faço login no sistema como gestor")
+    public void logarDashboardGestor() {
+        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
+        loginPage.preencherCampoSenhaValida("moisesnoah");
+        loginPage.clicarBotaoEntrar();
     }
 
 }
