@@ -16,6 +16,11 @@ public class DashboardAdminSteps {
         dashboardAminPage.clicarBtnDeletarColaborador();
     }
 
+    @E("clico no ícone da foto de perfil admin")
+    public void clicarBotaoFotoDePerfil() {
+        dashboardAminPage.clicarBtnFotoPerfil();
+    }
+
     @Quando("clico em ‘Cadastrar Colaborador’")
     public void clicarBotaoCadastrarColaborador() {
         dashboardAminPage.clicarBtnCadastrarColaborador();
@@ -33,9 +38,7 @@ public class DashboardAdminSteps {
 
     @Entao("devo visualizar mensagem de boas-vindas e lista de colaboradores na tela")
     public void paginaPrincipalAdmin() throws InterruptedException {
-        //Thread.sleep(5000);
         Assert.assertEquals("Dashboard Colaboradores", dashboardAminPage.validarTextoDashboardAdmin());
-        //Assert.assertEquals("Seja bem-vindo(a) paulo!", dashboardAminPage.validarMensagemDeBoasVindasAdmin());
         Assert.assertTrue(dashboardAminPage.validarMensagemDeBoasVindasAdmin().contains("Seja bem-vindo(a)"));
     }
 
@@ -53,6 +56,20 @@ public class DashboardAdminSteps {
     public void mensagemConfirmacaoColaboradorDeletado() {
         Assert.assertEquals("Colaborador desativado com sucesso.",
                 dashboardAminPage.validarMensagemDeColaboradorDeletado());
+    }
+
+    @E("que acesso a página de Editar Usuário admin")
+    public void acessarPaginaEditarUsuario() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardAminPage.clicarBtnFotoPerfil();
+        dashboardAminPage.clicarBtnEditar();
+    }
+
+    @E("que acesso a página de Alterar Senha de usuário logado admin")
+    public void acessarPaginaAlterarSenhaUsuarioLogado() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardAminPage.clicarBtnFotoPerfil();
+        dashboardAminPage.clicarBtnTrocarSenha();
     }
 
     @E("que acesso a página de Cadastrar Colaborador")

@@ -6,7 +6,6 @@ import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.junit.Assert;
 
-
 public class DashboardUsuarioSteps {
 
     DashboardUsuarioPage dashboardUsuarioPage = new DashboardUsuarioPage();
@@ -14,11 +13,6 @@ public class DashboardUsuarioSteps {
     @E("que clico em 'Menu'")
     public void clicarBotaoMenu() throws InterruptedException {
         dashboardUsuarioPage.clicarBtnMenu();
-    }
-
-    @E("clico no ícone da foto de perfil")
-    public void clicarBotaoFotoDePerfil() {
-        dashboardUsuarioPage.clicarBtnFotoPerfil();
     }
 
     @Quando("clico em ‘Trocar Senha’")
@@ -49,20 +43,6 @@ public class DashboardUsuarioSteps {
     @Entao("devo ser redirecionado para a página de ‘Login’")
     public void paginaLogin() {
         Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", dashboardUsuarioPage.validarUrlAtual());
-    }
-
-    @E("que acesso a página de Editar Usuário")
-    public void acessarPaginaEditarUsuario() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardUsuarioPage.clicarBtnFotoPerfil();
-        dashboardUsuarioPage.clicarBtnEditar();
-    }
-
-    @E("que acesso a página de Alterar Senha de usuário logado")
-    public void acessarPaginaAlterarSenhaUsuarioLogado() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardUsuarioPage.clicarBtnFotoPerfil();
-        dashboardUsuarioPage.clicarBtnTrocarSenha();
     }
 
 }

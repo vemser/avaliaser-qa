@@ -38,7 +38,7 @@ Funcionalidade: Dashboard Gestor
     Quando clico em ‘Avaliar Acompanhamento’
     Então devo ser redirecionado para a página de ‘Avaliar Acompanhamento’
 
-  @wip
+  @smoke
   Cenario: Validar botão ‘Editar Aluno’ com sucesso
     Dado que faço login no sistema como gestor
     Quando clico em ‘Editar Aluno’
@@ -54,20 +54,20 @@ Funcionalidade: Dashboard Gestor
   @smoke
   Cenario: Validar botão ‘Trocar Senha’ com sucesso
     Dado que faço login no sistema como gestor
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil gestor
     Quando clico em ‘Trocar Senha’
     Então devo ser redirecionado para a página de ‘Alterar Senha’
 
   @smoke
   Cenario: Validar botão ‘Editar’ com sucesso
     Dado que faço login no sistema como gestor
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil gestor
     Quando clico em ‘Editar Usuário’
     Então devo ser redirecionado para a página de ‘Editar Usuário’
 
   @smoke
   Cenario: Validar botão ‘Sair’ com sucesso
     Dado que faço login no sistema como gestor
-    E clico no ícone da foto de perfil
+    E clico no ícone da foto de perfil gestor
     Quando clico em ‘Sair’
     Então devo ser redirecionado para a página de ‘Login’

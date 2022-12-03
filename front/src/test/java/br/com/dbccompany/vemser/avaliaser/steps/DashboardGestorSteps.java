@@ -1,6 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.steps;
 
 import br.com.dbccompany.vemser.avaliaser.pages.DashboardGestorPage;
+import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.junit.Assert;
@@ -8,6 +9,11 @@ import org.junit.Assert;
 public class DashboardGestorSteps {
 
     DashboardGestorPage dashboardGestorPage = new DashboardGestorPage();
+
+    @E("clico no ícone da foto de perfil gestor")
+    public void clicarBotaoFotoDePerfil() {
+        dashboardGestorPage.clicarBtnFotoPerfil();
+    }
 
     @Quando("clico em ‘Lista acompanhamentos’")
     public void clicarBotaoListaAcompanhamentos() {
@@ -27,7 +33,6 @@ public class DashboardGestorSteps {
     @Entao("devo visualizar mensagem de boas-vindas e lista de alunos na tela")
     public void paginaPrincipalAdmin() {
         Assert.assertEquals("Dashboard Alunos", dashboardGestorPage.validarTextoDashboardGestor());
-        //Assert.assertEquals("Seja bem-vindo(a)", dashboardGestorPage.validarMensagemDeBoasVindasGestor());
         Assert.assertTrue(dashboardGestorPage.validarMensagemDeBoasVindasGestor().contains("Seja bem-vindo(a)"));
     }
 
