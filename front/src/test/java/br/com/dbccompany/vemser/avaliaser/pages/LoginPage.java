@@ -31,7 +31,7 @@ public class LoginPage extends BasePage{
             By.cssSelector("#erro-senha");
 
     private static final By mensagemErroEmailOuSenhaIncorreto =
-            By.cssSelector("\\#32  > div.Toastify__toast-body");
+            By.cssSelector(".Toastify__toast-body > :nth-child(2)");
 
     private static final By mensagemBoasVindas =
             By.cssSelector("#\\31  > div.Toastify__toast-body");
@@ -49,11 +49,6 @@ public class LoginPage extends BasePage{
         sendKeys(campoEmail,"teste.qa@naoexiste.com");
     }
 
-    @Step("Preencher campo com email vazio")
-    public void preencherCampoEmailVazio() {
-        sendKeys(campoEmail,"");
-    }
-
     @Step("Preencher campo com senha válida")
     public void preencherCampoSenhaValida(String senha) {
         sendKeys(campoSenha,senha);
@@ -61,12 +56,7 @@ public class LoginPage extends BasePage{
 
     @Step("Preencher campo com senha inválida")
     public void preencherCampoSenhaInvalida() {
-        sendKeys(campoSenha,"1");
-    }
-
-    @Step("Preencher campo com senha vazia")
-    public void preencherCampoSenhaVazia() {
-        sendKeys(campoSenha,"");
+        sendKeys(campoSenha,"123");
     }
 
     @Step("Clicar no botão Entrar")
@@ -99,8 +89,9 @@ public class LoginPage extends BasePage{
         return getCurrentUrl();
     }
 
-    @Step("Clicar Visualizar Senha")
+    @Step("Visualizar senha digitada")
     public String visualizarSenha(){
+       //return getText(campoSenha);
        return getAttributeInnerText(campoSenha);
     }
 

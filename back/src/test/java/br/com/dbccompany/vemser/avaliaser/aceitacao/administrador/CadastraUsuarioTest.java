@@ -45,8 +45,8 @@ public class CadastraUsuarioTest {
 
         administradorService.deletarTeste(usuarioDTO.getIdUsuario())
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
         ;
     }
 

@@ -9,6 +9,7 @@ public class BaseSteps extends Browser {
     @Before
     public void abrirNavegador(){
         browserUp("https://avaliaser-front-flame.vercel.app/");
+        //browserUp("http://vemser-dbc.dbccompany.com.br:39000/matxd/avaliaser-front");
 //        driver.manage().deleteAllCookies();
     }
 
