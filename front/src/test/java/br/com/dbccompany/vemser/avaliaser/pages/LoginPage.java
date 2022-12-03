@@ -115,7 +115,7 @@ public class LoginPage extends BasePage{
     }
 
     @Step("Validar Mensagem de Boas Vindas")
-    public String validarMensagemDeBoasVindas(){
+    public String validarMensagemDeBoasVindas() {
         return getAttributeInnerText(mensagemBoasVindas);
     }
 

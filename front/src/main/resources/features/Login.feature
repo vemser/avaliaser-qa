@@ -77,14 +77,14 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Senha
 
-  @wip
+  @smoke
    Cenario: Validar botão de 'Mostrar Senha'
      Dado que estou na página inicial de login
      E que preencho o campo senha válido
      Quando clico em ‘Mostrar Senha’
      Então devo visualizar a senha digitada na tela
 
-  @wip
+  @smoke
   Cenario:  Validar link ‘Esqueci minha senha’
     Dado que estou na página inicial de login
     Quando clico no link ‘Redefinir senha’
