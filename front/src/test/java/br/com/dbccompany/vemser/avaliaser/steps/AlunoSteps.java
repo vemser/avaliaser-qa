@@ -11,11 +11,6 @@ public class AlunoSteps {
 
     AlunoPage alunoPage = new AlunoPage();
 
-    @E("que clico em 'Menu'")
-    public void clicarBotaoMenu() {
-        alunoPage.clicarBtnMenu();
-    }
-
     @E("clico em ‘Deletar Aluno’")
     public void clicarBotaoDeletarAluno() {
         alunoPage.clicarBtnDeletarAluno();
@@ -39,7 +34,7 @@ public class AlunoSteps {
 
     @Entao("devo ser redirecionado para a página de ‘Cadastrar Aluno’")
     public void paginaCadastrarAluno() {
-        Assert.assertTrue(alunoPage.validarUrlAtual().contains("/aluno/cadastrar-aluno"));
+        Assert.assertTrue(alunoPage.validarUrlAtual().contains("/cadastrar-aluno"));
     }
 
     @Entao("devo ser redirecionado para a página de ‘Editar Aluno’")
