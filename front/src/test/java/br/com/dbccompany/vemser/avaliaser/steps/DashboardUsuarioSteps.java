@@ -12,7 +12,7 @@ public class DashboardUsuarioSteps {
     DashboardUsuarioPage dashboardUsuarioPage = new DashboardUsuarioPage();
 
     @E("que clico em 'Menu'")
-    public void clicarBotaoMenu() {
+    public void clicarBotaoMenu() throws InterruptedException {
         dashboardUsuarioPage.clicarBtnMenu();
     }
 

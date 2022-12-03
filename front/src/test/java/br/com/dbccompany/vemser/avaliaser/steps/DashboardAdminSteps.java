@@ -32,9 +32,11 @@ public class DashboardAdminSteps {
     }
 
     @Entao("devo visualizar mensagem de boas-vindas e lista de colaboradores na tela")
-    public void paginaPrincipalAdmin() {
+    public void paginaPrincipalAdmin() throws InterruptedException {
+        //Thread.sleep(5000);
         Assert.assertEquals("Dashboard Colaboradores", dashboardAminPage.validarTextoDashboardAdmin());
-        Assert.assertEquals("Seja bem-vindo(a) paulo!", dashboardAminPage.validarMensagemDeBoasVindasAdmin());
+        //Assert.assertEquals("Seja bem-vindo(a) paulo!", dashboardAminPage.validarMensagemDeBoasVindasAdmin());
+        Assert.assertTrue(dashboardAminPage.validarMensagemDeBoasVindasAdmin().contains("Seja bem-vindo(a)"));
     }
 
     @Entao("devo ser redirecionado para a página de ‘Cadastrar Colaborador’")
@@ -51,21 +53,6 @@ public class DashboardAdminSteps {
     public void mensagemConfirmacaoColaboradorDeletado() {
         Assert.assertEquals("Colaborador desativado com sucesso.",
                 dashboardAminPage.validarMensagemDeColaboradorDeletado());
-    }
-
-    @Entao("devo ser redirecionado para a página de ‘Alterar Senha’")
-    public void paginaTrocarSenha() {
-        Assert.assertTrue(dashboardAminPage.validarUrlAtual().contains("/alterar-senha"));
-    }
-
-    @Entao("devo ser redirecionado para a página de ‘Editar Usuário’")
-    public void paginaEditarUsuario() {
-        Assert.assertTrue(dashboardAminPage.validarUrlAtual().contains("/editar-usuario"));
-    }
-
-    @Entao("devo ser redirecionado para a página de ‘Login’")
-    public void paginaLogin() {
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", dashboardAminPage.validarUrlAtual());
     }
 
     @E("que acesso a página de Cadastrar Colaborador")

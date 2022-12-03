@@ -7,9 +7,7 @@ public class DashboardUsuarioPage extends BasePage{
 
     private static final By btnMenu = By.cssSelector("#root > header > div > div > div.MuiBox-root.css-14knnik > button");
     private static final By btnDashboard =
-            By.cssSelector("#menu-appbar > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded." +
-                    "MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded." +
-                    "MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(1)");
+            By.cssSelector("#dashboard-visible-admin");
     private static final By btnFotoPerfil = By.cssSelector("#menu-avatar-admin");
     private static final By btnTrocarSenha = By.cssSelector("#menu-appbar > div.MuiPaper-root.MuiPaper-elevation." +
             "MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded." +
@@ -22,7 +20,8 @@ public class DashboardUsuarioPage extends BasePage{
             "MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(5)");
 
     @Step("Clicar no botão Menu")
-    public void clicarBtnMenu(){
+    public void clicarBtnMenu() throws InterruptedException {
+        Thread.sleep(5000);
         click(btnMenu);
     }
 

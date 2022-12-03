@@ -5,7 +5,7 @@ Funcionalidade: Dashboard Admin
 
   Contexto: O usuario deve acessar página principal de Administrador
 
-  @smoke
+  @error
   Cenario: Validar página Dashboard Administrador com sucesso
     Dado que faço login no sistema como administrador
     Então devo visualizar mensagem de boas-vindas e lista de colaboradores na tela
