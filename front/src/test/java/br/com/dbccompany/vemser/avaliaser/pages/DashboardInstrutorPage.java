@@ -3,7 +3,7 @@ package br.com.dbccompany.vemser.avaliaser.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class PrincipalInstrutorPage extends BasePage {
+public class DashboardInstrutorPage extends BasePage {
 
     private static final By logoDBC =
             By.cssSelector("#logo-dbc-instrutor > img");
@@ -24,7 +24,7 @@ public class PrincipalInstrutorPage extends BasePage {
             By.cssSelector("#menu-appbar > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(3)");
 
     private static final By btnSair =
-            By.cssSelector("#menu-appbar > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(5)");
+            By.xpath("//*[@id=\"menu-appbar\"]/div[3]/ul/li[3]");
 
     private static final By btnDashboard =
             By.cssSelector("#menu-appbar > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(1)");
@@ -41,13 +41,22 @@ public class PrincipalInstrutorPage extends BasePage {
 
 
     private static final By abrirDetalhesAluno =
-            By.cssSelector("#menu-avatar-instrutor");
+            By.cssSelector("#nome");
 
     private static final By btnEditarAluno =
-            By.cssSelector("#botao-deletar-instrutor");
+            By.cssSelector("#botao-editar-5");
 
     private static final By btnExcluirAluno =
-            By.cssSelector("#botao-deletar-instrutor");
+            By.cssSelector("#botao-deletar-5");
+
+    private static final By modalExclusaoAluno =
+            By.cssSelector("#modal-modal-titulo");
+
+    private static final By confirmarExcluirAluno =
+            By.cssSelector("#botao-confirmar-modal");
+
+    private static final By validarMensagemExcluirAluno =
+            By.cssSelector("#\\31 1");
 
     private static final By btnQuantidadePorPagina =
             By.cssSelector("#root > div.MuiBox-root.css-1u4uuh3 > div > div.MuiTablePagination-root.css-o9ey65 > div > div.MuiInputBase-root.MuiInputBase-colorPrimary.css-rmmij8");
@@ -66,7 +75,7 @@ public class PrincipalInstrutorPage extends BasePage {
     }
 
     @Step("Clicar no menu")
-    public void clicarMenu() {
+    public void clicarBtnMenu() {
         click(btnMenu);
     }
 
@@ -122,7 +131,7 @@ public class PrincipalInstrutorPage extends BasePage {
 
     @Step("Clicar no botão excluir aluno")
     public void clicarBtnExcluirAluno() {
-        click(btnEditarAluno);
+        click(btnExcluirAluno);
     }
 
     @Step("Clicar no botão próxima página")
@@ -135,7 +144,30 @@ public class PrincipalInstrutorPage extends BasePage {
         click(btnPaginaAnterior);
     }
 
+    @Step("Validar nome do Instrutor Logado")
+    public String validarNomeInstrutorLogado() {
+        return getText(validacaoLogin);
+    }
 
+    @Step("Validar url atual")
+    public String validarUrlAtual() {
+        return getCurrentUrl();
+    }
+
+    @Step
+    public String validarModalExclusaoAluno(){
+        return getAttributeInnerText(modalExclusaoAluno);
+    }
+
+    @Step
+    public void clicarConfirmarExcluirAluno(){
+        click(confirmarExcluirAluno);
+    }
+
+    @Step
+    public String validarExclusaoAluno(){
+        return getAttributeInnerText(validarMensagemExcluirAluno);
+    }
 
 
 

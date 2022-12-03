@@ -56,6 +56,11 @@ public class LoginPage extends BasePage{
         sendKeys(campoSenha,"123");
     }
 
+    @Step("Preencher campo com senha vazia")
+    public void preencherCampoSenhaVazia() {
+        sendKeys(campoSenha,"");
+    }
+
     @Step("Clicar no botão Entrar")
     public void clicarBotaoEntrar() {
         click(btnEntrar);
@@ -92,7 +97,7 @@ public class LoginPage extends BasePage{
     }
 
     @Step("Validar Mensagem de Boas Vindas")
-    public String validarMensagemDeBoasVindas(){
+    public String validarMensagemDeBoasVindas() {
         return getAttributeInnerText(mensagemBoasVindas);
     }
 
