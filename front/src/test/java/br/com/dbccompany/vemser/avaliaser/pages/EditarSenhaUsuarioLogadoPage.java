@@ -39,13 +39,8 @@ public class EditarSenhaUsuarioLogadoPage extends BasePage{
         return getAttributeInnerText(msgConfirmacaoOuErro);
     }
 
-    @Step("Validar mensagem erro para senha antiga inválido")
-    public String validarMensagemDeErroSenhaAntigaInvalido(){
-        return getAttributeInnerText(msgConfirmacaoOuErro);
-    }
-
     @Step("Validar mensagem de erro para senha antiga vazio")
-    public String validarMensagemDeErroSenhaAntigaVazio() {
+    public String validarMensagemDeErroSenhaAntigaInvalidoOuVazio() {
         return getText(msgErroSenhaAntiga);
     }
 

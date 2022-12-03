@@ -35,6 +35,11 @@ public class DashboardGestorPage extends BasePage{
         return getText(msgBoasVindas);
     }
 
+    @Step("Clicar no botão Menu")
+    public void clicarBtnMenu(){
+        click(btnMenu);
+    }
+
     @Step("Clicar no botão Lista acompanhamentos")
     public void clicarBtnListaAcompanhamentos() {
         click(btnListaAcompanhamentos);

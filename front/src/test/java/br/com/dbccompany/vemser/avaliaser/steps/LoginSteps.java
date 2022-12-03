@@ -100,7 +100,7 @@ public class LoginSteps {
     @Entao("devo visualizar mensagem de erro email ou senha")
     public void validarMensagemDeErroEmailOuSenhaIncorretos() {
         Assert.assertEquals("Só aceitamos email @dbccompany.com.br", loginPage.validarMensagemDeErroEmailInvalido());
-        Assert.assertEquals("A senha deve ter no mínimo 3 caracteres", loginPage.validarMensagemDeErroSenha());
+        Assert.assertEquals("A senha deve ter no mínimo 8 caracteres", loginPage.validarMensagemDeErroSenha());
     }
 
     @Entao("devo visualizar mensagem de erro Email")

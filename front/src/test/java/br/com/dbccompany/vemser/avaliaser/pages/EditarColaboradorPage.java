@@ -24,8 +24,8 @@ public class EditarColaboradorPage extends BasePage{
         sendKeys(campoEmail, email);
     }
 
-    @Step("Clicar no botão Editar")
-    public void clicarBtnEditar(){
+    @Step("Clicar no botão Editar colaborador")
+    public void clicarBtnEditarColaborador() {
         click(btnEditar);
     }
 

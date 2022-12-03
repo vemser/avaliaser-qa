@@ -54,14 +54,14 @@ public class EditarSenhaUsuarioLogadoSteps {
 
     @Entao("devo visualizar mensagem de erro para senha antiga inválida")
     public void validarMensagemErroSenhaAntigaInvalido() {
-        Assert.assertEquals("Houve um erro",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaInvalido());
+        Assert.assertEquals("A nova senha deve conter no mínimo 8 caracteres",
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaInvalidoOuVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para senha antiga vazio")
     public void validarMensagemErroSenhaAntigaVazio() {
         Assert.assertEquals("Por favor, digite sua antiga senha",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaVazio());
+                editarSenhaUsuarioLogadoPage.validarMensagemDeErroSenhaAntigaInvalidoOuVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para senha nova inválida")

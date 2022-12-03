@@ -41,9 +41,9 @@ public class EditarColaboradorSteps {
         editarColaboradorPage.alterarCampoEmail(StringUtils.EMPTY);
     }
 
-    @Quando("clico em ‘Editar’")
-    public void clicarBotaoEditar() {
-        editarColaboradorPage.clicarBtnEditar();
+    @Quando("clico em ‘Editar’ para colaborador")
+    public void clicarBotaoEditarColaborador() {
+        editarColaboradorPage.clicarBtnEditarColaborador();
     }
 
     @Entao("devo visualizar mensagem de confirmação de edição e ser redirecionado para a página Dashboard")

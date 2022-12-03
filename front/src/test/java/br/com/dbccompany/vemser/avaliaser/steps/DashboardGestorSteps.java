@@ -51,4 +51,11 @@ public class DashboardGestorSteps {
         Assert.assertTrue(dashboardGestorPage.validarUrlAtual().contains("/avaliar-acompanhamento"));
     }
 
+    @E("que acesso a página de ‘Lista acompanhamentos’")
+    public void acessarPaginaListaAcompanhamentos() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardGestorPage.clicarBtnMenu();
+        dashboardGestorPage.clicarBtnListaAcompanhamentos();
+    }
+
 }
