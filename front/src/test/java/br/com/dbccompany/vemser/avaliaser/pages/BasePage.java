@@ -12,6 +12,11 @@ public class BasePage extends Elements {
         waitVisibility(by).click();
     }
 
+    public static void clear(By by){
+        waitElement(by);
+        waitVisibility(by).clear();
+    }
+
     public static void sendKeys(By by, String texto){
         waitElement(by);
         waitVisibility(by).sendKeys(texto);

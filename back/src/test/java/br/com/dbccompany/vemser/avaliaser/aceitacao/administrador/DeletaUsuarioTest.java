@@ -24,7 +24,7 @@ public class DeletaUsuarioTest {
     UsuarioBuilder usuarioBuilder = new UsuarioBuilder();
 
     @Test
-    @Tag("deleta")
+    @Tag("delete")
     @Description("Deve deletar usuario com sucesso")
     public void deveDeletarUsuarioComSucesso() {
         // Deletar funciona de forma exclusão lógica

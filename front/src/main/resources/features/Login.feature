@@ -37,7 +37,7 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro email ou senha
 
-  @error
+  @smoke
   Cenario:  Validar tentativa de login com email inválido
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido
@@ -45,7 +45,7 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro Email
 
-  @smoke
+  @error
   Cenario: Validar tentativa de login com senha inválida
     Dado que estou na página inicial de login
     E que preencho o campo com email válido
@@ -56,15 +56,12 @@ Funcionalidade: Login
   @smoke
   Cenario: Validar tentativa de login sem preencher campos obrigatórios
     Dado que estou na página inicial de login
-    E que não preencho o campo email
-    E que não preencho o campo senha
     Quando clico em ‘Entrar’
     Então devo visualizar mensagens de erro para campo vazio Email e Senha
 
   @smoke
-  Cenario: Validar tentativa de login sem preencher usuário
+  Cenario: Validar tentativa de login sem preencher email
     Dado que estou na página inicial de login
-    E que não preencho o campo email
     E que preencho o campo senha válido
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Email
@@ -73,18 +70,17 @@ Funcionalidade: Login
   Cenario:  Validar tentativa de login sem preencher senha
     Dado que estou na página inicial de login
     E que preencho o campo com email válido
-    E que não preencho o campo senha
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Senha
 
-  @wip
+  @error
    Cenario: Validar botão de 'Mostrar Senha'
      Dado que estou na página inicial de login
      E que preencho o campo senha válido
      Quando clico em ‘Mostrar Senha’
      Então devo visualizar a senha digitada na tela
 
-  @wip
+  @smoke
   Cenario:  Validar link ‘Esqueci minha senha’
     Dado que estou na página inicial de login
     Quando clico no link ‘Redefinir senha’
