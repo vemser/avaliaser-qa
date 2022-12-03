@@ -29,7 +29,7 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo ser redirecionado para a página principal de instrutor e visualizar mensagem de boas-vindas
 
-  @error
+  @smoke
   Cenario: Validar tentativa de login preenchendo campos inválidos
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido

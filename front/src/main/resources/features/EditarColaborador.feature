@@ -11,7 +11,7 @@ Funcionalidade: Editar Colaborador
     E que acesso a página de Editar Colaborador
     E que altero o campo nome válido
     E que altero o campo email válido
-    Quando clico em ‘Editar’
+    Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de confirmação de edição e ser redirecionado para a página Dashboard
 
   @smoke
@@ -20,7 +20,7 @@ Funcionalidade: Editar Colaborador
     E que acesso a página de Editar Colaborador
     E que altero o campo nome inválido
     E que altero o campo email válido
-    Quando clico em ‘Editar’
+    Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de erro para editar nome inválido
 
   @smoke
@@ -29,7 +29,7 @@ Funcionalidade: Editar Colaborador
     E que acesso a página de Editar Colaborador
     E que altero o campo nome para vazio
     E que altero o campo email válido
-    Quando clico em ‘Editar’
+    Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de erro para editar nome vazio
 
   @smoke
@@ -38,7 +38,7 @@ Funcionalidade: Editar Colaborador
     E que acesso a página de Editar Colaborador
     E que altero o campo nome válido
     E que altero o campo email inválido
-    Quando clico em ‘Editar’
+    Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de erro para editar email inválido
 
   @smoke
@@ -47,7 +47,7 @@ Funcionalidade: Editar Colaborador
     E que acesso a página de Editar Colaborador
     E que altero o campo nome válido
     E que altero o campo email para vazio
-    Quando clico em ‘Editar’
+    Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de erro para editar email vazio
 
 
