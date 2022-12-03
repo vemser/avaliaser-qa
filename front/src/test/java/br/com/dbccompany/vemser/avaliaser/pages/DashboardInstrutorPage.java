@@ -3,7 +3,7 @@ package br.com.dbccompany.vemser.avaliaser.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class PrincipalInstrutorPage extends BasePage {
+public class DashboardInstrutorPage extends BasePage {
 
     private static final By logoDBC =
             By.cssSelector("#logo-dbc-instrutor > img");

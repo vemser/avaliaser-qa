@@ -5,33 +5,33 @@ Funcionalidade: Dashboard Gestor
 
   Contexto: O usuario deve acessar página principal de Gestor de Pessoas
 
-  @wip
+  @smoke
   Cenario: Validar página Dashboard Gestor de Pessoas com sucesso
     Dado que faço login no sistema como gestor
     Então devo visualizar mensagem de boas-vindas e lista de alunos na tela
 
-  @wip
+  @smoke
   Cenario: Validar botão ‘Lista acompanhamentos’ com sucesso
     Dado que faço login no sistema como gestor
     E que clico em 'Menu'
     Quando clico em ‘Lista acompanhamentos’
     Então devo ser redirecionado para a página de ‘Lista Acompanhamentos’
 
-  @wip
+  @smoke
   Cenario: Validar botão ‘Cadastrar Aluno’ com sucesso
     Dado que faço login no sistema como gestor
     E que clico em 'Menu'
     Quando clico em ‘Cadastrar Aluno’
     Então devo ser redirecionado para a página de ‘Cadastrar Aluno’
 
-  @wip
+  @smoke
   Cenario: Validar botão ‘Cadastrar Acompanhamento’ com sucesso
     Dado que faço login no sistema como gestor
     E que clico em 'Menu'
     Quando clico em ‘Cadastrar Acompanhamento’
     Então devo ser redirecionado para a página de ‘Cadastrar Acompanhamento’
 
-  @wip
+  @smoke
   Cenario: Validar botão ‘Avaliar Acompanhamento’ com sucesso
     Dado que faço login no sistema como gestor
     E que clico em 'Menu'

@@ -66,6 +66,12 @@ public class LoginSteps {
         loginPage.preencherCampoSenhaInvalida();
     }
 
+    @E("que não preencho o campo senha")
+    public void preencherCampoSenhaVazia() {
+        loginPage.preencherCampoSenhaVazia();
+    }
+
+
     @Quando("clico em ‘Entrar’")
     public void clicarBotaoEntrar() {
         loginPage.clicarBotaoEntrar();
@@ -145,6 +151,13 @@ public class LoginSteps {
     public void logarDashboardGestor() {
         loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
         loginPage.preencherCampoSenhaValida("moisesnoah");
+        loginPage.clicarBotaoEntrar();
+    }
+
+    @Dado("que faço login no sistema como instrutor")
+    public void logarDashboardInstrutor() {
+        loginPage.preencherCampoEmailValido("mayra.amaral@dbccompany.com.br");
+        loginPage.preencherCampoSenhaValida("a!0SC*C9");
         loginPage.clicarBotaoEntrar();
     }
 
