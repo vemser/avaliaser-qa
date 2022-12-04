@@ -1,7 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.steps;
 
 import br.com.dbccompany.vemser.avaliaser.pages.AlunoPage;
-import br.com.dbccompany.vemser.avaliaser.pages.DashboardGestorPage;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -16,11 +15,6 @@ public class AlunoSteps {
         alunoPage.clicarBtnDeletarAluno();
     }
 
-    @Quando("clico em ‘Cadastrar Aluno’")
-    public void clicarBotaoCadastrarAluno() {
-        alunoPage.clicarBtnCadastrarAluno();
-    }
-
     @Quando("clico em ‘Editar Aluno’")
     public void clicarBotaoEditarAluno() {
         alunoPage.clicarBtnEditarAluno();
@@ -30,7 +24,6 @@ public class AlunoSteps {
     public void clicarBotaoConfirmarDeletar() {
         alunoPage.clicarBtnConfirmarDeletar();
     }
-
 
     @Entao("devo ser redirecionado para a página de ‘Cadastrar Aluno’")
     public void paginaCadastrarAluno() {

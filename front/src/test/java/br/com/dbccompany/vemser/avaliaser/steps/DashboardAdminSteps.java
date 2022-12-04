@@ -25,6 +25,11 @@ public class DashboardAdminSteps {
         dashboardAminPage.clicarBtnCadastrarColaborador();
     }
 
+    @Quando("clico em um colaborador")
+    public void clicarLinkColaborador() {
+        dashboardAminPage.clicarColaborador();
+    }
+
     @Quando("clico em ‘Editar Colaborador’")
     public void clicarBotaoEditarColaborador() {
         dashboardAminPage.clicarBtnEditarColaborador();
@@ -37,13 +42,19 @@ public class DashboardAdminSteps {
 
     @Entao("devo visualizar mensagem de boas-vindas e lista de colaboradores na tela")
     public void paginaPrincipalAdmin() throws InterruptedException {
-        Assert.assertEquals("Dashboard Colaboradores", dashboardAminPage.validarTextoDashboardAdmin());
+        Thread.sleep(5000);
+        Assert.assertTrue(dashboardAminPage.validarTextoDashboardAdmin().contains("Dashboard Colaboradores"));
         Assert.assertTrue(dashboardAminPage.validarMensagemDeBoasVindasAdmin().contains("Seja bem-vindo(a)"));
     }
 
     @Entao("devo ser redirecionado para a página de ‘Cadastrar Colaborador’")
     public void paginaCadastrarColaborador() {
         Assert.assertTrue(dashboardAminPage.validarUrlAtual().contains("/cadastrar-colaborador"));
+    }
+
+    @Entao("devo visualizar detalhes deste colaborador")
+    public void paginaDetalhesColaborador() {
+        Assert.assertTrue(dashboardAminPage.validarUrlAtual().contains("/detalhes-colaborador"));
     }
 
     @Entao("devo ser redirecionado para a página de ‘Editar Colaborador’")
@@ -58,7 +69,7 @@ public class DashboardAdminSteps {
     }
 
     @E("que acesso a página de Editar Usuário admin")
-    public void acessarPaginaEditarUsuario() throws InterruptedException {
+    public void acessarPaginaEditarUsuarioAdmin() throws InterruptedException {
         Thread.sleep(5000);
         dashboardAminPage.clicarBtnFotoPerfil();
         dashboardAminPage.clicarBtnEditar();

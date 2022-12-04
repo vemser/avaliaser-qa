@@ -30,6 +30,11 @@ public class DashboardGestorSteps {
         dashboardGestorPage.clicarBtnAvaliarAcompanhamento();
     }
 
+    @Quando("clico em ‘Cadastrar Aluno’ como gestor")
+    public void clicarBotaoCadastrarAlunoGestor() {
+        dashboardGestorPage.clicarBtnCadastrarAlunoGestor();
+    }
+
     @Entao("devo visualizar mensagem de boas-vindas e lista de alunos na tela")
     public void paginaPrincipalAdmin() {
         Assert.assertEquals("Dashboard Alunos", dashboardGestorPage.validarTextoDashboardGestor());
@@ -56,6 +61,13 @@ public class DashboardGestorSteps {
         Thread.sleep(5000);
         dashboardGestorPage.clicarBtnMenu();
         dashboardGestorPage.clicarBtnListaAcompanhamentos();
+    }
+
+    @E("que acesso a página de Cadastrar Aluno")
+    public void acessarPaginaCadastrarAluno() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardGestorPage.clicarBtnMenu();
+        dashboardGestorPage.clicarBtnCadastrarAlunoGestor();
     }
 
 }

@@ -5,7 +5,7 @@ Funcionalidade: Dashboard Admin
 
   Contexto: O usuario deve acessar página principal de Administrador
 
-  @error
+  @smoke
   Cenario: Validar página Dashboard Administrador com sucesso
     Dado que faço login no sistema como administrador
     Então devo visualizar mensagem de boas-vindas e lista de colaboradores na tela
@@ -16,6 +16,12 @@ Funcionalidade: Dashboard Admin
     E que clico em 'Menu'
     Quando clico em ‘Cadastrar Colaborador’
     Então devo ser redirecionado para a página de ‘Cadastrar Colaborador’
+
+  @smoke
+  Cenario: Validar visualizar detalhes colaborador com sucesso
+    Dado que faço login no sistema como administrador
+    Quando clico em um colaborador
+    Então devo visualizar detalhes deste colaborador
 
   @smoke
   Cenario: Validar botão ‘Editar Colaborador’ com sucesso

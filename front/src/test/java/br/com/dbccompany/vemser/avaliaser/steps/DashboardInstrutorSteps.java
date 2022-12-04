@@ -1,6 +1,5 @@
 package br.com.dbccompany.vemser.avaliaser.steps;
 
-import br.com.dbccompany.vemser.avaliaser.pages.LoginPage;
 import br.com.dbccompany.vemser.avaliaser.pages.DashboardInstrutorPage;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
@@ -9,9 +8,7 @@ import org.junit.Assert;
 
 public class DashboardInstrutorSteps {
 
-    LoginPage loginPage = new LoginPage();
     DashboardInstrutorPage dashboardInstrutorPage = new DashboardInstrutorPage();
-
 
     @Entao("devo visualizar nome do usuário instrutor e foto na tela")
     public void validarNomeEFoto(){
@@ -19,78 +16,62 @@ public class DashboardInstrutorSteps {
         Assert.assertTrue(validarLogin.contains("Instrutor"));
     }
 
-
-    @Entao("devo ser redirecionado para a página de ‘Cadastrar Aluno’")
-    public void validarRedirecionamentoTelaCadastroAluno(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/cadastrar-aluno", dashboardInstrutorPage.validarUrlAtual());
-    }
-
     @Quando("clico em ‘Cadastrar Feedback’")
-    public void cadastrarFeedback() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardInstrutorPage.clicarBtnMenu();
+    public void cadastrarFeedback() {
         dashboardInstrutorPage.clicarBtnCadastrarFeedback();
     }
 
     @Entao("devo ser redirecionado para a página de ‘Cadastrar Feedback’")
     public void validarRedirecionamentoTelaCadastroFeedback(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/cadastrar-feedback", dashboardInstrutorPage.validarUrlAtual());
+        Assert.assertTrue(dashboardInstrutorPage.validarUrlAtual().contains("/cadastrar-feedback"));
     }
 
     @Quando("clico em ‘Dashboard’")
-    public void clicarDashboard() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardInstrutorPage.clicarBtnMenu();
+    public void clicarDashboard() {
         dashboardInstrutorPage.clicarBtnDashboard();
     }
 
     @Entao("devo ser redirecionado para a página de ‘Dashboard’")
     public void validarRedirecionamentoTelaDashboard(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/instrutor", dashboardInstrutorPage.validarUrlAtual());
+        Assert.assertTrue(dashboardInstrutorPage.validarUrlAtual().contains("/dashboard/instrutor"));
     }
 
-
-
-    @Quando("clico em ‘Lista Feedback’")
-    public void clicarListaFeedback() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardInstrutorPage.clicarBtnMenu();
+    @Quando("clico em ‘Lista feedbacks’")
+    public void clicarListaFeedback() {
         dashboardInstrutorPage.clicarBtnListaFeedback();
     }
 
     @Entao("devo ser redirecionado para a página de ‘Lista Feedback’")
     public void validarRedirecionamentoTelaListaFeedback(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/lista-feedback", dashboardInstrutorPage.validarUrlAtual());
+        Assert.assertTrue(dashboardInstrutorPage.validarUrlAtual().contains("/lista-feedback"));
     }
-
-    @Quando("clico em Menu-Perfil")
-    public void clicarMenuPerfil() throws InterruptedException {
-        Thread.sleep(5000);
-        dashboardInstrutorPage.clicarMenuPerfil();
-    }
-
-    @E("que clico em ‘trocar senha’")
-    public void clicarTrocarSenha(){
-        dashboardInstrutorPage.clicarBtnTrocarSenha();
-    }
-
-    @Entao("devo ser redirecionado para a página de ‘Troca de Senha’")
-    public void validarRedirecionamentoTelaTrocaSenha(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/alterar-senha", dashboardInstrutorPage.validarUrlAtual());
-    }
-
 
     @Quando("clico em um aluno")
-    public void clicarDetalhesAluno() throws InterruptedException {
-        Thread.sleep(5000);
+    public void clicarDetalhesAluno() {
         dashboardInstrutorPage.abrirDetalhesAluno();
     }
 
     @Entao("devo ser redirecionado para a página de ‘Detalhes do Aluno’")
     public void validarRedirecionamentoDetalhesAluno(){
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/verificar-aluno", dashboardInstrutorPage.validarUrlAtual());
+        Assert.assertTrue(dashboardInstrutorPage.validarUrlAtual().contains("/verificar-aluno"));
 
     }
 
+    @E("clico no ícone da foto de perfil instrutor")
+    public void clicarBotaoFotoDePerfil() {
+        dashboardInstrutorPage.clicarMenuPerfil();
+    }
+
+    @Quando("clico em ‘Cadastrar Aluno’ como instrutor")
+    public void clicarBotaoCadastrarAlunoInstrutor() {
+        dashboardInstrutorPage.clicarBtnCadastrarAlunoInstrutor();
+    }
+
+    @E("que acesso a página de Cadastrar Feedback")
+    public void acessarPaginaCadastrarFeedback() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardInstrutorPage.clicarBtnMenu();
+        dashboardInstrutorPage.clicarBtnCadastrarFeedback();
+    }
 
 }

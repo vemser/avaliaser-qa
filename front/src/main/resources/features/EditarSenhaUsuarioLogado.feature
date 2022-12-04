@@ -5,7 +5,7 @@ Funcionalidade: Editar Senha Usuário Logado
 
   Contexto: O usuario logado deve editar sua senha no sistema
 
-  @ok
+  @smoke
   Cenario: Validar edição de senha de usuário logado com sucesso
     Dado que faço login no sistema como administrador
     E que acesso a página de Alterar Senha de usuário logado admin

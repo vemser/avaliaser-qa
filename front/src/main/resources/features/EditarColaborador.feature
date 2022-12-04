@@ -5,7 +5,7 @@ Funcionalidade: Editar Colaborador
 
   Contexto: O usuario deve editar colaborador no sistema
 
-  @ok
+  @smoke
   Cenario: Validar edição de colaborador com sucesso
     Dado que faço login no sistema como administrador
     E que acesso a página de Editar Colaborador
@@ -49,9 +49,3 @@ Funcionalidade: Editar Colaborador
     E que altero o campo email para vazio
     Quando clico em ‘Editar’ para colaborador
     Então devo visualizar mensagem de erro para editar email vazio
-
-
-
-
-
-

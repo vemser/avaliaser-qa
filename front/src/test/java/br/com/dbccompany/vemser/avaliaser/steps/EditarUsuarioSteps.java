@@ -35,7 +35,7 @@ public class EditarUsuarioSteps {
     public void validarEdicaoComSucesso() {
         Assert.assertEquals("Nome foi editado com sucesso!",
                 editarUsuarioPage.validarMensagemDeEdicaoComSucesso());
-        Assert.assertTrue(editarUsuarioPage.validarUrlAtual().contains("/dashboard/admin"));
+        Assert.assertTrue(editarUsuarioPage.validarUrlAtual().contains("/dashboard"));
     }
 
     @Entao("devo visualizar mensagem de erro para nome de usuário inválido")

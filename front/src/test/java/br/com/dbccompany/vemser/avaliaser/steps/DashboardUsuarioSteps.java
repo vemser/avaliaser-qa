@@ -42,7 +42,7 @@ public class DashboardUsuarioSteps {
 
     @Entao("devo ser redirecionado para a página de ‘Login’")
     public void paginaLogin() {
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", dashboardUsuarioPage.validarUrlAtual());
+        Assert.assertTrue(dashboardUsuarioPage.validarUrlAtual().contains("/vemser/avaliaser-front"));
     }
 
 }

@@ -42,8 +42,8 @@ public class CadastrarColaboradorSteps {
 
     @Entao("devo visualizar mensagem de sucesso na tela e ser redirecionado para a página Dashboard")
     public void validarCadastroComSucesso() {
-        Assert.assertEquals("Colaborador cadastrado com sucesso.",
-                cadastrarColaboradorPage.validarMensagemDeCadastroComSucesso());
+        Assert.assertTrue(cadastrarColaboradorPage.validarMensagemDeCadastroComSucesso()
+                .contains("Colaborador cadastrado com sucesso!"));
         Assert.assertTrue(cadastrarColaboradorPage.validarUrlAtual().contains("/dashboard/admin"));
     }
 

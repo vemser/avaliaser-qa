@@ -5,7 +5,7 @@ Funcionalidade: Cadastrar Colaborador
 
   Contexto: O usuario deve cadastrar colaborador no sistema
 
-  @error
+  @smoke
   Cenario: Validar cadastro de colaborador sem foto com sucesso
     Dado que faço login no sistema como administrador
     E que acesso a página de Cadastrar Colaborador
@@ -61,10 +61,3 @@ Funcionalidade: Cadastrar Colaborador
     E que preencho o campo email válido
     Quando clico em ‘Enviar’
     Então devo visualizar mensagem de erro para cargo vazio
-
-
-
-
-
-
-
