@@ -9,7 +9,7 @@ public class EditarAcompanhamentoPage extends BasePage{
     private static final By msgErroTitulo = By.cssSelector("#erro-titulo");
     private static final By msgErroDescricao = By.cssSelector("#erro-descricao");
     private static final By msgConfirmacaoOuErro = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
-    private static final By btnEditar = By.cssSelector("#botao-avaliar-acompanhamento-1");
+    private static final By btnEditar = By.cssSelector("#botao-avaliar-acompanhamento-28");
     private static final By btnEditarSalvar = By.cssSelector("#botao-azul");
 
     @Step("Alterar campo título")

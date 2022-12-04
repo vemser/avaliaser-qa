@@ -34,5 +34,3 @@ Funcionalidade: Editar Acompanhamento
     E que altero descrição acompanhamento para vazio
     Quando clico em ‘Editar’ acompanhamento para salvar alteração
     Então devo visualizar mensagem de erro para descrição vazio
-
-

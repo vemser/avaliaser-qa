@@ -17,10 +17,10 @@ public class DashboardAminPage extends BasePage{
             "MuiPaper-rounded.MuiPaper-elevation1.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded." +
             "MuiPaper-elevation8.MuiPopover-paper.css-177ic5c > ul > li:nth-child(1)");
     private static final By linkColaborador = By.cssSelector("#nome");
-    private static final By btnEditarColaborador = By.cssSelector("#botao-editar-admin-2");
-    private static final By btnDeletarColaborador = By.cssSelector("#botao-deletar-admin-2");
+    private static final By btnEditarColaborador = By.cssSelector("#botao-editar-admin-77");
+    private static final By btnDeletarColaborador = By.cssSelector("#botao-deletar-admin-190");
     private static final By btnConfirmarDeletar = By.cssSelector("#botao-confirmar-modal");
-    private static final By msgColaboradorDeletado = By.cssSelector("#\\32  > div.Toastify__toast-body > div:nth-child(2)");
+    private static final By msgColaboradorDeletado = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
 
     @Step("Validar título de página Dashboard Admin")
     public String validarTextoDashboardAdmin() {
@@ -79,7 +79,7 @@ public class DashboardAminPage extends BasePage{
 
     @Step("Validar mensagem de confirmação colaborador deletado")
     public String validarMensagemDeColaboradorDeletado(){
-        return getText(msgColaboradorDeletado);
+        return getAttributeInnerText(msgColaboradorDeletado);
     }
 
     @Step("Validar url atual")

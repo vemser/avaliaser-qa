@@ -17,7 +17,7 @@ public class CadastrarAlunoSteps {
 
     @E("que preencho o campo email de aluno válido")
     public void preencherCampoEmailValido() {
-        cadastrarAlunoPage.preencherCampoEmail("aluno.testefinal@dbccompany.com.br");
+        cadastrarAlunoPage.preencherCampoEmail("alunodbc.testefinal@dbccompany.com.br");
     }
 
     @E("que preencho o campo email de aluno inválido")

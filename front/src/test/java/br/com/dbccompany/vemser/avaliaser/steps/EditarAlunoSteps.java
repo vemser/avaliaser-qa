@@ -43,8 +43,8 @@ public class EditarAlunoSteps {
 
     @Entao("devo visualizar mensagem de sucesso de aluno editado e ser redirecionado para a página Dashboard")
     public void validarEdicaoComSucesso() {
-        Assert.assertTrue(editarAlunoPage.validarMensagemDeCadastroComSucesso()
-                .contains("Aluno atualizado com sucesso!"));
+        Assert.assertTrue(editarAlunoPage.validarMensagemDeEditadoComSucesso()
+                .contains("Aluno editado com sucesso!"));
         Assert.assertTrue(editarAlunoPage.validarUrlAtual().contains("/dashboard/gestor"));
     }
 

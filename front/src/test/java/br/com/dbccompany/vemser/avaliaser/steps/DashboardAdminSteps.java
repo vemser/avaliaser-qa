@@ -11,7 +11,8 @@ public class DashboardAdminSteps {
     DashboardAminPage dashboardAminPage = new DashboardAminPage();
 
     @E("clico em ‘Deletar Colaborador’")
-    public void clicarBotaoDeletarColaborador() {
+    public void clicarBotaoDeletarColaborador() throws InterruptedException {
+        Thread.sleep(5000);
         dashboardAminPage.clicarBtnDeletarColaborador();
     }
 
@@ -35,8 +36,8 @@ public class DashboardAdminSteps {
         dashboardAminPage.clicarBtnEditarColaborador();
     }
 
-    @Quando("clico em ‘Confirmar’")
-    public void clicarBotaoConfirmarDeletar() {
+    @Quando("clico em ‘Confirmar’ para deletar colaborador")
+    public void clicarBotaoConfirmarDeletarColaborador() {
         dashboardAminPage.clicarBtnConfirmarDeletar();
     }
 

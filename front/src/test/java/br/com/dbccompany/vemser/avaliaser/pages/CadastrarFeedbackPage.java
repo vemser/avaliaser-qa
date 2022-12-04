@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 
 public class CadastrarFeedbackPage extends BasePage{
 
-    private static final By selecionarStack = By.cssSelector("#frontend");
+    private static final By selecionarStack = By.cssSelector("#qa");
     private static final By campoSelecionarAluno = By.cssSelector("#idAluno");
-    private static final By alunoSelecionado = By.cssSelector("#alunos-geral-19");
+    private static final By alunoSelecionado = By.cssSelector("#alunos-qa-19");
     //private static final By alunoSelecionado = By.cssSelector("#alunos-front-20");
     private static final By campoInputDescricao = By.cssSelector("#descricao");
     private static final By campoSelecionarStatus = By.cssSelector("#status");
@@ -65,7 +65,7 @@ public class CadastrarFeedbackPage extends BasePage{
 
     @Step("validar mensagem erro campo descrição vazio")
     public String validarMensagemErroDescricaoVazio(){
-        return getAttributeInnerText(msgErroDescricaoVazio);
+        return getText(msgErroDescricaoVazio);
     }
 
 }

@@ -42,7 +42,7 @@ public class EditarAlunoPage extends BasePage{
     }
 
     @Step("Validar mensagem de edição com sucesso")
-    public String validarMensagemDeCadastroComSucesso(){
+    public String validarMensagemDeEditadoComSucesso(){
         return getAttributeInnerText(msgConfirmacaoOuErro);
     }
 

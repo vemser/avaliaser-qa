@@ -6,9 +6,9 @@ import org.openqa.selenium.By;
 public class AlunoPage extends BasePage{
 
     private static final By btnEditarAluno = By.cssSelector("#botao-editar-20");
-    private static final By btnDeletarAluno = By.cssSelector("#botao-deletar-20");
+    private static final By btnDeletarAluno = By.cssSelector("#botao-deletar-4");
     private static final By btnConfirmarDeletar = By.cssSelector("#botao-confirmar-modal");
-    private static final By msgAlunoDeletado = By.cssSelector("#\\32  > div.Toastify__toast-body > div:nth-child(2)");
+    private static final By msgAlunoDeletado = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
 
     @Step("Clicar no botão Editar Aluno")
     public void clicarBtnEditarAluno(){
@@ -27,7 +27,7 @@ public class AlunoPage extends BasePage{
 
     @Step("Validar mensagem de confirmação aluno deletado")
     public String validarMensagemDeAlunoDeletado(){
-        return getText(msgAlunoDeletado);
+        return getAttributeInnerText(msgAlunoDeletado);
     }
 
     @Step("Validar url atual")
