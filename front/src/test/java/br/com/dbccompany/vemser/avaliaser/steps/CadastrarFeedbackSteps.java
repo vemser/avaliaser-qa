@@ -9,30 +9,24 @@ public class CadastrarFeedbackSteps {
 
     CadastrarFeedbackPage feedbackPage = new CadastrarFeedbackPage();
 
-    @E("seleciono a stack")
-    public void selecionarStack(){
+    @E("preencho campo descrição de feedback válido")
+    public void preencherCampoDescricaoValido(){
+        feedbackPage.preencherDescricao();
+    }
+
+    @E("seleciono todos os campos válidos")
+    public void selecionarCamposValidos() throws InterruptedException {
         feedbackPage.clicarStack();
-    }
-
-    @E("seleciono o aluno")
-    public void selecionarAluno(){
         feedbackPage.clicarCampoSelecionarAluno();
+        Thread.sleep(2000);
         feedbackPage.clicarAlunoSelecionado();
-    }
-
-    @E("preencho o campo ´Descrição´")
-    public void preencherCampoDescricao(){
-        feedbackPage.preencherDescrição();
-    }
-
-    @E("seleciono o status")
-    public void selecionarStatus(){
         feedbackPage.clicarCampoSelecionarStatus();
+        Thread.sleep(2000);
         feedbackPage.clicarStatusSelecionado();
     }
 
-    @E("clico em enviar")
-    public void clicarEnviar(){
+    @E("clico em enviar feedback")
+    public void clicarEnviarFeedback(){
         feedbackPage.clicarBtnEnviar();
     }
 
@@ -41,5 +35,16 @@ public class CadastrarFeedbackSteps {
         Assert.assertEquals("Feedback cadastrado com sucesso", feedbackPage.validarCadastroFeedback());
     }
 
-}
+    @Entao("devo visualizar mensagem de erro para descrição de feedback vazia")
+    public void validarMensagemErroDescricaoVazio(){
+        Assert.assertEquals("Por favor, digite alguma coisa na descrição",
+                feedbackPage.validarMensagemErroDescricaoVazio());
+    }
 
+    @Entao("devo visualizar mensagem de erro para selecionar campos obrigatórios")
+    public void validarMensagemErroCamposObrigatorios() throws InterruptedException {
+        Thread.sleep(5000);
+        Assert.assertTrue(feedbackPage.validarMensagemErroDescricaoVazio().contains("Preencha todos os campos!"));
+    }
+
+}

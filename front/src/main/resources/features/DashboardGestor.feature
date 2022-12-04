@@ -21,7 +21,7 @@ Funcionalidade: Dashboard Gestor
   Cenario: Validar botão ‘Cadastrar Aluno’ com sucesso
     Dado que faço login no sistema como gestor
     E que clico em 'Menu'
-    Quando clico em ‘Cadastrar Aluno’
+    Quando clico em ‘Cadastrar Aluno’ como gestor
     Então devo ser redirecionado para a página de ‘Cadastrar Aluno’
 
   @smoke
@@ -44,7 +44,7 @@ Funcionalidade: Dashboard Gestor
     Quando clico em ‘Editar Aluno’
     Então devo ser redirecionado para a página de ‘Editar Aluno’
 
-  @falta
+  @smoke
   Cenario: Validar botão ‘Deletar Aluno’ com sucesso
     Dado que faço login no sistema como gestor
     E clico em ‘Deletar Aluno’

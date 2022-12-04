@@ -6,59 +6,25 @@ import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage{
 
-    private static final By campoEmail =
-            By.cssSelector("#email");
+    private static final By campoEmail = By.cssSelector("#email");
+    private static final By campoSenha = By.cssSelector("#senha");
+    private static final By btnEntrar = By.cssSelector("#botao-logar");
+    private static final By redefinirSenha = By.cssSelector("#box-login > p");
+    private static final By mensagemErroEmailInvalido = By.cssSelector("#erro-email");
+    private static final By mensagemErroEmailVazio = By.cssSelector("#erro-email");
+    private static final By mensagemErroSenha = By.cssSelector("#erro-senha");
+    private static final By mensagemErroEmailOuSenhaIncorreto = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
+    private static final By mensagemBoasVindas = By.cssSelector("#\\31  > div.Toastify__toast-body");
+    private static final By modalRedefinirSenha = By.cssSelector("body > div.MuiModal-root.css-19ni2f5 > form");
 
-    private static final By campoSenha =
-            By.cssSelector("#senha");
-
-    private static final By btnEntrar =
-            By.cssSelector("#botao-logar");
-
-    private static final By redefinirSenha =
-            By.cssSelector("#box-login > p");
-
-    private static final By mensagemErroEmailInvalido =
-            By.cssSelector("#erro-email");
-
-    private static final By mensagemErroEmailVazio =
-            By.cssSelector("#erro-email");
-
-    private static final By mensagemErroSenha =
-            By.cssSelector("#erro-senha");
-
-    private static final By mensagemErroEmailOuSenhaIncorreto =
-            By.cssSelector(".Toastify__toast-body > :nth-child(2)");
-
-    private static final By mensagemBoasVindas =
-            By.cssSelector("#\\31  > div.Toastify__toast-body");
-
-    private static final By modalRedefinirSenha =
-            By.cssSelector("body > div.MuiModal-root.css-19ni2f5 > form");
-
-    @Step("Preencher campo com email válido")
-    public void preencherCampoEmailValido(String email) {
+    @Step("Preencher campo com email")
+    public void preencherCampoEmailLogin(String email) {
         sendKeys(campoEmail, email);
     }
 
-    @Step("Preencher campo com email inválido")
-    public void preencherCampoEmailInvalido() {
-        sendKeys(campoEmail,"teste.qa@naoexiste.com");
-    }
-
-    @Step("Preencher campo com senha válida")
-    public void preencherCampoSenhaValida(String senha) {
+    @Step("Preencher campo com senha")
+    public void preencherCampoSenhaLogin(String senha) {
         sendKeys(campoSenha,senha);
-    }
-
-    @Step("Preencher campo com senha inválida")
-    public void preencherCampoSenhaInvalida() {
-        sendKeys(campoSenha,"123");
-    }
-
-    @Step("Preencher campo com senha vazia")
-    public void preencherCampoSenhaVazia() {
-        sendKeys(campoSenha,"");
     }
 
     @Step("Clicar no botão Entrar")

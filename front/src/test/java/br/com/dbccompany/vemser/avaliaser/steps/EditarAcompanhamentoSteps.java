@@ -1,69 +1,63 @@
 package br.com.dbccompany.vemser.avaliaser.steps;
 
-import br.com.dbccompany.vemser.avaliaser.pages.AcompanhamentoPage;
+import br.com.dbccompany.vemser.avaliaser.pages.EditarAcompanhamentoPage;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 
-public class AcompanhamentoSteps {
+public class EditarAcompanhamentoSteps {
 
-    AcompanhamentoPage listaAcompanhamentosPage = new AcompanhamentoPage();
+    EditarAcompanhamentoPage editarAcompanhamentoPage = new EditarAcompanhamentoPage();
 
     @E("clico em ‘Editar’ um acompanhamento")
     public void clicarBotaoEditarAcompanhamento() {
-        listaAcompanhamentosPage.clicarBtnEditarAcompanhamento();
+        editarAcompanhamentoPage.clicarBtnEditarAcompanhamento();
     }
 
     @E("que altero título acompanhamento válido")
     public void alterarCampoTituloAcompanhamento() {
-        listaAcompanhamentosPage.alterarCampoTitulo("título teste");
+        editarAcompanhamentoPage.alterarCampoTitulo("título teste");
     }
 
     @E("que altero título acompanhamento para vazio")
     public void alterarCampoTituloAcompanhamentoVazio() {
-        listaAcompanhamentosPage.alterarCampoTitulo(StringUtils.EMPTY);
+        editarAcompanhamentoPage.alterarCampoTitulo(StringUtils.EMPTY);
     }
 
     @E("que altero descrição acompanhamento válido")
     public void alterarCampoDescricaoAcompanhamento() {
-        listaAcompanhamentosPage.alterarCampoDescricao("descrição teste");
+        editarAcompanhamentoPage.alterarCampoDescricao("descrição teste");
     }
 
     @E("que altero descrição acompanhamento para vazio")
     public void alterarCampoDescricaoAcompanhamentoVazio() {
-        listaAcompanhamentosPage.alterarCampoDescricao(StringUtils.EMPTY);
+        editarAcompanhamentoPage.alterarCampoDescricao(StringUtils.EMPTY);
     }
 
     @Quando("clico em ‘Editar’ acompanhamento para salvar alteração")
     public void clicarBotaoEditarParaSalvarAcompanhamento() {
-        listaAcompanhamentosPage.clicarBtnEditarParaSalvarAcompanhamento();
-    }
-
-    @Entao("devo visualizar lista de acompanhamentos")
-    public void listaAcompanhamentos() {
-        Assert.assertEquals("Lista acompanhamentos",
-                listaAcompanhamentosPage.validarTituloPaginaListaAcompanhamentos());
+        editarAcompanhamentoPage.clicarBtnEditarParaSalvarAcompanhamento();
     }
 
     @Entao("devo visualizar mensagem de confirmação de edição e ser redirecionado para a página lista Acompanhamentos")
     public void confirmaEditarAcompanhamento() {
         Assert.assertEquals("Acompanhamento editado com sucesso!",
-                listaAcompanhamentosPage.validarMensagemDeConfirmacao());
-        Assert.assertTrue(listaAcompanhamentosPage.validarUrlAtual().contains("/lista-acompanhamento"));
+                editarAcompanhamentoPage.validarMensagemDeConfirmacao());
+        Assert.assertTrue(editarAcompanhamentoPage.validarUrlAtual().contains("/lista-acompanhamento"));
     }
 
     @Entao("devo visualizar mensagem de erro para título vazio")
     public void validaMensagemDeErroTitulo() {
         Assert.assertEquals("Por favor, digite um titulo para o acompanhamento",
-                listaAcompanhamentosPage.validarMensagemDeErroTituloVazio());
+                editarAcompanhamentoPage.validarMensagemDeErroTituloVazio());
     }
 
     @Entao("devo visualizar mensagem de erro para descrição vazio")
     public void validaMensagemDeErroDescricao() {
         Assert.assertEquals("Por favor, preencha a descrição",
-                listaAcompanhamentosPage.validarMensagemDeErroDescricaoVazio());
+                editarAcompanhamentoPage.validarMensagemDeErroDescricaoVazio());
     }
 
 }

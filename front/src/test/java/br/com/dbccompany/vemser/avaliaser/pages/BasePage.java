@@ -32,6 +32,10 @@ public class BasePage extends Elements {
         return waitVisibility(by).getAttribute("innerText");
     }
 
+    public static String getPageSource(){
+        return driver.getPageSource();
+    }
+
     public static String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

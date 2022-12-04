@@ -1,11 +1,11 @@
 #language:pt
 
 @test
-Funcionalidade: Editar Usuário
+Funcionalidade: Editar Usuário Logado
 
   Contexto: O usuario deve editar seu nome no sistema
 
-  @ok
+  @smoke
   Cenario: Validar edição de usuário com sucesso
     Dado que faço login no sistema como administrador
     E que acesso a página de Editar Usuário admin
@@ -28,7 +28,3 @@ Funcionalidade: Editar Usuário
     E que altero o campo nome de usuário para vazio
     Quando clico em Editar nome
     Então devo visualizar mensagem de erro para nome de usuário vazio
-
-
-
-

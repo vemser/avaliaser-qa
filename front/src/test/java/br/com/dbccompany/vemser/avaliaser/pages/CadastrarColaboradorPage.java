@@ -13,7 +13,7 @@ public class CadastrarColaboradorPage extends BasePage{
     private static final By msgConfirmacaoOuErro = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
     private static final By msgErroNome = By.cssSelector("#erro-nome");
     private static final By msgErroEmail = By.cssSelector("#erro-email");
-    private static final By msgErroCargo = By.cssSelector("#erro-cargo01");
+    private static final By msgErroCargo = By.cssSelector("#erro-cargo");
 
     @Step("Preencher campo nome")
     public void preencherCampoNome(String nome){

@@ -3,9 +3,7 @@ package br.com.dbccompany.vemser.avaliaser.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class AcompanhamentoPage extends BasePage{
-
-    private static final By textPaginaListaAcompanhamentos = By.cssSelector("#titulo-body");
+public class EditarAcompanhamentoPage extends BasePage{
     private static final By campoTitulo = By.cssSelector("#titulo");
     private static final By campoDescricao = By.cssSelector("#descricao");
     private static final By msgErroTitulo = By.cssSelector("#erro-titulo");
@@ -13,11 +11,6 @@ public class AcompanhamentoPage extends BasePage{
     private static final By msgConfirmacaoOuErro = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
     private static final By btnEditar = By.cssSelector("#botao-avaliar-acompanhamento-1");
     private static final By btnEditarSalvar = By.cssSelector("#botao-azul");
-
-    @Step("Validar título de página Lista Acompanhamentos")
-    public String validarTituloPaginaListaAcompanhamentos(){
-        return getText(textPaginaListaAcompanhamentos);
-    }
 
     @Step("Alterar campo título")
     public void alterarCampoTitulo(String titulo) {

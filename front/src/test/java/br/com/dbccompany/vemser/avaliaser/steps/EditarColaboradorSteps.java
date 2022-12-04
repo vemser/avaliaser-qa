@@ -48,8 +48,7 @@ public class EditarColaboradorSteps {
 
     @Entao("devo visualizar mensagem de confirmação de edição e ser redirecionado para a página Dashboard")
     public void validarEdicaoComSucesso() {
-        Assert.assertEquals("Colaborador editado com sucesso!",
-                editarColaboradorPage.validarMensagemDeEdicaoComSucesso());
+        Assert.assertTrue(editarColaboradorPage.validarMensagemDeEdicaoComSucesso().contains("Colaborador editado com sucesso!"));
         Assert.assertTrue(editarColaboradorPage.validarUrlAtual().contains("/dashboard/admin"));
     }
 

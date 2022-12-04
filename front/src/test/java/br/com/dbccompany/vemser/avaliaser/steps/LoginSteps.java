@@ -13,67 +13,51 @@ public class LoginSteps {
 
     @Dado("que estou na página inicial de login")
     public void telaLogin() {
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/", loginPage.validarUrlAtual());
+        Assert.assertTrue(loginPage.validarUrlAtual().contains("/vemser/avaliaser-front"));
     }
 
     @E("que preencho o campo email Admim válido")
     public void preencherCampoEmailAdminValido() {
-        loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
+        loginPage.preencherCampoEmailLogin("paulo.sergio@dbccompany.com.br");
     }
 
     @E("que preencho o campo email Gestor válido")
     public void preencherCampoEmailGestorValido() {
-        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
+        loginPage.preencherCampoEmailLogin("moises.noah@dbccompany.com.br");
     }
 
     @E("que preencho o campo email Instrutor válido")
     public void preencherCampoEmailInstrutorValido() {
-        loginPage.preencherCampoEmailValido("mayra.amaral@dbccompany.com.br");
-    }
-
-    @E("que preencho o campo com email válido")
-    public void preencherCampoEmailValido() {
-        loginPage.preencherCampoEmailValido("paulo.serio@dbccompany.com.br");
+        loginPage.preencherCampoEmailLogin("mayra.amaral@dbccompany.com.br");
     }
 
     @E("que preencho o campo com email inválido")
     public void preencherCampoEmailInvalido() {
-        loginPage.preencherCampoEmailInvalido();
+        loginPage.preencherCampoEmailLogin("teste@gmail.com");
     }
 
     @E("que preencho o campo senha Admim válida")
     public void preencherCampoSenhaAdminValida() {
-        loginPage.preencherCampoSenhaValida("administrador");
+        loginPage.preencherCampoSenhaLogin("administrador");
     }
 
     @E("que preencho o campo senha Gestor válida")
     public void preencherCampoSenhaGestorValida() {
-        loginPage.preencherCampoSenhaValida("moisesnoah");
+        loginPage.preencherCampoSenhaLogin("moisesnoah");
     }
 
     @E("que preencho o campo senha Instrutor válida")
     public void preencherCampoSenhaInstrutorValida() {
-        loginPage.preencherCampoSenhaValida("a!0SC*C9");
-    }
-
-    @E("que preencho o campo senha válido")
-    public void preencherCampoSenhaValida() {
-        loginPage.preencherCampoSenhaValida("12345678");
+        loginPage.preencherCampoSenhaLogin("a!0SC*C9");
     }
 
     @E("que preencho o campo com senha inválida")
     public void preencherCampoSenhaInvalida() {
-        loginPage.preencherCampoSenhaInvalida();
+        loginPage.preencherCampoSenhaLogin("123");
     }
-
-    @E("que não preencho o campo senha")
-    public void preencherCampoSenhaVazia() {
-        loginPage.preencherCampoSenhaVazia();
-    }
-
 
     @Quando("clico em ‘Entrar’")
-    public void clicarBotaoEntrar() {
+    public void clicarBotaoEntrarLogin() {
         loginPage.clicarBotaoEntrar();
     }
 
@@ -85,21 +69,21 @@ public class LoginSteps {
     @Entao("devo ser redirecionado para a página principal de administrador e visualizar mensagem de boas-vindas")
     public void telaPrincipalAdmin() throws InterruptedException {
         Thread.sleep(5000);
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/admin", loginPage.validarUrlAtual());
+        Assert.assertTrue(loginPage.validarUrlAtual().contains("/vemser/avaliaser-front/dashboard/admin"));
         Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
     }
 
     @Entao("devo ser redirecionado para a página principal de gestor de pessoas e visualizar mensagem de boas-vindas")
     public void telaPrincipalGestor() throws InterruptedException {
         Thread.sleep(5000);
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/gestor", loginPage.validarUrlAtual());
+        Assert.assertTrue(loginPage.validarUrlAtual().contains("/vemser/avaliaser-front/dashboard/gestor"));
         Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
     }
 
     @Entao("devo ser redirecionado para a página principal de instrutor e visualizar mensagem de boas-vindas")
     public void telaPrincipalInstrutor() throws InterruptedException {
         Thread.sleep(5000);
-        Assert.assertEquals("https://avaliaser-front-flame.vercel.app/dashboard/instrutor", loginPage.validarUrlAtual());
+        Assert.assertTrue(loginPage.validarUrlAtual().contains("/vemser/avaliaser-front/dashboard/instrutor"));
         Assert.assertEquals("Seja bem-vindo(a)", loginPage.validarMensagemDeBoasVindas());
     }
 
@@ -142,23 +126,23 @@ public class LoginSteps {
 
     @Dado("que faço login no sistema como administrador")
     public void logarDashboardAdmin() {
-        loginPage.preencherCampoEmailValido("paulo.sergio@dbccompany.com.br");
-        loginPage.preencherCampoSenhaValida("administrador");
-        loginPage.clicarBotaoEntrar();
+        preencherCampoEmailAdminValido();
+        preencherCampoSenhaAdminValida();
+        clicarBotaoEntrarLogin();
     }
 
     @Dado("que faço login no sistema como gestor")
     public void logarDashboardGestor() {
-        loginPage.preencherCampoEmailValido("moises.noah@dbccompany.com.br");
-        loginPage.preencherCampoSenhaValida("moisesnoah");
-        loginPage.clicarBotaoEntrar();
+        preencherCampoEmailGestorValido();
+        preencherCampoSenhaGestorValida();
+        clicarBotaoEntrarLogin();
     }
 
     @Dado("que faço login no sistema como instrutor")
     public void logarDashboardInstrutor() {
-        loginPage.preencherCampoEmailValido("mayra.amaral@dbccompany.com.br");
-        loginPage.preencherCampoSenhaValida("a!0SC*C9");
-        loginPage.clicarBotaoEntrar();
+        preencherCampoEmailInstrutorValido();
+        preencherCampoSenhaInstrutorValida();
+        clicarBotaoEntrarLogin();
     }
 
 }

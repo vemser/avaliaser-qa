@@ -37,18 +37,18 @@ Funcionalidade: Login
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro email ou senha
 
-  @error
+  @smoke
   Cenario:  Validar tentativa de login com email inválido
     Dado que estou na página inicial de login
     E que preencho o campo com email inválido
-    E que preencho o campo senha válido
+    E que preencho o campo senha Admim válida
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro Email
 
   @smoke
   Cenario: Validar tentativa de login com senha inválida
     Dado que estou na página inicial de login
-    E que preencho o campo com email válido
+    E que preencho o campo email Admim válido
     E que preencho o campo com senha inválida
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro Senha
@@ -56,33 +56,22 @@ Funcionalidade: Login
   @smoke
   Cenario: Validar tentativa de login sem preencher campos obrigatórios
     Dado que estou na página inicial de login
-    E que não preencho o campo email
-    E que não preencho o campo senha
     Quando clico em ‘Entrar’
     Então devo visualizar mensagens de erro para campo vazio Email e Senha
 
   @smoke
   Cenario: Validar tentativa de login sem preencher email
     Dado que estou na página inicial de login
-    E que não preencho o campo email
-    E que preencho o campo senha válido
+    E que preencho o campo senha Admim válida
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Email
 
   @smoke
   Cenario:  Validar tentativa de login sem preencher senha
     Dado que estou na página inicial de login
-    E que preencho o campo com email válido
-    E que não preencho o campo senha
+    E que preencho o campo email Admim válido
     Quando clico em ‘Entrar’
     Então devo visualizar mensagem de erro para campo vazio Senha
-
-  @smoke
-   Cenario: Validar botão de 'Mostrar Senha'
-     Dado que estou na página inicial de login
-     E que preencho o campo senha válido
-     Quando clico em ‘Mostrar Senha’
-     Então devo visualizar a senha digitada na tela
 
   @smoke
   Cenario:  Validar link ‘Esqueci minha senha’
