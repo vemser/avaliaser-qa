@@ -42,7 +42,7 @@ public class RecuperaSenhaUsuarioTest {
                     .extract().path("message")
         ;
 
-        assertEquals("USUARIO_NAO_ENCONTRADO", message);
+        assertEquals("Usuário não encontrado.", message);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class RecuperaSenhaUsuarioTest {
                     .extract().path("message")
         ;
 
-        assertEquals("USUARIO_NAO_ENCONTRADO", message);
+        assertEquals("Usuário não encontrado.", message);
     }
 
 }

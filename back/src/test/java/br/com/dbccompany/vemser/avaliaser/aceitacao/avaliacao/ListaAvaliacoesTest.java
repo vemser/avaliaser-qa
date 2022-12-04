@@ -53,12 +53,14 @@ public class ListaAvaliacoesTest {
     @Tag("all")
     @Description("Deve não retornar lista de avaliacoes")
     public void deveNaoRetornarListaDeAvaliacoes() {
-        avaliacaoService.listar(-1, -1)
+        String message = avaliacaoService.listar(-1, -1)
                 .then()
                     .log().all()
-                    .statusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR)
-                    .extract().response()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .extract().path("message")
                 ;
+
+        assertEquals("Page ou Size não pode ser menor que zero.", message);
     }
 
 }

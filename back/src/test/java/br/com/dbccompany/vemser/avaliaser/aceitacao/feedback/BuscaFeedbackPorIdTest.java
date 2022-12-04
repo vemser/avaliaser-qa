@@ -1,10 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.feedback;
 
-import br.com.dbccompany.vemser.avaliaser.dto.CargoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.FeedbackDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.UsuarioDTO;
 import br.com.dbccompany.vemser.avaliaser.service.FeedbackService;
-import br.com.dbccompany.vemser.avaliaser.util.Manipulation;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
@@ -20,20 +17,19 @@ public class BuscaFeedbackPorIdTest {
 
     FeedbackService feedbackService = new FeedbackService();
 
-/*    @Test
+    @Test
     @Tag("all")
     @Description("Deve buscar feedback por id")
     public void deveBuscarFeedbackPorId() {
-        FeedbackDTO feedback = feedbackService.buscarPorId(1)
+        FeedbackDTO feedback = feedbackService.buscarPorId(7)
                 .then()
                     .log().all()
                     .statusCode(HttpStatus.SC_OK)
                     .extract().as(FeedbackDTO.class)
                 ;
 
-        assertEquals("paulo", feedback.getIdFeedBack());
-        assertEquals(Manipulation.getProp(CargoDTO.ADMIN).getProperty("prop.email"), feedback.getEmail());
-    }*/
+        assertEquals(7, feedback.getIdFeedBack());
+    }
 
     @Test
     @Tag("all")

@@ -76,7 +76,7 @@ public class ListaAvaliacoesPorAlunoTest {
     }
 
     @Test
-    @Tag("todos")
+    @Tag("all")
     @Description("Deve não listar avaliações por aluno com paginação")
     public void deveNaoRetornarListaDeAvaliacoesComDadosDePaginacaoInvalidos() {
         avaliacaoService.listarPorAluno(19, -1, -1)

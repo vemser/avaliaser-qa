@@ -7,6 +7,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 @SelectPackages("br.com.dbccompany.vemser.avaliaser.aceitacao")
-@IncludeTags("todos")
+@IncludeTags("all")
 public class RunTest {
 }

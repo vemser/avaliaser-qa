@@ -28,8 +28,7 @@ public class BuscaUsuarioPorIdTest {
                     .extract().as(UsuarioDTO.class)
                 ;
 
-//        assertEquals("paulo", usuarioDTO.getNome());
-//        assertEquals(Manipulation.getProp(CargoDTO.ADMIN).getProperty("prop.email"), usuarioDTO.getEmail());
+        assertEquals("paulo", usuarioDTO.getNome());
     }
 
     @Test

@@ -1,7 +1,6 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.aluno;
 
 import br.com.dbccompany.vemser.avaliaser.builder.AlunoBuilder;
-import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AlunoCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AlunoDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.StackDTO;
@@ -18,7 +17,6 @@ import org.junit.jupiter.api.Test;
 @Epic("Deleta Aluno")
 public class DeletarAlunoTest {
 
-
     AlunoService alunoService = new AlunoService();
     AlunoBuilder alunoBuilder = new AlunoBuilder();
 
@@ -26,34 +24,32 @@ public class DeletarAlunoTest {
     @Tag("all")
     @Description("Deve deletar Aluno com sucesso")
     public void deveDeletarAlunoComSucesso() {
-
         AlunoCreateDTO aluno = alunoBuilder.criarAluno();
 
-        AlunoDTO alunoDTO = alunoService
-                .cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
+        AlunoDTO alunoDTO = alunoService.cadastrar(StackDTO.QA.toString(), Utils.convertAlunoToJson(aluno))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(AlunoDTO.class)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(AlunoDTO.class)
                 ;
 
         alunoService.deletar(alunoDTO.getIdAluno())
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
                ;
     }
 
     @Test
     @Tag("all")
-    @Description("Deve deletar Aluno com sucesso")
+    @Description("Deve não deletar Aluno")
     public void deveNaoDeletarAlunoIdInexistente() {
         AlunoService alunoService = new AlunoService();
 
-        alunoService.deletar(98)
+        alunoService.deletar(9824)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
         ;
     }
 }

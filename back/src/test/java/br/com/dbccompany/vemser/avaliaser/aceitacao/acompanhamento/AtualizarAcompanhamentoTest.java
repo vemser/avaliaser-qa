@@ -30,9 +30,9 @@ public class AtualizarAcompanhamentoTest {
         AcompanhamentoDTO acompanhamentoAtualizado = acompanhamentoService
                 .atualizar(Utils.convertAtualizarAcompanhamentoToJson(atualizarAcompanhamento), 15)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(AcompanhamentoDTO.class)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(AcompanhamentoDTO.class)
                 ;
 
         assertEquals("Verificar a evolução do estagiário e passar feedback", acompanhamentoAtualizado.getDescricao());
@@ -48,9 +48,9 @@ public class AtualizarAcompanhamentoTest {
         acompanhamentoService
                 .atualizar(Utils.convertAtualizarAcompanhamentoToJson(atualizarAcompanhamento), 15)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(containsString("titulo: Titulo não pode ficar em branco."))
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("titulo: Titulo não pode ficar em branco."))
         ;
     }
 
@@ -63,9 +63,10 @@ public class AtualizarAcompanhamentoTest {
         acompanhamentoService
                 .atualizar(Utils.convertAtualizarAcompanhamentoToJson(atualizarAcompanhamento), 15)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(containsString("descricao: Descrição não pode ficar em branco."))
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("descricao: Descrição não pode ficar em branco."))
         ;
     }
+
 }
