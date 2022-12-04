@@ -35,8 +35,8 @@ public class CadastrarColaboradorSteps {
         cadastrarColaboradorPage.clicarBtnGestorDePessoas();
     }
 
-    @Quando("clico em ‘Enviar’")
-    public void clicarBotaoEnviar() {
+    @Quando("clico em ‘Enviar’ para cadastrar colaborador")
+    public void clicarBotaoEnviarColaborador() {
         cadastrarColaboradorPage.clicarBtnEnviar();
     }
 

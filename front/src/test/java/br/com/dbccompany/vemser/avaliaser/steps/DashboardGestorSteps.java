@@ -70,4 +70,10 @@ public class DashboardGestorSteps {
         dashboardGestorPage.clicarBtnCadastrarAlunoGestor();
     }
 
+    @E("que acesso a página de Editar Aluno")
+    public void acessarPaginaEditarAluno() throws InterruptedException {
+        Thread.sleep(5000);
+        dashboardGestorPage.clicarBtnEditarAluno();
+    }
+
 }

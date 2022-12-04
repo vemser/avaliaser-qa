@@ -21,7 +21,7 @@ Funcionalidade: Pagina Principal Instrutor
     Quando clico em enviar feedback
     Então devo visualizar mensagem de erro para descrição de feedback vazia
 
-  @error
+  @smoke
   Cenario: Validar tentativa de cadastro de feedback sem selecionar campos obrigatórios
     Dado que faço login no sistema como instrutor
     E que acesso a página de Cadastrar Feedback
