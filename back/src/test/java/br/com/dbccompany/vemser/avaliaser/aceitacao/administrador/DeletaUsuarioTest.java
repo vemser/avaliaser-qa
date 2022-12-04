@@ -28,6 +28,7 @@ public class DeletaUsuarioTest {
     @Description("Deve deletar usuario com sucesso")
     public void deveDeletarUsuarioComSucesso() {
         // Deletar funciona de forma exclusão lógica
+        // Por limitação de emails válidos com @dbccompany.com.br, endpoint foi testado uma vez e liberado
 
         UsuarioCreateDTO usuario = usuarioBuilder.criarUsuario();
         UsuarioDTO usuarioCriado = administradorService

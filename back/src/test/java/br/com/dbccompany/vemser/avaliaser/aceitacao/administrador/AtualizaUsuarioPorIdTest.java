@@ -47,7 +47,9 @@ public class AtualizaUsuarioPorIdTest {
         assertEquals("jaciane@dbccompany.com.br", usuarioAtualizado.getEmail());
 
         administradorService.deletarTeste(usuarioAtualizado.getIdUsuario())
-                .then().log().all().statusCode(HttpStatus.SC_OK);
+                .then()
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK);
     }
 
     @Test
@@ -88,7 +90,9 @@ public class AtualizaUsuarioPorIdTest {
                 ;
 
         administradorService.deletarTeste(usuarioCriado.getIdUsuario())
-                .then().log().all().statusCode(HttpStatus.SC_OK);
+                .then()
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK);
     }
 
     @Test
@@ -112,7 +116,9 @@ public class AtualizaUsuarioPorIdTest {
                 ;
 
         administradorService.deletarTeste(usuarioCriado.getIdUsuario())
-                .then().log().all().statusCode(HttpStatus.SC_OK);
+                .then()
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK);
     }
 
 }

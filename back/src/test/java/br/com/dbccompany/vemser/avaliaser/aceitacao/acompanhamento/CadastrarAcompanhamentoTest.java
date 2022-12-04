@@ -3,8 +3,6 @@ package br.com.dbccompany.vemser.avaliaser.aceitacao.acompanhamento;
 import br.com.dbccompany.vemser.avaliaser.builder.AcompanhamentoBuilder;
 import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.AvaliacaoCreateDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.AvaliacaoDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
 import io.qameta.allure.Description;
@@ -17,8 +15,8 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Epic("Cadastra Acompanhamento")
 @DisplayName("Acompanhamento")
+@Epic("Cadastra Acompanhamento")
 public class CadastrarAcompanhamentoTest {
 
     AcompanhamentoService acompanhamentoService = new AcompanhamentoService();
@@ -32,9 +30,9 @@ public class CadastrarAcompanhamentoTest {
 
         AcompanhamentoDTO acompanhamento = acompanhamentoService.cadastrar(Utils.convertAcompanhamentoToJson(acompanhamentoCreateDTO))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(AcompanhamentoDTO.class)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(AcompanhamentoDTO.class)
                 ;
 
         assertEquals(acompanhamentoCreateDTO.getDescricao(), acompanhamento.getDescricao());
@@ -49,9 +47,9 @@ public class CadastrarAcompanhamentoTest {
 
         acompanhamentoService.cadastrar(Utils.convertAcompanhamentoToJson(acompanhamentoCreateDTO))
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(containsString("titulo: Titulo não pode ficar em branco."))
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("titulo: Titulo não pode ficar em branco."))
                 ;
     }
 

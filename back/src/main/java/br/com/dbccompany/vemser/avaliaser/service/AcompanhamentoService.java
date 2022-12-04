@@ -1,9 +1,7 @@
 package br.com.dbccompany.vemser.avaliaser.service;
 
-import br.com.dbccompany.vemser.avaliaser.dto.AcompanhamentoCreateDTO;
 import br.com.dbccompany.vemser.avaliaser.specs.LoginSpecs;
 import br.com.dbccompany.vemser.avaliaser.util.Utils;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;

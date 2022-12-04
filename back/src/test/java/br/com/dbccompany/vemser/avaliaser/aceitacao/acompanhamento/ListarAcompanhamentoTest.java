@@ -1,12 +1,11 @@
 package br.com.dbccompany.vemser.avaliaser.aceitacao.acompanhamento;
 
 import br.com.dbccompany.vemser.avaliaser.dto.PageAcompanhamentoDTO;
-import br.com.dbccompany.vemser.avaliaser.dto.PageFeedbackDTO;
 import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 
@@ -26,14 +25,13 @@ public class ListarAcompanhamentoTest {
     public void deveListarAcompanhamentosComPaginacao(){
         PageAcompanhamentoDTO pageAcompanhamento = acompanhamentoService.listar(0, 10)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(PageAcompanhamentoDTO.class)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(PageAcompanhamentoDTO.class)
                 ;
 
         assertEquals(0, pageAcompanhamento.getPagina());
         assertEquals(10, pageAcompanhamento.getTamanho());
-
     }
 
     @Test
@@ -42,9 +40,9 @@ public class ListarAcompanhamentoTest {
     public void deveRetornarListaDeFeedbacksVazia() {
         PageAcompanhamentoDTO pageAcompanhamento = acompanhamentoService.listar(0, 0)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(PageAcompanhamentoDTO.class)
+                    .log().all()
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(PageAcompanhamentoDTO.class)
                 ;
 
         assertEquals(0, pageAcompanhamento.getPagina());
@@ -58,10 +56,10 @@ public class ListarAcompanhamentoTest {
     public void deveNaoRetornarListaDeFeedbacks() {
         acompanhamentoService.listar(-1, -1)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(containsString("Page ou Size não pode ser menor que zero."))
-
-        ;
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body(containsString("Page ou Size não pode ser menor que zero."))
+                ;
     }
+
 }

@@ -5,12 +5,11 @@ import br.com.dbccompany.vemser.avaliaser.service.AcompanhamentoService;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import org.apache.http.HttpStatus;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Acompanhamento")
 @Epic("Busca Acompanhamento Por Id")
@@ -25,14 +24,13 @@ public class BuscarAcompanhamentoPorIDTest {
         AcompanhamentoDTO acompanhamento = acompanhamentoService.buscarPorId(11)
                 .then()
                 .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .extract().as(AcompanhamentoDTO.class)
+                    .statusCode(HttpStatus.SC_OK)
+                    .extract().as(AcompanhamentoDTO.class)
                 ;
 
-        Assert.assertEquals("Acompanhamento teste QA", acompanhamento.getTitulo());
-        Assert.assertEquals("Favor não editar e nem apagar", acompanhamento.getDescricao());
-        Assert.assertEquals("2022-12-01", acompanhamento.getDataInicio());
-
+        assertEquals("Acompanhamento teste QA", acompanhamento.getTitulo());
+        assertEquals("Favor não editar e nem apagar", acompanhamento.getDescricao());
+        assertEquals("2022-12-01", acompanhamento.getDataInicio());
     }
 
     @Test
@@ -41,11 +39,9 @@ public class BuscarAcompanhamentoPorIDTest {
     public void deveNaoBuscarAcompanhamentoPorIdInexistente() {
          acompanhamentoService.buscarPorId(36987)
                 .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body(containsString("Acompanhamento não localizado, verifique se o ID inserido está correto."))
+                    .log().all()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
                 ;
-
-
     }
+
 }

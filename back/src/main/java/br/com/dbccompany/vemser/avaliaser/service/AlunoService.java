@@ -56,7 +56,7 @@ public class AlunoService {
     public Response deletarTeste(Integer idAluno) {
         return
                 given()
-                        .spec(LoginSpecs.requestAdminSpec())
+                        .spec(LoginSpecs.requestGestorSpec())
                         .pathParam("idAluno", idAluno)
                         .when()
                         .delete(Utils.getBaseUrl() + "/teste/delete/aluno/{idAluno}")
