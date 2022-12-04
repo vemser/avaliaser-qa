@@ -47,8 +47,8 @@ public class EditarSenhaUsuarioLogadoSteps {
 
     @Entao("devo visualizar mensagem de confirmação de edição de senha e ser redirecionado para a página Dashboard")
     public void validarAlteracaoDeSanhaComSucesso() {
-        Assert.assertEquals("Senha atualizada com sucesso.",
-                editarSenhaUsuarioLogadoPage.validarMensagemDeAlteracaoDeSenhaComSucesso());
+        Assert.assertTrue(editarSenhaUsuarioLogadoPage.validarMensagemDeAlteracaoDeSenhaComSucesso()
+                .contains("Senha atualizada com sucesso."));
         Assert.assertTrue(editarSenhaUsuarioLogadoPage.validarUrlAtual().contains("/dashboard/admin"));
     }
 

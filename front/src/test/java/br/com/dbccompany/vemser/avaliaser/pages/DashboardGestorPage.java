@@ -14,6 +14,7 @@ public class DashboardGestorPage extends BasePage{
     private static final By btnAvaliarAcompanhamento = By.cssSelector("#avaliar-acompanhamento-visible-gestor");
     private static final By btnCadastrarAluno = By.cssSelector("#cadastrar-aluno-visible-gestor");
     private static final By btnFotoPerfil = By.cssSelector("#menu-avatar-gestor");
+    private static final By btnEditarAluno = By.cssSelector("#botao-editar-20");
 
     @Step("Validar título de página Dashboard Gestor")
     public String validarTextoDashboardGestor(){
@@ -53,6 +54,11 @@ public class DashboardGestorPage extends BasePage{
     @Step("Clicar no botão cadastrar aluno como Gestor")
     public void clicarBtnCadastrarAlunoGestor() {
         click(btnCadastrarAluno);
+    }
+
+    @Step("Clicar no botão Editar Aluno")
+    public void clicarBtnEditarAluno(){
+        click(btnEditarAluno);
     }
 
     @Step("Validar url atual")

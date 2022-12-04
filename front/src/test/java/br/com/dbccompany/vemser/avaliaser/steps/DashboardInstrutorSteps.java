@@ -12,8 +12,7 @@ public class DashboardInstrutorSteps {
 
     @Entao("devo visualizar nome do usuário instrutor e foto na tela")
     public void validarNomeEFoto(){
-        String validarLogin = dashboardInstrutorPage.validarNomeInstrutorLogado();
-        Assert.assertTrue(validarLogin.contains("Instrutor"));
+        Assert.assertTrue(dashboardInstrutorPage.validarNomeInstrutorLogado().contains("Seja bem-vindo(a)"));
     }
 
     @Quando("clico em ‘Cadastrar Feedback’")

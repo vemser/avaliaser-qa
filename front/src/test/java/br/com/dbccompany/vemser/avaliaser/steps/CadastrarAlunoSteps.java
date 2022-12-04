@@ -12,69 +12,47 @@ public class CadastrarAlunoSteps {
 
     @E("que preencho o campo nome de aluno válido")
     public void preencherCampoNomeValido() {
-        cadastrarColaboradorPage.preencherCampoNome("Jaciane Santana");
+        cadastrarAlunoPage.preencherCampoNome("Aluno teste");
     }
 
-    @E("que preencho o campo nome inválido")
-    public void preencherCampoNomeInvalido() {
-        cadastrarColaboradorPage.preencherCampoNome("123!");
-    }
-
-    @E("que preencho o campo email válido")
+    @E("que preencho o campo email de aluno válido")
     public void preencherCampoEmailValido() {
-        cadastrarColaboradorPage.preencherCampoEmail("jaciane.santana@dbccompany.com.br");
+        cadastrarAlunoPage.preencherCampoEmail("alunodbc.testefinal@dbccompany.com.br");
     }
 
-    @E("que preencho o campo email inválido")
+    @E("que preencho o campo email de aluno inválido")
     public void preencherCampoEmailInvalido() {
-        cadastrarColaboradorPage.preencherCampoEmail("jaciane.santana@gmail.com");
+        cadastrarAlunoPage.preencherCampoEmail("aluno@gmail.com");
     }
 
-    @E("que seleciono um cargo")
-    public void clicarEmUmCargo() {
-        cadastrarColaboradorPage.clicarBtnGestorDePessoas();
+    @E("que seleciono uma trilha")
+    public void clicarEmUmaTrilha() {
+        cadastrarAlunoPage.clicarBtnTrilha();
+        cadastrarAlunoPage.clicarTrilhaSelecionada();
     }
 
-    @Quando("clico em ‘Enviar’")
-    public void clicarBotaoEnviar() {
-        cadastrarColaboradorPage.clicarBtnEnviar();
+    @Quando("clico em ‘Enviar’ para salvar cadastro de aluno")
+    public void clicarBotaoEnviarAluno() {
+        cadastrarAlunoPage.clicarBtnEnviar();
     }
 
-    @Entao("devo visualizar mensagem de sucesso na tela e ser redirecionado para a página Dashboard")
+    @Entao("devo visualizar mensagem de sucesso de aluno cadastrado e ser redirecionado para a página Dashboard")
     public void validarCadastroComSucesso() {
-        Assert.assertTrue(cadastrarColaboradorPage.validarMensagemDeCadastroComSucesso()
-                .contains("Colaborador cadastrado com sucesso!"));
-        Assert.assertTrue(cadastrarColaboradorPage.validarUrlAtual().contains("/dashboard/admin"));
+        Assert.assertTrue(cadastrarAlunoPage.validarMensagemDeCadastroComSucesso()
+                .contains("Aluno cadastrado com sucesso!"));
+        Assert.assertTrue(cadastrarAlunoPage.validarUrlAtual().contains("/dashboard/gestor"));
     }
 
-    @Entao("devo visualizar mensagem de erro para nome ou email na tela")
-    public void validarMensagemErroNomeOuEmailInvalido() {
-        Assert.assertEquals("Campo nulo, ou preenchido de forma incorreta, tente de novo.",
-                cadastrarColaboradorPage.validarMensagemDeErroNomeOuEmail());
+    @Entao("devo visualizar mensagens de erro campos obrigatórios para cadastrar aluno")
+    public void validarMensagemErroCamposObrigatorios() {
+        Assert.assertEquals("Por favor, digite seu nome completo", cadastrarAlunoPage.validarMensagemDeErroNome());
+        Assert.assertEquals("Por favor, digite seu e-mail", cadastrarAlunoPage.validarMensagemDeErroEmail());
     }
 
-    @Entao("devo visualizar mensagem de erro para nome vazio")
-    public void validarMensagemErroNomeVazio() {
-        Assert.assertEquals("Por favor, digite seu nome completo",
-                cadastrarColaboradorPage.validarMensagemDeErroNome());
-    }
-
-    @Entao("devo visualizar mensagem de erro para email inválido")
+    @Entao("devo visualizar mensagem de erro para email de cadastrar aluno inválido")
     public void validarMensagemErroEmailInvalido() {
         Assert.assertEquals("Só aceitamos email @dbccompany.com.br",
-                cadastrarColaboradorPage.validarMensagemDeErroEmail());
-    }
-
-    @Entao("devo visualizar mensagem de erro para email vazio")
-    public void validarMensagemErroEmailVazio() {
-        Assert.assertEquals("Por favor, digite seu e-mail",
-                cadastrarColaboradorPage.validarMensagemDeErroEmail());
-    }
-
-    @Entao("devo visualizar mensagem de erro para cargo vazio")
-    public void validarMensagemErroCargoVazio() {
-        Assert.assertEquals("Por favor, escolha um dos tipos de perfil.",
-                cadastrarColaboradorPage.validarMensagemDeErroCargo());
+                cadastrarAlunoPage.validarMensagemDeErroEmail());
     }
 
 }

@@ -9,19 +9,25 @@ public class CadastrarFeedbackSteps {
 
     CadastrarFeedbackPage feedbackPage = new CadastrarFeedbackPage();
 
+    @E("seleciono a stack do aluno")
+    public void selecionarCamposValidos() throws InterruptedException {
+        feedbackPage.clicarStack();
+    }
+
     @E("preencho campo descrição de feedback válido")
     public void preencherCampoDescricaoValido(){
         feedbackPage.preencherDescricao();
     }
 
-    @E("seleciono todos os campos válidos")
-    public void selecionarCamposValidos() throws InterruptedException {
-        feedbackPage.clicarStack();
+    @E("seleciono o aluno")
+    public void selecionarAluno() throws InterruptedException {
         feedbackPage.clicarCampoSelecionarAluno();
-        Thread.sleep(2000);
         feedbackPage.clicarAlunoSelecionado();
+    }
+
+    @E("seleciono o status do aluno")
+    public void selecionarStatus()  {
         feedbackPage.clicarCampoSelecionarStatus();
-        Thread.sleep(2000);
         feedbackPage.clicarStatusSelecionado();
     }
 
@@ -42,9 +48,8 @@ public class CadastrarFeedbackSteps {
     }
 
     @Entao("devo visualizar mensagem de erro para selecionar campos obrigatórios")
-    public void validarMensagemErroCamposObrigatorios() throws InterruptedException {
-        Thread.sleep(5000);
-        Assert.assertTrue(feedbackPage.validarMensagemErroDescricaoVazio().contains("Preencha todos os campos!"));
+    public void validarMensagemErroCamposObrigatorios() {
+        Assert.assertTrue(feedbackPage.validarMensagemErroCamposObrigatorios().contains("Preencha todos os campos!"));
     }
 
 }

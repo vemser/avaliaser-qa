@@ -11,7 +11,8 @@ public class AlunoSteps {
     AlunoPage alunoPage = new AlunoPage();
 
     @E("clico em ‘Deletar Aluno’")
-    public void clicarBotaoDeletarAluno() {
+    public void clicarBotaoDeletarAluno() throws InterruptedException {
+        Thread.sleep(5000);
         alunoPage.clicarBtnDeletarAluno();
     }
 
@@ -37,8 +38,8 @@ public class AlunoSteps {
 
     @Entao("devo visualizar mensagem de confirmação para aluno deletado")
     public void mensagemConfirmacaoAlunoDeletado() {
-        Assert.assertEquals("Aluno desativado com sucesso.",
-                alunoPage.validarMensagemDeAlunoDeletado());
+        //Thread.sleep(5000);
+        Assert.assertTrue(alunoPage.validarMensagemDeAlunoDeletado().contains("Aluno desativado com sucesso."));
     }
 
 }

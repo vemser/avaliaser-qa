@@ -29,11 +29,11 @@ Funcionalidade: Dashboard Admin
     Quando clico em ‘Editar Colaborador’
     Então devo ser redirecionado para a página de ‘Editar Colaborador’
 
-  @ok
+  @smoke
   Cenario: Validar botão ‘Deletar Colaborador’ com sucesso
     Dado que faço login no sistema como administrador
     E clico em ‘Deletar Colaborador’
-    Quando clico em ‘Confirmar’
+    Quando clico em ‘Confirmar’ para deletar colaborador
     Então devo visualizar mensagem de confirmação na tela
 
   @smoke

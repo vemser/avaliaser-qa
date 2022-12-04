@@ -5,15 +5,14 @@ import org.openqa.selenium.By;
 
 public class CadastrarAlunoPage extends BasePage{
 
-    private static final By campoNome = By.cssSelector("#nome");
-    private static final By campoEmail = By.cssSelector("#email");
-    private static final By btnGestorDePessoas = By.cssSelector("#gestor");
-    private static final By btnInstrutor = By.cssSelector("#instrutor");
+    private static final By campoNome = By.cssSelector("#nomeCompletoAluno");
+    private static final By campoEmail = By.cssSelector("#emailAluno");
+    private static final By btnTrilha = By.cssSelector("#select-trilha");
+    private static final By trilhaSelecionada = By.cssSelector("#frontend");
     private static final By btnEnviar = By.cssSelector("#botao-verde");
     private static final By msgConfirmacaoOuErro = By.cssSelector(".Toastify__toast-body > :nth-child(2)");
-    private static final By msgErroNome = By.cssSelector("#erro-nome");
-    private static final By msgErroEmail = By.cssSelector("#erro-email");
-    private static final By msgErroCargo = By.cssSelector("#erro-cargo");
+    private static final By msgErroNome = By.cssSelector("#erro-nomeCompletoAluno");
+    private static final By msgErroEmail = By.cssSelector("#erro-emailAluno");
 
     @Step("Preencher campo nome")
     public void preencherCampoNome(String nome){
@@ -25,14 +24,14 @@ public class CadastrarAlunoPage extends BasePage{
         sendKeys(campoEmail, email);
     }
 
-    @Step("Clicar no botão Gestor de Pessoas")
-    public void clicarBtnGestorDePessoas(){
-        click(btnGestorDePessoas);
+    @Step("Clicar para selecionar uma trilha")
+    public void clicarBtnTrilha(){
+        click(btnTrilha);
     }
 
-    @Step("Clicar no botão Instrutor")
-    public void clicarBtnInstrutor(){
-        click(btnInstrutor);
+    @Step("Clicar na trilha selecionada")
+    public void clicarTrilhaSelecionada(){
+        click(trilhaSelecionada);
     }
 
     @Step("Clicar no botão Enviar")
@@ -45,12 +44,7 @@ public class CadastrarAlunoPage extends BasePage{
         return getAttributeInnerText(msgConfirmacaoOuErro);
     }
 
-    @Step("Validar mensagem de erro para nome ou email inválido")
-    public String validarMensagemDeErroNomeOuEmail() {
-        return getAttributeInnerText(msgConfirmacaoOuErro);
-    }
-
-    @Step("Validar mensagem de erro para nome inválido ou vazio")
+    @Step("Validar mensagem de erro para nome vazio")
     public String validarMensagemDeErroNome() {
         return getText(msgErroNome);
     }
@@ -58,11 +52,6 @@ public class CadastrarAlunoPage extends BasePage{
     @Step("Validar mensagem de erro para email inválido ou vazio")
     public String validarMensagemDeErroEmail() {
         return getText(msgErroEmail);
-    }
-
-    @Step("Validar mensagem de erro para cargo não selecionado")
-    public String validarMensagemDeErroCargo() {
-        return getText(msgErroCargo);
     }
 
     @Step("Validar url atual")

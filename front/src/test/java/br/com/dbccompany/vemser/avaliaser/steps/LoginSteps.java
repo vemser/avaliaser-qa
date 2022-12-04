@@ -13,7 +13,7 @@ public class LoginSteps {
 
     @Dado("que estou na página inicial de login")
     public void telaLogin() {
-        Assert.assertTrue(loginPage.validarUrlAtual().contains("/vemser/avaliaser-front"));
+        Assert.assertTrue(loginPage.validarUrlAtual().contains("/avaliaser-front"));
     }
 
     @E("que preencho o campo email Admim válido")
