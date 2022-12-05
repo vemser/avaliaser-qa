@@ -50,15 +50,6 @@ public class UsuarioService {
                 ;
     }
 
-    public Response alterarSenhaRecuperacao(String senha) {
-        return
-                given()
-                        .queryParam("senha", senha)
-                .when()
-                        .put(Utils.getBaseUrl() + "/auth/alterar-senha-usuario-recuperacao")
-                ;
-    }
-
     public Response alterarSenhaLogado(String alteraSenhaUsuarioLogado) {
         return
                 given()

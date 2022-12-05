@@ -27,7 +27,7 @@ public class AdministradorService {
                 given()
                         .spec(LoginSpecs.requestAdminSpec())
                         .pathParam("idUsuario", idUsuario)
-                    .when()
+                .when()
                         .get(Utils.getBaseUrl() + "/administrador/usuario/{idUsuario}")
                 ;
     }
@@ -81,7 +81,8 @@ public class AdministradorService {
                         .pathParam("idUsuario", idUsuario)
                         .multiPart(new File("./imagens/imgPanda.jpg"))
                 .when()
-                        .put(Utils.getBaseUrl() + "/administrador/upload-imagem/{idUsuario}");
+                        .put(Utils.getBaseUrl() + "/administrador/upload-imagem/{idUsuario}")
+                ;
     }
 
 }

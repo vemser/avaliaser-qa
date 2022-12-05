@@ -14,4 +14,5 @@ public class PageAcompanhamentoDTO {
     private Integer pagina;
     private Integer tamanho;
     private List<AcompanhamentoDTO> elementos;
+
 }
