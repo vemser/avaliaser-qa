@@ -6,19 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Base64;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @JsonIgnoreProperties
 public class AlunoDTO {
+
     private Integer idAluno;
     private String nome;
     private String email;
     private String stack;
     private String foto;
-
 
 }

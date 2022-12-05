@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties
 public class AlunoCreateDTO {
+
     private String nome;
     private String email;
+
 }

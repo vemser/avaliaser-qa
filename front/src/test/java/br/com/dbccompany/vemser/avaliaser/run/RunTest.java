@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/main/resources/features",
-        tags = {"@wip"},
+        tags = {"@crud"},
         glue = "br/com/dbccompany/vemser/avaliaser/steps",
         plugin = {"pretty", "io.qameta.allure.cucumberjvm.AllureCucumberJvm"},
         snippets = SnippetType.CAMELCASE

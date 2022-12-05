@@ -10,10 +10,10 @@ public class AcompanhamentoService {
     public Response cadastrar(String acompanhamento) {
         return
                 given()
-                .spec(LoginSpecs.requestGestorSpec())
-                .body(acompanhamento)
+                        .spec(LoginSpecs.requestGestorSpec())
+                        .body(acompanhamento)
                 .when()
-                .post(Utils.getBaseUrl() + "/acompanhamento/cadastrar-acompanhamento");
+                        .post(Utils.getBaseUrl() + "/acompanhamento/cadastrar-acompanhamento");
     }
 
     public Response atualizar(String acompanhamento, Integer idAcompanhamento) {
@@ -22,7 +22,7 @@ public class AcompanhamentoService {
                         .spec(LoginSpecs.requestGestorSpec())
                         .pathParam("idAcompanhamento", idAcompanhamento)
                         .body(acompanhamento)
-                        .when()
+                .when()
                         .put(Utils.getBaseUrl() + "/acompanhamento/editar-acompanhamento/{idAcompanhamento}");
     }
 
@@ -31,7 +31,7 @@ public class AcompanhamentoService {
                 given()
                         .spec(LoginSpecs.requestGestorSpec())
                         .pathParam("idAcompanhamento", idAcompanhamento)
-                        .when()
+                .when()
                         .get(Utils.getBaseUrl() + "/acompanhamento/buscar-acompanhamento/{idAcompanhamento}");
     }
 
@@ -41,8 +41,9 @@ public class AcompanhamentoService {
                         .spec(LoginSpecs.requestGestorSpec())
                         .queryParam("page", page)
                         .queryParam("size", size)
-                        .when()
+                .when()
                         .get(Utils.getBaseUrl() + "/acompanhamento/listar-acompanhamento")
                 ;
     }
+
 }
